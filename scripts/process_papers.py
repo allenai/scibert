@@ -1,39 +1,72 @@
+import os
+os.environ['OPENBLAS_NUM_THREADS'] = '1'  # disable numpy parallelization
+
 import json
 import plac
-from distil.utils import s2_utils
-from distil import paper_faq_wrapper
-from distil import answer_finder_baseline
-from distil.allennlp import interface
 import datetime
 import json
 import multiprocessing as mp
 import functools
 import sys
-import os
 import functools
 import spacy
 import re
+import s2base
+import gzip
+import datetime
 
-os.environ['OPENBLAS_NUM_THREADS'] = '1'  # disable numpy parallelization
 
 
 @plac.annotations(
-    infilename=("input file (elastic search buildpaper file)", "positional", None, str),
-    outfilename=("output file", "positional",  None, str),
-    max_paper_count=("maximum paper count", "option",  "max_paper_count", int),
-    with_body=("include body or a`bstract only", 'flag', 'with_body'))
-def main(infilename, outfilename, max_paper_count=10, with_body=False):
-    with open(infilename) as infile:
-        with open(outfilename, 'w') as outfile:
+    s3_in_dir=("s3 input directory", "positional", None, str),
+    out_dir=("output directory", "positional",  None, str),
+    pool_size=("number of workers", "option", "pool_size", int),
+    num_parts=("number of partitions of the input file", "option",  "num_parts", int),
+    start_part=("start partition", "option",  "start_part", int),
+    end_part=("end partition", "option",  "end_part", int),
+    max_paper_count=("maximum paper count per file", "option",  "max_paper_count", int),
+    with_body=("include body or `abstract only", 'flag', 'with_body'))
+def main(s3_in_dir, out_dir, pool_size=2, num_parts=6000, start_part=0, end_part=1, max_paper_count=10, with_body=False):
+    assert start_part <= end_part
+    assert end_part <= num_parts
+
+    jobs = [{'part_id': p, 's3_in_dir': s3_in_dir, 'out_dir': out_dir,
+             'max_paper_count': max_paper_count, 'with_body': with_body
+            } for p in range(start_part, end_part + 1)]
+
+    if pool_size == 1:
+        results = [process_paper_file(job['part_id'], job['s3_in_dir'], job['out_dir'], job['max_paper_count'], job['with_body'])for job in jobs]
+    else:
+        with mp.Pool(processes=pool_size) as pool:
+            pool.map(process, jobs)
+
+    print('Done processing')
+
+
+def process(job):
+    process_paper_file(job['part_id'], job['s3_in_dir'], job['out_dir'], job['max_paper_count'], job['with_body'])
+
+
+def process_paper_file(part_id, s3_in_dir, out_dir, max_paper_count, with_body):
+    print("{} Processing job {}".format(datetime.datetime.now(), part_id))
+    s3_in_filename = "{0}/part-{1:05d}.gz".format(s3_in_dir, part_id)
+    # import ipdb; ipdb.set_trace()
+    local_in_filename = s2base.file_util.cache_file(s3_in_filename)
+    out_filename = "{}/{}.out".format(out_dir, part_id)
+    with gzip.open(local_in_filename) as in_file:
+        with open(out_filename, 'w') as out_file:
             paper_count = 0
-            for line in infile:
-                paper_record = json.loads(line)
-                print(paper_count, end='')
-                process_paper_record(paper_record, outfile, with_body)
+            for line in in_file:
+                paper_record = json.loads(line.decode('utf-8'))
+                # print(paper_count, end='')
+                process_paper_record(paper_record, out_file, with_body)
                 paper_count += 1
+                if paper_count % 5 == 0:
+                    print("{} Job {} at paper {}".format(datetime.datetime.now(), part_id, paper_count))
                 if paper_count >= max_paper_count:
                     break
-
+            out_file.write("DONE")
+    print("{} DONE Processing job {} with {} papers".format(datetime.datetime.now(), part_id, paper_count))
 
 @functools.lru_cache()
 def _get_spacy_nlp():
@@ -101,13 +134,13 @@ def is_sentence(spacy_sentence):
     return True
 
 
-def process_paper_record(paper_record, outfile, with_body):
+def process_paper_record(paper_record, out_file, with_body):
     sentences = _paper_record_to_sentences(paper_record, with_body)
-    print(" paper {} with {} sents".format(paper_record['id'], len(sentences)))
+    # print(" paper {} with {} sents".format(paper_record['id'], len(sentences)))
     for s in sentences:
         s_text = re.sub('\s+', ' ', s.text).strip()
         if s_text != "":
-            outfile.write("{}\n".format(s_text))
+            out_file.write("{}\n".format(s_text))
     if len(sentences) > 0:
-        outfile.write("\n")
+        out_file.write("\n")
 plac.call(main, sys.argv[1:])
