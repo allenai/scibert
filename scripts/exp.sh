@@ -3,11 +3,11 @@
 dataset="ds_gluijwejrare:/data/"
 config_file="allennlp_config/ner_bert.jsonnet"
 
-for ner_dataset in chemdner # msh # bc5cdr
+for ner_dataset in bc5cdr # chemdner # msh # bc5cdr
 do
-    for SEED in 13370 13570 14680 #  13970 13070 13170 13270 13370 14070 14170 14270 14370 14470 14570 14670 14770 14870 14970 15070 15170 # list more than one seed to run more than one run
+    for SEED in 13370 # 13570 14680 #  13970 13070 13170 13270 13370 14070 14170 14270 14370 14470 14570 14670 14770 14870 14970 15070 15170 # list more than one seed to run more than one run
     do
-        for model in bert_s2_uncased bert_base_uncased bert_base_cased
+        for model in bert_s2_uncased # bert_base_uncased bert_base_cased
         do
 
 PYTORCH_SEED=`expr $SEED / 10`

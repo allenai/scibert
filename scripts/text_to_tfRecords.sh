@@ -1,10 +1,10 @@
 for vocab in s2vocab # basevocab # s2vocab
 do
-    for case_status in cased uncased # cased
+    for max_len in 128  512 # 128 512
     do
-        for max_len in 128 # 512 # 128 512
+        for case_status in cased uncased # cased
         do
-            for ((i=0;i<=0;i++)); 
+            for ((i=0;i<=250;i++)); 
             do 
 
 
