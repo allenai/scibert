@@ -50,7 +50,7 @@ python scripts/run_with_beaker.py $config_file --source $dataset1 --source $data
     --env "BERT_VOCAB=$BERT_VOCAB" --env "BERT_WEIGHTS=$BERT_WEIGHTS" \
     --env "NER_TRAIN_DATA_PATH=$NER_TRAIN_DATA_PATH" --env "NER_DEV_PATH=$NER_DEV_PATH" --env "NER_TEST_PATH=$NER_TEST_PATH" \
     --env "is_lowercase=$is_lowercase" \
-    --blueprint bp_1gglr3so9tnr
+    --blueprint bp_1gglr3so9tnr   # this Blueprint has allennlp v0.8
         done
     done
 done
