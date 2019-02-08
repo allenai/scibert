@@ -1,0 +1,34 @@
+# ===  This text file has a list of commenly used commands that it is easier to copy/paste them from here. === #
+
+
+# Retrain vocabulary
+import sentencepiece as spm 
+spm.SentencePieceTrainer.Train('--input=combined.out --model_prefix=100B_9999_cased --vocab_size=31000 --character_coverage=0.9999 --model_type=bpe --input_sentence_size=100000000 --shuffle_input_sentence=true')
+
+
+# Run BERT training for sequences of length 128
+python3 run_pretraining.py --input_file=gs://s2-bert/s2-tfRecords/tfRecords_s2vocab_uncased_128/*.tfrecord --output_dir=gs://s2-bert/s2-models/3B-s2vocab_uncased_128  --do_train=True --do_eval=True --bert_config_file=/mnt/disk1/bert_config/s2vocab_uncased.json --train_batch_size=256 --max_seq_length=128 --max_predictions_per_seq=20 --num_train_steps=500000 --num_warmup_steps=1000 --learning_rate=1e-4 --use_tpu=True --tpu_name=node-3 --max_eval_steps=2000  --eval_batch_size 256  --init_checkpoint=gs://s2-bert/s2-models/3B-s2vocab_uncased_128 --tpu_zone=us-central1-a
+
+
+# Run BERT training for sequences of length 512
+python3 run_pretraining.py --input_file=gs://s2-bert/s2-tfRecords/tfRecords_s2vocab_uncased_512/*.tfrecord --output_dir=gs://s2-bert/s2-models/3B-s2vocab_uncased_512_finetune128  --do_train=True --do_eval=True --bert_config_file=/mnt/disk1/bert_config/s2vocab_uncased.json --train_batch_size=64 --max_seq_length=512 --max_predictions_per_seq=75 --num_train_steps=800000 --num_warmup_steps=100 --learning_rate=1e-5 --use_tpu=True --tpu_name=node-1 --max_eval_steps=2000  --eval_batch_size 64 --init_checkpoint=gs://s2-bert/s2-models/3B-s2vocab_uncased_512_finetune128 --tpu_zone=us-central1-a
+
+
+# Convert a tensorflow BERT model to a pytorch model
+./scripts/tf_model_to_pytorch.sh  bert_models/3B-basevocab_uncased_128 bert_config/bertbase_uncased.json  pytorch_models/s2bert_basevocab_uncased_128.tar.gz 
+
+
+# Copy TensorflowRecords from local dir to google storage
+gsutil -m cp -r  tfRecords_basevocab_cased_512 gs://s2-bert/s2-tfRecords/
+
+
+#  Copy trained model from google storage to local dir
+gsutil -m cp -r gs://s2-bert/s2-models/3B-s2vocab_uncased_128 bert_models/
+
+
+# Run Tensorboard profiling for TPUs
+python3 -c 'from cloud_tpu_profiler.main import run_main; run_main()' --tpu=node-2  --monitoring_level=1 --logdir=/mnt/disk1/tensorboard_tpu_profile --tpu_zone=us-central1-a
+
+
+# Run Tensorboard to monitor all models
+sudo /usr/bin/python3 -m tensorboard.main --logdir gs://s2-bert/s2-models --port=80

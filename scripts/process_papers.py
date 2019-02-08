@@ -1,3 +1,7 @@
+"""
+Convert papers records into plain text files with one sentence per line.
+"""
+
 import os
 os.environ['OPENBLAS_NUM_THREADS'] = '1'  # disable numpy parallelization
 
