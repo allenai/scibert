@@ -32,8 +32,8 @@
       "token_embedders": {
         "tokens": {
             "type": "embedding",
-            "embedding_dim": 50,
-            "pretrained_file": "https://s3-us-west-2.amazonaws.com/allennlp/datasets/glove/glove.6B.50d.txt.gz",
+            "embedding_dim": 100,
+            "pretrained_file": "https://s3-us-west-2.amazonaws.com/allennlp/datasets/glove/glove.6B.100d.txt.gz",
             "trainable": true
         },
         "token_characters": {
@@ -53,16 +53,16 @@
     },
     "encoder": {
         "type": "lstm",
-        "input_size": 50 + 128,
+        "input_size": 100 + 128,
         "hidden_size": 200,
         "num_layers": 2,
-        "dropout": 0.5,
+        "dropout": 0.4,
         "bidirectional": true
     },
   },
   "iterator": {
     "type": "basic",
-    "batch_size": 64
+    "batch_size": 128
   },
   "trainer": {
     "optimizer": {
