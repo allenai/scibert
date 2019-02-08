@@ -73,17 +73,3 @@ def convert(inpath, outpath):
 
 
 convert()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
