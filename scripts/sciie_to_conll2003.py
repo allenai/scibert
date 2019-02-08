@@ -40,13 +40,13 @@ def _convert(data_in: List[dict]):
                 beg = ner[0] - offset
                 end = ner[1] - offset
                 if beg == last_index and prev_entity and prev_entity == ner[2]:
-                    sent_tags[beg] = f'B_{ner[2]}'
+                    sent_tags[beg] = f'B-{ner[2]}'
                     prev_entity = ''
                 else:
-                    sent_tags[beg] = f'I_{ner[2]}'
+                    sent_tags[beg] = f'I-{ner[2]}'
                     last_index = end + 1
                     for i in range(beg + 1, end + 1):
-                        sent_tags[i] = f'I_{ner[2]}'
+                        sent_tags[i] = f'I-{ner[2]}'
                         prev_entity = ner[2]
                         last_index = i
             for i in range(len(sent)):
