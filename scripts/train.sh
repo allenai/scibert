@@ -10,8 +10,8 @@ export SEED=$SEED
 export PYTORCH_SEED=$PYTORCH_SEED
 export NUMPY_SEED=$NUMPY_SEED
 
-export BERT_VOCAB=vocab/s2vocab_cased.vocab
-export BERT_WEIGHTS=pytorch_models/s2bert_s2vocab_cased_512_finetune128.tar.gz
+export BERT_VOCAB=vocab/basevocab_uncased.vocab
+export BERT_WEIGHTS=pytorch_models/bertbase_uncased.tar.gz # biobert_pmc.tar.gz  # /s2bert_s2vocab_cased_512_finetune128.tar.gz
 export is_lowercase=false
 export NER_TRAIN_DATA_PATH=data/ner/$dataset/train.conll2003
 export NER_DEV_PATH=data/ner/$dataset/dev.conll2003

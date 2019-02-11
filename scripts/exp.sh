@@ -2,14 +2,14 @@
 
 dataset1="ds_5kuso5cektdd:/data/"
 dataset2="ds_dpsaxi4ltpw9:/bert_vocab/"
-dataset3="ds_q0zib4lz374s:/bert_weights/"
+dataset3="ds_jda1d19zqy6z:/bert_weights/"
 config_file="allennlp_config/ner_bert.jsonnet"
 
 for ner_dataset in bc5cdr  # chemdner msh
 do
-    for SEED in 13370  # 13570 14680
+    for SEED in 13370 13570 14680
     do
-        for model in s2bert_s2vocab_cased_512_finetune128  # s2bert_s2vocab_uncased_512_finetune128 s2bert_basevocab_cased_512_finetune128 s2bert_basevocab_cased_512 s2bert_basevocab_uncased_128 s2bert_basevocab_uncased_512 bert_base_uncased bert_base_cased
+        for model in bertbase_basevocab_cased biobert_pmc_basevocab_cased biobert_pubmed_pmc_basevocab_cased s2bert_basevocab_uncased_512 s2bert_s2vocab_uncased_512 bertbase_basevocab_uncased biobert_pubmed_basevocab_cased s2bert_basevocab_cased_512 s2bert_s2vocab_cased_512
         do
 
 PYTORCH_SEED=`expr $SEED / 10`
