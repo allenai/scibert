@@ -1,14 +1,17 @@
 # run allennlp training on beaker
 
-dataset="ds_gluijwejrare:/data/"
-config_file="allennlp_config/ner_bert.jsonnet"
+dataset1="ds_i80e0p89ougd:/data/"
+dataset2="ds_dpsaxi4ltpw9:/bert_vocab/"
+dataset3="ds_jda1d19zqy6z:/bert_weights/"
 
-for ner_dataset in bc5cdr # chemdner # msh # bc5cdr
+for task in ner
 do
-    for SEED in 13370 # 13570 14680 #  13970 13070 13170 13270 13370 14070 14170 14270 14370 14470 14570 14670 14770 14870 14970 15070 15170 # list more than one seed to run more than one run
+    for dataset in sciie # bc5cdr
     do
-        for model in bert_s2_uncased # bert_base_uncased bert_base_cased
+        for SEED in 13370 13570 14680
         do
+            for model in bertbase_basevocab_cased biobert_pmc_basevocab_cased biobert_pubmed_pmc_basevocab_cased s2bert_basevocab_uncased_512 s2bert_s2vocab_uncased_512 bertbase_basevocab_uncased biobert_pubmed_basevocab_cased s2bert_basevocab_cased_512 s2bert_s2vocab_cased_512
+            do
 
 PYTORCH_SEED=`expr $SEED / 10`
 NUMPY_SEED=`expr $PYTORCH_SEED / 10`
@@ -20,25 +23,39 @@ export NUMPY_SEED=$NUMPY_SEED
 if [[ $model =~ 'uncased' ]];
 then
     export is_lowercase=true
+    vocab_file="uncased"
 else
     export is_lowercase=false
+    vocab_file="cased"
 fi
 
-export BERT_VOCAB=/data/"$model".vocab
-export BERT_WEIGHTS=/data/"$model"_weights.tar.gz
-export NER_TRAIN_DATA_PATH=/data/ner/$ner_dataset/train.conll2003
-export NER_DEV_PATH=/data/ner/$ner_dataset/dev.conll2003
-export NER_TEST_PATH=/data/ner/$ner_dataset/test.conll2003
+if [[ $model =~ 'basevocab' ]];
+then
+    vocab_file="basevocab_"$vocab_file
+else
+    vocab_file="s2vocab_"$vocab_file
+fi
 
 
-echo "$BERT_VOCAB", "$BERT_WEIGHTS", "$is_lowercase"
+config_file=allennlp_config/"$task".jsonnet
+
+export BERT_VOCAB=/bert_vocab/"$vocab_file".vocab
+export BERT_WEIGHTS=/bert_weights/"$model".tar.gz
+export NER_TRAIN_DATA_PATH=/data/$task/$dataset/train.txt
+export NER_DEV_PATH=/data/$task/$dataset/dev.txt
+export NER_TEST_PATH=/data/$task/$dataset/test.txt
+
+
+echo "$BERT_VOCAB", "$BERT_WEIGHTS", "$is_lowercase", "$NER_TRAIN_DATA_PATH", "$config_file"
 # continue  # delete this continue for the experiment to be submitted to beaker
 # remember to change the desc below
-python scripts/run_with_beaker.py $config_file --source $dataset --desc 's2-bert' \
+python scripts/run_with_beaker.py $config_file --source $dataset1 --source $dataset2 --source $dataset3  --desc 's2-bert' \
     --env "BERT_VOCAB=$BERT_VOCAB" --env "BERT_WEIGHTS=$BERT_WEIGHTS" \
     --env "NER_TRAIN_DATA_PATH=$NER_TRAIN_DATA_PATH" --env "NER_DEV_PATH=$NER_DEV_PATH" --env "NER_TEST_PATH=$NER_TEST_PATH" \
     --env "is_lowercase=$is_lowercase" \
-    --blueprint bp_1gglr3so9tnr
+    --env "SEED=$SEED" --env "PYTORCH_SEED=$PYTORCH_SEED" --env "NUMPY_SEED=$NUMPY_SEED" \
+    --blueprint bp_1gglr3so9tnr   # this Blueprint has allennlp v0.8
+            done
         done
     done
 done
