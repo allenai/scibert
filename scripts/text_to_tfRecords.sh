@@ -1,3 +1,5 @@
+# === Prepare pretraining data for BERT. It converts text files to tensorflow records === # 
+
 for vocab in s2vocab basevocab
 do
     for max_len in 128 512
