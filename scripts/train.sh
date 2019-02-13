@@ -17,4 +17,4 @@ export NER_TRAIN_DATA_PATH=data/ner/$dataset/train.conll2003
 export NER_DEV_PATH=data/ner/$dataset/dev.conll2003
 export NER_TEST_PATH=data/ner/$dataset/test.conll2003
 
-python -m allennlp.run  train $config_file  -s $1 $2
+python -m allennlp.run train $config_file -s "$@"

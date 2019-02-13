@@ -32,3 +32,6 @@ python3 -c 'from cloud_tpu_profiler.main import run_main; run_main()' --tpu=node
 
 # Run Tensorboard to monitor all models
 sudo /usr/bin/python3 -m tensorboard.main --logdir gs://s2-bert/s2-models --port=80
+
+# Allennlp train with an override
+python -m allennlp.run  train ..... -o '{"trainer": {"cuda_device": -1}}'
