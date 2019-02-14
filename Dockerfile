@@ -46,16 +46,13 @@ RUN pip install -r /work/requirements.txt && \
     python3.6 -m spacy download en && \
     python3.6 -m spacy download en_core_web_md
 
-#RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.6 1
-
 # Application Setup
 ENV PYTHONPATH /work
 
-#COPY other_modules/ /work/other_modules/
-#COPY scripts/ /work/scripts/
-#COPY data/ /work/data/
-#COPY bert_config/ /work/bert_config/
-#COPY vocab/ /work/vocab/
+COPY sci_bert /work/sci_bert/
+COPY scripts/ /work/scripts/
+COPY bert_config/ /work/bert_config/
+COPY data/ /work/data/
 
 
 CMD ["/bin/bash"]

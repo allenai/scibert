@@ -65,7 +65,9 @@ def main(param_file: str, args: argparse.Namespace):
             "/config.json",
             "-s",
             "/output",
-            "--file-friendly-logging"
+            "--file-friendly-logging",
+            "--include-package",
+            "sci_bert"
         ]
 
     dataset_mounts = []
@@ -135,7 +137,6 @@ if __name__ == "__main__":
     parser.add_argument('--cpu', help='CPUs to reserve for this experiment (e.g., 0.5)')
     parser.add_argument('--gpu-count', default=1, help='GPUs to use for this experiment (e.g., 1 (default))')
     parser.add_argument('--memory', help='Memory to reserve for this experiment (e.g., 1GB)')
-
     args = parser.parse_args()
 
     main(args.param_file, args)
