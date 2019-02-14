@@ -41,21 +41,21 @@ RUN apt-get install -y -t jessie-backports openjdk-8-jdk
 WORKDIR /work
 COPY requirements.txt /work/requirements.txt
 
-RUN pip_install_privates /work/requirements.txt && \
+RUN pip install -r /work/requirements.txt && \
     pip install pytest && \
     python3.6 -m spacy download en && \
     python3.6 -m spacy download en_core_web_md
 
-RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.6 1
+#RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.6 1
 
 # Application Setup
 ENV PYTHONPATH /work
 
-COPY other_modules/ /work/other_modules/
-COPY scripts/ /work/scripts/
-COPY data/ /work/data/
-COPY bert_config/ /work/bert_config/
-COPY vocab/ /work/vocab/
+#COPY other_modules/ /work/other_modules/
+#COPY scripts/ /work/scripts/
+#COPY data/ /work/data/
+#COPY bert_config/ /work/bert_config/
+#COPY vocab/ /work/vocab/
 
 
 CMD ["/bin/bash"]
