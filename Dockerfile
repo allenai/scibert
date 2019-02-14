@@ -50,8 +50,7 @@ RUN pip install -r /work/requirements.txt && \
 ENV PYTHONPATH /work
 
 COPY other_models/ /work/other_models/
-COPY scripts/ /work/scripts/
-COPY bert_config/ /work/bert_config/
-
+#COPY scripts/ /work/scripts/
+#COPY bert_config/ /work/bert_config/
 
 CMD ["/bin/bash"]
