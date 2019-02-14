@@ -22,6 +22,7 @@ class TextClassifier(Model):
                  text_field_embedder: TextFieldEmbedder,
                  text_encoder: Seq2VecEncoder,
                  classifier_feedforward: FeedForward,
+                 verbose_metrics: False,
                  initializer: InitializerApplicator = InitializerApplicator(),
                  regularizer: Optional[RegularizerApplicator] = None,
                  ) -> None:
@@ -35,6 +36,8 @@ class TextClassifier(Model):
 
         self.label_accuracy = CategoricalAccuracy()
         self.label_f1_metrics = {}
+
+        self.verbose_metrics = verbose_metrics
 
         for i in range(self.num_classes):
             self.label_f1_metrics[vocab.get_token_from_index(index=i, namespace="labels")] =\
@@ -102,9 +105,10 @@ class TextClassifier(Model):
         sum_f1 = 0.0
         for name, metric in self.label_f1_metrics.items():
             metric_val = metric.get_metric(reset)
-            metric_dict[name + '_P'] = metric_val[0]
-            metric_dict[name + '_R'] = metric_val[1]
-            metric_dict[name + '_F1'] = metric_val[2]
+            if self.verbose_metrics:
+                metric_dict[name + '_P'] = metric_val[0]
+                metric_dict[name + '_R'] = metric_val[1]
+                metric_dict[name + '_F1'] = metric_val[2]
             sum_f1 += metric_val[2]
 
         names = list(self.label_f1_metrics.keys())

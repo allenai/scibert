@@ -11,6 +11,7 @@
   "evaluate_on_test": true,
   "model": {
     "type": "text_classifier",
+    "verbose_metrics": false,
     "text_field_embedder": {
       "tokens": {
         "type": "embedding",
