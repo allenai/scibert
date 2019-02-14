@@ -1,7 +1,7 @@
 # Run allennlp training locally
 
-dataset='sciie'
-task='ner'
+dataset='sciie-entity_markers'
+task='rel'
 config_file=allennlp_config/"$task".jsonnet
 
 SEED=13270
@@ -19,4 +19,4 @@ export TRAIN_PATH=data/$task/$dataset/train.txt
 export DEV_PATH=data/$task/$dataset/dev.txt
 export TEST_PATH=data/$task/$dataset/test.txt
 
-python -m allennlp.run train $config_file -s "$@"
+python -m allennlp.run train $config_file  --include-package sci_bert -s "$@"
