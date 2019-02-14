@@ -41,18 +41,18 @@ config_file=allennlp_config/"$task".jsonnet
 
 export BERT_VOCAB=/bert_vocab/"$vocab_file".vocab
 export BERT_WEIGHTS=/bert_weights/"$model".tar.gz
-export TRAIN_DATA_PATH=data/$task/$dataset/train.txt
+export TRAIN_PATH=data/$task/$dataset/train.txt
 export DEV_PATH=data/$task/$dataset/dev.txt
 export TEST_PATH=data/$task/$dataset/test.txt
 
 
-echo "$BERT_VOCAB", "$BERT_WEIGHTS", "$is_lowercase", "$TRAIN_DATA_PATH", "$config_file"
+echo "$BERT_VOCAB", "$BERT_WEIGHTS", "$is_lowercase", "TRAIN_PATH", "$config_file"
 # continue  # delete this continue for the experiment to be submitted to beaker
 # remember to change the desc below
 python scripts/run_with_beaker.py $config_file --source $bertvocab --source $bertweights \
     --desc 's2-bert' \
     --env "BERT_VOCAB=$BERT_VOCAB" --env "BERT_WEIGHTS=$BERT_WEIGHTS" \
-    --env "TRAIN_DATA_PATH=$TRAIN_DATA_PATH" --env "DEV_PATH=$DEV_PATH" --env "TEST_PATH=$TEST_PATH" \
+    --env "TRAIN_PATH=TRAIN_PATH" --env "DEV_PATH=$DEV_PATH" --env "TEST_PATH=$TEST_PATH" \
     --env "is_lowercase=$is_lowercase" \
     --env "SEED=$SEED" --env "PYTORCH_SEED=$PYTORCH_SEED" --env "NUMPY_SEED=$NUMPY_SEED"
             done

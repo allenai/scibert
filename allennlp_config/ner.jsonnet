@@ -21,7 +21,7 @@
       }
     }
   },
-  "train_data_path": std.extVar("TRAIN_DATA_PATH"),
+  "train_data_path": std.extVar("TRAIN_PATH"),
   "validation_data_path": std.extVar("DEV_PATH"),
   "test_data_path": std.extVar("TEST_PATH"),
   "evaluate_on_test": true,
