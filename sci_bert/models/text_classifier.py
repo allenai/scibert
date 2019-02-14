@@ -30,7 +30,6 @@ class TextClassifier(Model):
 
         self.text_field_embedder = text_field_embedder
         self.num_classes = self.vocab.get_vocab_size("labels")
-        print("num_classes: ", self.num_classes)
         self.text_encoder = text_encoder
         self.classifier_feedforward = classifier_feedforward
 
