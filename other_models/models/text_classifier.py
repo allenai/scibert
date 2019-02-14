@@ -5,7 +5,7 @@ import torch
 import torch.nn.functional as F
 from allennlp.data import Vocabulary
 from allennlp.models.model import Model
-from allennlp.modules import FeedForward, Seq2VecEncoder, TextFieldEmbedder
+from allennlp.modules import FeedForward, Seq2VecEncoder, TextFieldEmbedder, Seq2SeqEncoder
 from allennlp.nn import InitializerApplicator, RegularizerApplicator
 from allennlp.nn import util
 from allennlp.training.metrics import CategoricalAccuracy, F1Measure
@@ -20,7 +20,7 @@ class TextClassifier(Model):
     """
     def __init__(self, vocab: Vocabulary,
                  text_field_embedder: TextFieldEmbedder,
-                 text_encoder: Seq2VecEncoder,
+                 text_encoder: Seq2SeqEncoder,
                  classifier_feedforward: FeedForward,
                  verbose_metrics: False,
                  initializer: InitializerApplicator = InitializerApplicator(),
@@ -43,6 +43,8 @@ class TextClassifier(Model):
             self.label_f1_metrics[vocab.get_token_from_index(index=i, namespace="labels")] =\
                 F1Measure(positive_label=i)
         self.loss = torch.nn.CrossEntropyLoss()
+
+        self.pool = lambda text, mask: util.get_final_encoder_states(text, mask, bidirectional=True)
 
         initializer(self)
 
@@ -77,8 +79,9 @@ class TextClassifier(Model):
 
         mask = util.get_text_field_mask(text)
         encoded_text = self.text_encoder(embedded_text, mask)
+        pooled = self.pool(encoded_text, mask)
 
-        logits = self.classifier_feedforward(encoded_text)
+        logits = self.classifier_feedforward(pooled)
         class_probs = F.softmax(logits, dim=1)
 
         output_dict = {"logits": logits}
