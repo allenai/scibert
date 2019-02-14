@@ -1,16 +1,17 @@
+#@IgnoreInspection BashAddShebang
 # run allennlp training on beaker
 
 dataset1="ds_i80e0p89ougd:/data/"
 dataset2="ds_dpsaxi4ltpw9:/bert_vocab/"
 dataset3="ds_jda1d19zqy6z:/bert_weights/"
 
-for task in ner
+for task in text_classification
 do
-    for dataset in sciie # bc5cdr
+    for dataset in citation_intent # bc5cdr
     do
-        for SEED in 13370 13570 14680
+        for SEED in 13370 # 13570 14680
         do
-            for model in bertbase_basevocab_cased biobert_pmc_basevocab_cased biobert_pubmed_pmc_basevocab_cased s2bert_basevocab_uncased_512 s2bert_s2vocab_uncased_512 bertbase_basevocab_uncased biobert_pubmed_basevocab_cased s2bert_basevocab_cased_512 s2bert_s2vocab_cased_512
+            for model in bertbase_basevocab_cased  # biobert_pmc_basevocab_cased biobert_pubmed_pmc_basevocab_cased s2bert_basevocab_uncased_512 s2bert_s2vocab_uncased_512 bertbase_basevocab_uncased biobert_pubmed_basevocab_cased s2bert_basevocab_cased_512 s2bert_s2vocab_cased_512
             do
 
 PYTORCH_SEED=`expr $SEED / 10`
@@ -41,9 +42,9 @@ config_file=allennlp_config/"$task".jsonnet
 
 export BERT_VOCAB=/bert_vocab/"$vocab_file".vocab
 export BERT_WEIGHTS=/bert_weights/"$model".tar.gz
-export NER_TRAIN_DATA_PATH=/data/$task/$dataset/train.txt
-export NER_DEV_PATH=/data/$task/$dataset/dev.txt
-export NER_TEST_PATH=/data/$task/$dataset/test.txt
+export NER_TRAIN_DATA_PATH=data/$task/$dataset/train.txt
+export NER_DEV_PATH=data/$task/$dataset/dev.txt
+export NER_TEST_PATH=data/$task/$dataset/test.txt
 
 
 echo "$BERT_VOCAB", "$BERT_WEIGHTS", "$is_lowercase", "$NER_TRAIN_DATA_PATH", "$config_file"
@@ -53,8 +54,8 @@ python scripts/run_with_beaker.py $config_file --source $dataset1 --source $data
     --env "BERT_VOCAB=$BERT_VOCAB" --env "BERT_WEIGHTS=$BERT_WEIGHTS" \
     --env "NER_TRAIN_DATA_PATH=$NER_TRAIN_DATA_PATH" --env "NER_DEV_PATH=$NER_DEV_PATH" --env "NER_TEST_PATH=$NER_TEST_PATH" \
     --env "is_lowercase=$is_lowercase" \
-    --env "SEED=$SEED" --env "PYTORCH_SEED=$PYTORCH_SEED" --env "NUMPY_SEED=$NUMPY_SEED" \
-    --blueprint bp_1gglr3so9tnr   # this Blueprint has allennlp v0.8
+    --env "SEED=$SEED" --env "PYTORCH_SEED=$PYTORCH_SEED" --env "NUMPY_SEED=$NUMPY_SEED"
+#    --blueprint bp_1gglr3so9tnr   # this Blueprint has allennlp v0.8
             done
         done
     done
