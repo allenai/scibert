@@ -50,8 +50,6 @@ RUN pip install -r /work/requirements.txt && \
 ENV PYTHONPATH /work
 
 COPY sci_bert /work/sci_bert/
-COPY scripts/ /work/scripts/
-COPY bert_config/ /work/bert_config/
 COPY data/ /work/data/
 
 

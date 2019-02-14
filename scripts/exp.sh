@@ -1,13 +1,12 @@
 #@IgnoreInspection BashAddShebang
 # run allennlp training on beaker
 
-dataset1="ds_73hgww9n85xz:/data/"
-dataset2="ds_dpsaxi4ltpw9:/bert_vocab/"
-dataset3="ds_jda1d19zqy6z:/bert_weights/"
+bertvocab="ds_dpsaxi4ltpw9:/bert_vocab/"
+bertweights="ds_jda1d19zqy6z:/bert_weights/"
 
-for task in text_classification
+for task in text_classification #ner #rel
 do
-    for dataset in citation_intent # bc5cdr
+    for dataset in pico # citation_intent # bc5cdr
     do
         for SEED in 13370 # 13570 14680
         do
@@ -42,20 +41,20 @@ config_file=allennlp_config/"$task".jsonnet
 
 export BERT_VOCAB=/bert_vocab/"$vocab_file".vocab
 export BERT_WEIGHTS=/bert_weights/"$model".tar.gz
-export NER_TRAIN_DATA_PATH=data/$task/$dataset/train.txt
-export NER_DEV_PATH=data/$task/$dataset/dev.txt
-export NER_TEST_PATH=data/$task/$dataset/test.txt
+export TRAIN_PATH=data/$task/$dataset/train.txt
+export DEV_PATH=data/$task/$dataset/dev.txt
+export TEST_PATH=data/$task/$dataset/test.txt
 
 
-echo "$BERT_VOCAB", "$BERT_WEIGHTS", "$is_lowercase", "$NER_TRAIN_DATA_PATH", "$config_file"
+echo "$BERT_VOCAB", "$BERT_WEIGHTS", "$is_lowercase", "TRAIN_PATH", "$config_file"
 # continue  # delete this continue for the experiment to be submitted to beaker
 # remember to change the desc below
-python scripts/run_with_beaker.py $config_file --source $dataset1 --source $dataset2 --source $dataset3  --desc 's2-bert' \
+python scripts/run_with_beaker.py $config_file --source $bertvocab --source $bertweights \
+    --desc 's2-bert' \
     --env "BERT_VOCAB=$BERT_VOCAB" --env "BERT_WEIGHTS=$BERT_WEIGHTS" \
-    --env "NER_TRAIN_DATA_PATH=$NER_TRAIN_DATA_PATH" --env "NER_DEV_PATH=$NER_DEV_PATH" --env "NER_TEST_PATH=$NER_TEST_PATH" \
+    --env "TRAIN_PATH=TRAIN_PATH" --env "DEV_PATH=$DEV_PATH" --env "TEST_PATH=$TEST_PATH" \
     --env "is_lowercase=$is_lowercase" \
     --env "SEED=$SEED" --env "PYTORCH_SEED=$PYTORCH_SEED" --env "NUMPY_SEED=$NUMPY_SEED"
-#    --blueprint bp_1gglr3so9tnr   # this Blueprint has allennlp v0.8
             done
         done
     done
