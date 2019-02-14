@@ -1,6 +1,6 @@
 # run allennlp training on beaker
 
-dataset1="ds_73hgww9n85xz:/data/"
+dataset1="ds_so9x33ao66dj:/data/"
 dataset2="ds_dpsaxi4ltpw9:/bert_vocab/"
 dataset3="ds_jda1d19zqy6z:/bert_weights/"
 
