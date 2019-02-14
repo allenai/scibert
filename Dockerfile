@@ -52,6 +52,7 @@ ENV PYTHONPATH /work
 COPY other_models/ /work/other_models/
 COPY scripts/ /work/scripts/
 COPY bert_config/ /work/bert_config/
+COPY data/ /work/data/
 
 
 CMD ["/bin/bash"]
