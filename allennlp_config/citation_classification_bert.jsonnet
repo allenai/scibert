@@ -17,9 +17,9 @@
       }
     }
   },
-  "train_data_path": std.extVar("CITATION_TRAIN_PATH"),
-  "validation_data_path": std.extVar("CITATION_DEV_PATH"),
-  "test_data_path": std.extVar("CITATION_TEST_PATH"),
+  "train_data_path": std.extVar("NER_TRAIN_DATA_PATH"),
+  "validation_data_path": std.extVar("NER_DEV_PATH"),
+  "test_data_path": std.extVar("NER_TEST_PATH"),
   "evaluate_on_test": true,
   "model": {
     "type": "text_classifier",
