@@ -1,12 +1,12 @@
 # run allennlp training on beaker
 
-dataset1="ds_i80e0p89ougd:/data/"
+dataset1="ds_73hgww9n85xz:/data/"
 dataset2="ds_dpsaxi4ltpw9:/bert_vocab/"
 dataset3="ds_jda1d19zqy6z:/bert_weights/"
 
 for task in ner
 do
-    for dataset in sciie # bc5cdr
+    for dataset in JNLPBA  NCBI-disease #  sciie # bc5cdr
     do
         for SEED in 13370 13570 14680
         do
