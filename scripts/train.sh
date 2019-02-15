@@ -1,6 +1,6 @@
 # Run allennlp training locally
 
-dataset='pico'
+dataset='sciie-relation-extraction'
 task='text_classification'
 config_file=allennlp_config/"$task".jsonnet
 

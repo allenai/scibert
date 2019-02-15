@@ -4,9 +4,9 @@
 bertvocab="ds_dpsaxi4ltpw9:/bert_vocab/"
 bertweights="ds_jda1d19zqy6z:/bert_weights/"
 
-for task in rel
+for task in text_classification
 do
-    for dataset in sciie  sciie-entity_markers
+    for dataset in sciie-relation-extraction
     do
         for SEED in 13370 # 13570 14680
         do
