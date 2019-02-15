@@ -1,7 +1,7 @@
 # Run allennlp training locally
 
-dataset='sciie-entity_markers'
-task='rel'
+dataset='pico'
+task='text_classification'
 config_file=allennlp_config/"$task".jsonnet
 
 SEED=13270
@@ -18,5 +18,8 @@ export is_lowercase=false
 export TRAIN_PATH=data/$task/$dataset/train.txt
 export DEV_PATH=data/$task/$dataset/dev.txt
 export TEST_PATH=data/$task/$dataset/test.txt
+
+
+export CUDA_VISIBLE_DEVICES=0
 
 python -m allennlp.run train $config_file  --include-package sci_bert -s "$@"
