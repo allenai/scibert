@@ -19,6 +19,7 @@ export TRAIN_PATH=data/$task/$dataset/train.txt
 export DEV_PATH=data/$task/$dataset/dev.txt
 export TEST_PATH=data/$task/$dataset/test.txt
 
+
 export CUDA_VISIBLE_DEVICES=0
 
-python -m allennlp.run train $config_file -s "$@"
+python -m allennlp.run train $config_file  --include-package sci_bert -s "$@"
