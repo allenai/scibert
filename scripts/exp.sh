@@ -6,11 +6,11 @@ bertweights="ds_jda1d19zqy6z:/bert_weights/"
 
 for task in text_classification
 do
-    for dataset in sciie-relation-extraction
+    for dataset in chemprot
     do
-        for SEED in 13370 # 13570 14680
+        for SEED in 13370 13570 14680
         do
-            for model in bertbase_basevocab_cased  # biobert_pmc_basevocab_cased biobert_pubmed_pmc_basevocab_cased s2bert_basevocab_uncased_512 s2bert_s2vocab_uncased_512 bertbase_basevocab_uncased biobert_pubmed_basevocab_cased s2bert_basevocab_cased_512 s2bert_s2vocab_cased_512
+            for model in bertbase_basevocab_cased biobert_pmc_basevocab_cased biobert_pubmed_pmc_basevocab_cased s2bert_basevocab_uncased_512 s2bert_s2vocab_uncased_512 bertbase_basevocab_uncased biobert_pubmed_basevocab_cased s2bert_basevocab_cased_512 s2bert_s2vocab_cased_512
             do
 
 PYTORCH_SEED=`expr $SEED / 10`

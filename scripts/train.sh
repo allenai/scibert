@@ -1,6 +1,6 @@
 # Run allennlp training locally
 
-dataset='sciie-relation-extraction'
+dataset='chemprot'
 task='text_classification'
 config_file=allennlp_config/"$task".jsonnet
 
