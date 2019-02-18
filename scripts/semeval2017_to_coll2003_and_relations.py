@@ -58,83 +58,97 @@ from sci_bert.common.span import Span, TokenSpan, MentionSpan, label_sent_token_
 
 MIN_NUM_TOKENS_PER_SENT = 5
 
+# each instance is a single NER[split][instance_id] = {'spans': List, 'labels': List}
+NER = {'train': {}, 'dev': {}, 'test': {}}
+RELATIONS = {}
+for split in ['train', 'dev', 'test']:
+    print(f'Processing {split}')
+
+    ann_dir = f'semeval2017/{split}/'
+    instance_ids = sorted({os.path.splitext(ann_file)[0] for ann_file in os.listdir(ann_dir)})
+    for id in instance_ids:
+        print(f'Processing {id}')
+
+        ann_file = os.path.join(ann_dir, f'{id}.ann')
+        txt_file = ann_file.replace('.ann', '.txt')
+
+        # load text & tokenize w/ Spacy
+        with open(txt_file, 'r') as f_txt:
+            text = f_txt.read().strip()
+            text = ''.join([char if char.strip() != '' else ' ' for char in text])  # normalize whitespaces, such as '\xa0' --> ' '
+            spacy_text = nlp(text)
+
+        # no sentence splitting (one long sentence) & tokenize
+        # sent_token_spans = TokenSpan.find_sent_token_spans(text=text, sent_tokens=[[token.text for sent in spacy_text.sents for token in sent if token.text.strip() != '']])
+
+        # split sentences & tokenize
+        sent_token_spans = TokenSpan.find_sent_token_spans(text=text, sent_tokens=[[token.text for token in sent if token.text.strip() != ''] for sent in spacy_text.sents])
+
+        # load annotated entity mentions
+        mention_spans = set()
+        with open(ann_file, 'r') as f_ann:
+            for line in f_ann:
+                tup = line.strip('\n').split('\t')
+                if tup[0].startswith('T'):
+                    entity_id = tup[0]
+                    # note: occasionally data looks really stupid like `Task 400 436;437 453` in `S0167931713005042.ann`
+                    try:
+                        entity_type, start, stop = tup[1].split(' ')
+                    except ValueError as e:
+                        print(f'Failed unpacking line {tup} in {id}. Skipping...')
+                        continue
+                    start = int(start)
+                    stop = int(stop)
+                    entity_text = tup[2]
+                    # note: occasionally, spans include whitespace like `line = "T6	Task 220 268	modelling of red blood cells in Poiseuille flow "`
+                    # where `stop=268` actually includes the `\xa0` token at end of `flow`
+                    # >> correct these situations
+                    if len(entity_text.strip()) != stop - start:
+                        entity_text = entity_text.lstrip()
+                        start += stop - start - len(entity_text)
+                        entity_text = entity_text.rstrip()
+                        stop -= stop - start - len(entity_text)
+                        print(f'Corrected {tup} in {id} -> ({start}, {stop}) due to whitespace in mention text')
+                    assert len(entity_text) == stop - start
+                    mention_span = MentionSpan(start=start, stop=stop, text=entity_text, entity_types=[entity_type], entity_id=entity_id)
+                    mention_spans.add(mention_span)
+
+        # overlapping mentions are handled by picking longest mention in the group
+        # this also handles same-mention multiple-types (arbitrarily picks one of them)
+        clean_mention_spans = []
+        clusters = Span.sort_cluster_spans(mention_spans)
+        for cluster in clusters:
+            if len(cluster) == 1:
+                clean_mention_spans.extend(cluster)
+            else:
+                longest_span = sorted(cluster, key=lambda s: len(s))[-1]
+                clean_mention_spans.append(longest_span)
+
+        # conll2003 -> BIO
+        sent_token_labels = label_sent_token_spans(sent_token_spans=sent_token_spans,
+                                                   mention_spans=clean_mention_spans)
+        # save
+        NER[split][id] = {
+            'spans': sent_token_spans,
+            'labels': sent_token_labels
+        }
+
+for split in ['train', 'dev', 'test']:
+    num_papers = len(NER[split])
+    print(f'Finished processing {num_papers} papers from {split}')
+
+# write NER
 os.makedirs('data/ner/semeval2017/', exist_ok=True)
 for split in ['train', 'dev', 'test']:
     with open(f'data/ner/semeval2017/{split}.txt', 'w') as f_out:
-        ann_dir = f'semeval2017/{split}/'
-        instance_ids = sorted({os.path.splitext(ann_file)[0] for ann_file in os.listdir(ann_dir)})
-        for id in instance_ids:
-            ann_file = os.path.join(ann_dir, f'{id}.ann')
-            txt_file = ann_file.replace('.ann', '.txt')
-
-            # load text & tokenize w/ Spacy
-            with open(txt_file, 'r') as f_txt:
-                text = f_txt.read().strip()
-                text = ''.join([char if char.strip() != '' else ' ' for char in text])  # normalize whitespaces, such as '\xa0' --> ' '
-                spacy_text = nlp(text)
-
-            # no sentence splitting (one long sentence) & tokenize
-            # sent_token_spans = TokenSpan.find_sent_token_spans(text=text, sent_tokens=[[token.text for sent in spacy_text.sents for token in sent if token.text.strip() != '']])
-
-            # split sentences & tokenize
-            sent_token_spans = TokenSpan.find_sent_token_spans(text=text, sent_tokens=[[token.text for token in sent if token.text.strip() != ''] for sent in spacy_text.sents])
-
-            # load annotated entity mentions
-            mention_spans = set()
-            with open(ann_file, 'r') as f_ann:
-                for line in f_ann:
-                    tup = line.strip('\n').split('\t')
-                    if tup[0].startswith('T'):
-                        entity_id = tup[0]
-                        # note: occasionally data looks really stupid like `Task 400 436;437 453` in `S0167931713005042.ann`
-                        try:
-                            entity_type, start, stop = tup[1].split(' ')
-                        except ValueError as e:
-                            print(f'Failed unpacking line {tup} in {id}. Skipping...')
-                            continue
-                        start = int(start)
-                        stop = int(stop)
-                        entity_text = tup[2]
-                        # note: occasionally, spans include whitespace like `line = "T6	Task 220 268	modelling of red blood cells in Poiseuille flow "`
-                        # where `stop=268` actually includes the `\xa0` token at end of `flow`
-                        # >> correct these situations
-                        if len(entity_text.strip()) != stop - start:
-                            entity_text = entity_text.lstrip()
-                            start += stop - start - len(entity_text)
-                            entity_text = entity_text.rstrip()
-                            stop -= stop - start - len(entity_text)
-                            print(f'Corrected {tup} in {id} -> ({start}, {stop}) due to whitespace in mention text')
-                        assert len(entity_text) == stop - start
-                        mention_span = MentionSpan(start=start, stop=stop, text=entity_text, entity_types=[entity_type], entity_id=entity_id)
-                        mention_spans.add(mention_span)
-
-            # overlapping mentions are handled by picking longest mention in the group
-            # this also handles same-mention multiple-types (arbitrarily picks one of them)
-            clean_mention_spans = []
-            clusters = Span.sort_cluster_spans(mention_spans)
-            for cluster in clusters:
-                if len(cluster) == 1:
-                    clean_mention_spans.extend(cluster)
-                else:
-                    longest_span = sorted(cluster, key=lambda s: len(s))[-1]
-                    clean_mention_spans.append(longest_span)
-
-            # conll2003 -> BIO
-            sent_token_labels = label_sent_token_spans(sent_token_spans=sent_token_spans,
-                                                       mention_spans=clean_mention_spans)
-
-            # write
-            print(f'Writing {id}')
+        for id, instance in NER[split].items():
             f_out.write(f'-DOCSTART- ({id})\n\n')
-            for token_spans, token_labels in zip(sent_token_spans, sent_token_labels):
+            for token_spans, token_labels in zip(instance['spans'], instance['labels']):
                 for token_span, token_label in zip(token_spans, token_labels):
                     f_out.write('\t'.join([token_span.text, 'NN', 'O', token_label]))
                     f_out.write('\n')  # new token
                 f_out.write('\n')  # new sent
             f_out.write('\n')  # new paper
-
-
-
 
 
 # TODO: stop here; below incomplete relations script
