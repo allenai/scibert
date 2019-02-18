@@ -47,7 +47,7 @@ class Span:
         return str((self.start, self.stop))
 
     def __len__(self):
-        return self.stop - self.start + 1
+        return self.stop - self.start
 
     def __contains__(self, item):
         """Only for strict subset, doesn't include equality"""
