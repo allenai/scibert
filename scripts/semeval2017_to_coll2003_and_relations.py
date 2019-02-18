@@ -83,18 +83,28 @@ for split in ['train', 'dev', 'test']:
             mention_spans = set()
             with open(ann_file, 'r') as f_ann:
                 for line in f_ann:
-                    tup = line.strip().split('\t')
+                    tup = line.strip('\n').split('\t')
                     if tup[0].startswith('T'):
                         entity_id = tup[0]
                         # note: occasionally data looks really stupid like `Task 400 436;437 453` in `S0167931713005042.ann`
                         try:
                             entity_type, start, stop = tup[1].split(' ')
                         except ValueError as e:
-                            print(f'Tried unpacking line {tup} in {id}')
+                            print(f'Failed unpacking line {tup} in {id}. Skipping...')
                             continue
                         start = int(start)
                         stop = int(stop)
                         entity_text = tup[2]
+                        # note: occasionally, spans include whitespace like `line = "T6	Task 220 268	modelling of red blood cells in Poiseuille flow "`
+                        # where `stop=268` actually includes the `\xa0` token at end of `flow`
+                        # >> correct these situations
+                        if len(entity_text.strip()) != stop - start:
+                            entity_text = entity_text.lstrip()
+                            start += stop - start - len(entity_text)
+                            entity_text = entity_text.rstrip()
+                            stop -= stop - start - len(entity_text)
+                            print(f'Corrected {tup} in {id} -> ({start}, {stop}) due to whitespace in mention text')
+                        assert len(entity_text) == stop - start
                         mention_span = MentionSpan(start=start, stop=stop, text=entity_text, entity_types=[entity_type], entity_id=entity_id)
                         mention_spans.add(mention_span)
 
@@ -123,8 +133,6 @@ for split in ['train', 'dev', 'test']:
                 f_out.write('\n')  # new sent
             f_out.write('\n')  # new paper
 
-            break
-    break
 
 
 
