@@ -67,17 +67,19 @@ for split in ['train', 'dev', 'test']:
             ann_file = os.path.join(ann_dir, f'{id}.ann')
             txt_file = ann_file.replace('.ann', '.txt')
 
-            # load text
+            # load text & tokenize w/ Spacy
             with open(txt_file, 'r') as f_txt:
                 text = f_txt.read().strip()
                 text = ''.join([char if char.strip() != '' else ' ' for char in text])  # normalize whitespaces, such as '\xa0' --> ' '
                 spacy_text = nlp(text)
 
-            # split sentences & tokenize
-            sent_token_spans = TokenSpan.find_sent_token_spans(text=text, sent_tokens=[[token.text for sent in spacy_text.sents for token in sent if token.text.strip() != '']])
-            # sent_token_spans = TokenSpan.find_sent_token_spans(text=text, sent_tokens=[[token.text for token in sent if token.text.strip() != ''] for sent in spacy_text.sents])
+            # no sentence splitting (one long sentence) & tokenize
+            # sent_token_spans = TokenSpan.find_sent_token_spans(text=text, sent_tokens=[[token.text for sent in spacy_text.sents for token in sent if token.text.strip() != '']])
 
-            # entity mentions might have duplicates & out of order
+            # split sentences & tokenize
+            sent_token_spans = TokenSpan.find_sent_token_spans(text=text, sent_tokens=[[token.text for token in sent if token.text.strip() != ''] for sent in spacy_text.sents])
+
+            # load annotated entity mentions
             mention_spans = set()
             with open(ann_file, 'r') as f_ann:
                 for line in f_ann:
@@ -95,17 +97,16 @@ for split in ['train', 'dev', 'test']:
                         entity_text = tup[2]
                         mention_span = MentionSpan(start=start, stop=stop, text=entity_text, entity_types=[entity_type], entity_id=entity_id)
                         mention_spans.add(mention_span)
-            mention_spans = sorted(mention_spans, key=lambda s: (s.start, s.stop))
 
             # overlapping mentions are handled by picking longest mention in the group
             # this also handles same-mention multiple-types (arbitrarily picks one of them)
             clean_mention_spans = []
-            groups = Span.cluster_spans(mention_spans)
-            for group in groups:
-                if len(group) == 1:
-                    clean_mention_spans.extend(group)
+            clusters = Span.sort_cluster_spans(mention_spans)
+            for cluster in clusters:
+                if len(cluster) == 1:
+                    clean_mention_spans.extend(cluster)
                 else:
-                    longest_span = sorted(group, key=lambda s: len(s))[-1]
+                    longest_span = sorted(cluster, key=lambda s: len(s))[-1]
                     clean_mention_spans.append(longest_span)
 
             # conll2003 -> BIO
@@ -118,8 +119,12 @@ for split in ['train', 'dev', 'test']:
             for token_spans, token_labels in zip(sent_token_spans, sent_token_labels):
                 for token_span, token_label in zip(token_spans, token_labels):
                     f_out.write('\t'.join([token_span.text, 'NN', 'O', token_label]))
-                    f_out.write('\n')
-            f_out.write('\n')
+                    f_out.write('\n')  # new token
+                f_out.write('\n')  # new sent
+            f_out.write('\n')  # new paper
+
+            break
+    break
 
 
 
