@@ -39,6 +39,7 @@ on	NN	O	O
 importance	NN	O	O
 sampling	NN	O	O
 .	NN	O	O
+
 In	NN	O	O
 recent	NN	O	O
 years	NN	O	O
@@ -89,11 +90,13 @@ see	NN	O	O
 e.g.	NN	O	O
 Refs	NN	O	O
 .	NN	O	O
+
 [	NN	O	O
 9,10	NN	O	O
 ]	NN	O	O
 )	NN	O	O
 .	NN	O	O
+
 However	NN	O	O
 ,	NN	O	O
 as	NN	O	O
@@ -111,10 +114,12 @@ results	NN	O	O
 are	NN	O	O
 not	NN	O	O
 guaranteed	NN	O	O
+
 [	NN	O	O
 11–16	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 This	NN	O	O
 calls	NN	O	O
 for	NN	O	O
@@ -132,6 +137,7 @@ and	NN	O	I-Task
 numerical	NN	O	I-Task
 insight	NN	O	I-Task
 .	NN	O	O
+
 In	NN	O	O
 the	NN	O	O
 recent	NN	O	O
@@ -173,6 +179,7 @@ clarified	NN	O	O
 17,18	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 An	NN	O	O
 important	NN	O	O
 conclusion	NN	O	O
@@ -193,6 +200,7 @@ yield	NN	O	O
 valid	NN	O	O
 results	NN	O	O
 .	NN	O	O
+
 Importantly	NN	O	O
 ,	NN	O	O
 this	NN	O	O
@@ -223,6 +231,7 @@ cooling	NN	O	I-Material
 8,10	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 
 -DOCSTART- (S0003491615001839)
 
@@ -256,6 +265,7 @@ tackle	NN	O	O
 phase	NN	O	B-Task
 transitions	NN	O	I-Task
 .	NN	O	O
+
 This	NN	O	O
 method	NN	O	O
 leads	NN	O	O
@@ -290,6 +300,7 @@ der	NN	O	I-Process
 Waals	NN	O	I-Process
 model	NN	O	I-Process
 .	NN	O	O
+
 In	NN	O	O
 particular	NN	O	O
 we	NN	O	O
@@ -305,6 +316,7 @@ function	NN	O	I-Process
 (	NN	O	O
 Eq	NN	O	O
 .	NN	O	O
+
 (	NN	O	O
 9	NN	O	O
 )	NN	O	O
@@ -319,6 +331,7 @@ number	NN	O	O
 of	NN	O	O
 particles	NN	O	O
 .	NN	O	O
+
 The	NN	O	O
 partition	NN	O	B-Process
 function	NN	O	I-Process
@@ -358,6 +371,7 @@ equal	NN	O	I-Process
 areas	NN	O	I-Process
 rule	NN	O	I-Process
 .	NN	O	O
+
 The	NN	O	O
 approach	NN	O	O
 hereby	NN	O	O
@@ -430,6 +444,7 @@ virial	NN	O	I-Process
 expansions	NN	O	I-Process
 .	NN	O	O
 
+
 -DOCSTART- (S0009261408017028)
 
 We	NN	O	O
@@ -493,6 +508,7 @@ optical	NN	O	B-Material
 -	NN	O	I-Material
 chopper	NN	O	I-Material
 .	NN	O	O
+
 The	NN	O	O
 vibrational	NN	O	B-Process
 combination	NN	O	I-Process
@@ -511,6 +527,7 @@ at	NN	O	I-Material
 1560	NN	O	I-Material
 nm	NN	O	I-Material
 .	NN	O	O
+
 These	NN	O	O
 couplings	NN	O	O
 result	NN	O	O
@@ -540,6 +557,7 @@ transient	NN	O	B-Process
 thermal	NN	O	I-Process
 effects	NN	O	I-Process
 .	NN	O	O
+
 These	NN	O	O
 transient	NN	O	B-Process
 thermal	NN	O	I-Process
@@ -569,6 +587,7 @@ values	NN	O	O
 14	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 The	NN	O	O
 transient	NN	O	B-Process
 thermal	NN	O	I-Process
@@ -595,6 +614,7 @@ at	NN	O	O
 longer	NN	O	O
 timescales	NN	O	O
 .	NN	O	O
+
 We	NN	O	O
 measure	NN	O	B-Task
 this	NN	O	I-Task
@@ -614,6 +634,7 @@ pump	NN	O	I-Process
 probe	NN	O	I-Process
 experiment	NN	O	I-Process
 .	NN	O	O
+
 
 -DOCSTART- (S0009261413004612)
 
@@ -638,6 +659,7 @@ of	NN	O	I-Task
 chemical	NN	O	I-Task
 devices	NN	O	I-Task
 .	NN	O	O
+
 Here	NN	O	O
 ,	NN	O	O
 we	NN	O	O
@@ -668,6 +690,7 @@ orders	NN	O	O
 of	NN	O	O
 magnitude	NN	O	O
 .	NN	O	O
+
 The	NN	O	O
 basic	NN	O	O
 idea	NN	O	O
@@ -729,6 +752,7 @@ the	NN	O	O
 singlet	NN	O	B-Material
 yield	NN	O	I-Material
 .	NN	O	O
+
 Formally	NN	O	O
 ,	NN	O	O
 it	NN	O	O
@@ -750,6 +774,7 @@ instantaneous	NN	O	B-Process
 magnetic	NN	O	I-Process
 sensitivity	NN	O	I-Process
 .	NN	O	O
+
 The	NN	O	O
 functional	NN	O	O
 form	NN	O	O
@@ -779,6 +804,7 @@ surrounding	NN	O	O
 nuclear	NN	O	B-Process
 spins	NN	O	I-Process
 .	NN	O	O
+
 Here	NN	O	O
 ,	NN	O	O
 we	NN	O	O
@@ -813,6 +839,7 @@ nucleus	NN	O	I-Material
 e.g.	NN	O	O
 nitrogen	NN	O	B-Material
 .	NN	O	O
+
 In	NN	O	O
 the	NN	O	O
 context	NN	O	O
@@ -878,6 +905,7 @@ and	NN	O	O
 probe’	NN	O	O
 picture	NN	O	O
 .	NN	O	O
+
 The	NN	O	O
 Hamiltonian	NN	O	O
 then	NN	O	O
@@ -893,6 +921,7 @@ isotropic	NN	O	B-Process
 hyperfine	NN	O	I-Process
 coupling	NN	O	I-Process
 .	NN	O	O
+
 
 -DOCSTART- (S0009261414000372)
 
@@ -917,6 +946,7 @@ their	NN	O	O
 electronic	NN	O	B-Process
 environment	NN	O	I-Process
 .	NN	O	O
+
 Local	NN	O	B-Process
 field	NN	O	I-Process
 effects	NN	O	I-Process
@@ -942,6 +972,7 @@ summarized	NN	O	O
 1	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 Optical	NN	O	B-Process
 processes	NN	O	I-Process
 ,	NN	O	O
@@ -963,6 +994,7 @@ chromophores	NN	O	I-Process
 2–4	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 Many	NN	O	O
 biological	NN	O	O
 systems	NN	O	O
@@ -990,6 +1022,7 @@ nearby	NN	O	O
 optical	NN	O	O
 centres	NN	O	O
 .	NN	O	O
+
 For	NN	O	O
 instance	NN	O	O
 ,	NN	O	O
@@ -1048,6 +1081,7 @@ carotenoid	NN	O	B-Material
 species	NN	O	I-Material
 5–7	NN	O	O
 .	NN	O	O
+
 Until	NN	O	O
 now	NN	O	O
 ,	NN	O	O
@@ -1117,6 +1151,7 @@ differential	NN	O	I-Process
 absorption	NN	O	I-Process
 .	NN	O	O
 
+
 -DOCSTART- (S0009261415001517)
 
 Since	NN	O	O
@@ -1140,6 +1175,7 @@ specified	NN	O	O
 enantiomeric	NN	O	O
 form	NN	O	O
 .	NN	O	O
+
 This	NN	O	O
 has	NN	O	O
 spurred	NN	O	O
@@ -1162,6 +1198,7 @@ secure	NN	O	I-Task
 enantiopure	NN	O	I-Task
 products	NN	O	I-Task
 .	NN	O	O
+
 Such	NN	O	O
 methods	NN	O	B-Process
 ,	NN	O	I-Process
@@ -1206,6 +1243,7 @@ a	NN	O	O
 racemic	NN	O	O
 mixture	NN	O	O
 .	NN	O	O
+
 A	NN	O	O
 significant	NN	O	O
 drawback	NN	O	O
@@ -1261,6 +1299,7 @@ complexes	NN	O	I-Material
 8,9	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 A	NN	O	O
 key	NN	O	O
 requirement	NN	O	O
@@ -1300,6 +1339,7 @@ within	NN	O	O
 molecular	NN	O	B-Material
 products	NN	O	I-Material
 .	NN	O	O
+
 Chiral	NN	O	B-Process
 discrimination	NN	O	I-Process
 through	NN	O	O
@@ -1355,6 +1395,7 @@ in	NN	O	I-Process
 optical	NN	O	I-Process
 rotation	NN	O	I-Process
 .	NN	O	O
+
 Other	NN	O	O
 optical	NN	O	B-Process
 methods	NN	O	I-Process
@@ -1380,6 +1421,7 @@ introduced	NN	O	O
 later	NN	O	O
 .	NN	O	O
 
+
 -DOCSTART- (S0009261415008362)
 
 For	NN	O	O
@@ -1401,6 +1443,7 @@ assess	NN	O	O
 their	NN	O	O
 accuracy	NN	O	O
 .	NN	O	O
+
 A	NN	O	B-Process
 model	NN	O	I-Process
 Hamiltonian	NN	O	I-Process
@@ -1466,9 +1509,11 @@ CCS	NN	O	I-Process
 CCS	NN	O	I-Process
 )	NN	O	O
 .	NN	O	O
+
 [	NN	O	O
 21	NN	O	O
 ]	NN	O	O
+
 The	NN	O	B-Process
 Hamiltonian	NN	O	I-Process
 consists	NN	O	O
@@ -1513,6 +1558,7 @@ system	NN	O	O
 22,23	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 This	NN	O	O
 Hamiltonian	NN	O	B-Process
 is	NN	O	O
@@ -1531,6 +1577,7 @@ the	NN	O	O
 same	NN	O	O
 frequency	NN	O	O
 .	NN	O	O
+
 System	NN	O	B-Process
 -	NN	O	I-Process
 bath	NN	O	I-Process
@@ -1560,6 +1607,7 @@ device	NN	O	I-Process
 (	NN	O	O
 SQUID	NN	O	B-Process
 )	NN	O	O
+
 [	NN	O	O
 24	NN	O	O
 ]	NN	O	O
@@ -1591,6 +1639,7 @@ regime	NN	O	I-Task
 25	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 
 -DOCSTART- (S0010938X13003818)
 
@@ -1625,6 +1674,7 @@ of	NN	O	I-Process
 noise	NN	O	I-Process
 resistance	NN	O	I-Process
 .	NN	O	O
+
 In	NN	O	O
 order	NN	O	O
 to	NN	O	O
@@ -1641,6 +1691,7 @@ Fig	NN	O	O
 was	NN	O	O
 performed	NN	O	O
 .	NN	O	O
+
 Specifically	NN	O	O
 ,	NN	O	O
 a	NN	O	O
@@ -1682,6 +1733,7 @@ to	NN	O	I-Material
 digital	NN	O	I-Material
 converter	NN	O	I-Material
 .	NN	O	O
+
 The	NN	O	O
 electrochemical	NN	O	B-Process
 noise	NN	O	I-Process
@@ -1706,6 +1758,7 @@ at	NN	O	O
 each	NN	O	O
 iteration	NN	O	O
 .	NN	O	O
+
 Between	NN	O	O
 iterations	NN	O	O
 ,	NN	O	O
@@ -1733,6 +1786,7 @@ for	NN	O	O
 later	NN	O	O
 processing	NN	O	O
 .	NN	O	O
+
 The	NN	O	O
 final	NN	O	O
 dataset	NN	O	B-Material
@@ -1744,6 +1798,7 @@ spaced	NN	O	O
 in	NN	O	O
 time	NN	O	O
 .	NN	O	O
+
 Under	NN	O	O
 the	NN	O	O
 assumption	NN	O	O
@@ -1798,6 +1853,7 @@ mains	NN	O	O
 supply	NN	O	O
 .	NN	O	O
 
+
 -DOCSTART- (S0010938X14002157)
 
 A	NN	O	O
@@ -1808,6 +1864,7 @@ surface	NN	O	B-Material
 active	NN	O	I-Material
 agent	NN	O	I-Material
 .	NN	O	O
+
 In	NN	O	O
 this	NN	O	O
 work	NN	O	O
@@ -1851,6 +1908,7 @@ material	NN	O	I-Material
 14,20,24	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 However	NN	O	O
 ,	NN	O	O
 surfactants	NN	O	O
@@ -1860,6 +1918,7 @@ corrosion	NN	O	B-Task
 protection	NN	O	I-Task
 themselves	NN	O	O
 .	NN	O	O
+
 Some	NN	O	O
 examples	NN	O	O
 when	NN	O	O
@@ -1880,6 +1939,7 @@ are	NN	O	O
 given	NN	O	O
 below	NN	O	O
 .	NN	O	O
+
 Typical	NN	O	O
 surfactants	NN	O	B-Material
 in	NN	O	O
@@ -1897,10 +1957,12 @@ ethoxylate	NN	O	I-Material
 (	NN	O	O
 NPE	NN	O	B-Material
 )	NN	O	O
+
 [	NN	O	O
 14,15,30,106,107	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 However	NN	O	O
 ,	NN	O	O
 NPEs	NN	O	B-Material
@@ -1918,6 +1980,7 @@ of	NN	O	O
 their	NN	O	O
 toxicity	NN	O	O
 .	NN	O	O
+
 On	NN	O	O
 the	NN	O	O
 other	NN	O	O
@@ -1933,6 +1996,7 @@ acceptable	NN	O	O
 20	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 The	NN	O	O
 quaternary	NN	O	B-Material
 ammonium	NN	O	I-Material
@@ -1963,6 +2027,7 @@ surface	NN	O	B-Material
 active	NN	O	I-Material
 specie	NN	O	I-Material
 .	NN	O	O
+
 As	NN	O	O
 the	NN	O	O
 amines	NN	O	B-Material
@@ -1998,6 +2063,7 @@ abbreviated	NN	O	O
 as	NN	O	O
 “	NN	O	O
 quats	NN	O	B-Material
+
 ”	NN	O	O
 ,	NN	O	O
 are	NN	O	O
@@ -2005,6 +2071,7 @@ not	NN	O	O
 pH	NN	O	O
 sensitive	NN	O	O
 .	NN	O	O
+
 Long	NN	O	B-Material
 -	NN	O	I-Material
 chain	NN	O	I-Material
@@ -2026,6 +2093,7 @@ materials	NN	O	I-Material
 106	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 A	NN	O	O
 frequently	NN	O	O
 employed	NN	O	O
@@ -2038,10 +2106,12 @@ bromide	NN	O	I-Material
 (	NN	O	O
 DDPB	NN	O	B-Material
 )	NN	O	O
+
 [	NN	O	O
 9,60,61,108,109	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 Anionic	NN	O	B-Material
 sulphates	NN	O	I-Material
 ,	NN	O	O
@@ -2061,6 +2131,7 @@ also	NN	O	O
 useful	NN	O	O
 surfactants	NN	O	B-Material
 .	NN	O	O
+
 Ali	NN	O	O
 reported	NN	O	O
 that	NN	O	O
@@ -2085,6 +2156,7 @@ alkylphenols	NN	O	I-Material
 15	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 Several	NN	O	O
 examples	NN	O	O
 of	NN	O	O
@@ -2098,6 +2170,7 @@ in	NN	O	O
 Section	NN	O	O
 5.6	NN	O	O
 .	NN	O	O
+
 
 -DOCSTART- (S0010938X15003261)
 
@@ -2144,6 +2217,7 @@ metal	NN	O	I-Process
 12,17	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 The	NN	O	O
 scanning	NN	O	B-Process
 Kelvin	NN	O	I-Process
@@ -2196,6 +2270,7 @@ surface	NN	O	I-Material
 14,15,19	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 The	NN	O	O
 lateral	NN	O	O
 resolution	NN	O	O
@@ -2224,6 +2299,7 @@ to	NN	O	O
 19	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 Volta	NN	O	B-Process
 potential	NN	O	I-Process
 is	NN	O	O
@@ -2246,6 +2322,7 @@ processes	NN	O	I-Task
 16	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 It	NN	O	O
 is	NN	O	O
 sensitive	NN	O	O
@@ -2266,6 +2343,7 @@ stress	NN	O	O
 13,17	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 Volta	NN	O	B-Process
 potential	NN	O	I-Process
 differences	NN	O	I-Process
@@ -2282,6 +2360,7 @@ behaviour	NN	O	I-Task
 10,15,18,20–22	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 Regions	NN	O	O
 with	NN	O	O
 larger	NN	O	B-Process
@@ -2331,6 +2410,7 @@ reported	NN	O	O
 ]	NN	O	O
 .	NN	O	O
 
+
 -DOCSTART- (S0021961415003821)
 
 The	NN	O	O
@@ -2353,6 +2433,7 @@ spherical	NN	O	I-Material
 CG	NN	O	I-Material
 segments	NN	O	I-Material
 .	NN	O	O
+
 The	NN	O	O
 development	NN	O	B-Task
 of	NN	O	I-Task
@@ -2396,6 +2477,7 @@ formalism	NN	O	I-Process
 118	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 The	NN	O	O
 n	NN	O	B-Material
 -	NN	O	I-Material
@@ -2421,6 +2503,7 @@ bonded	NN	O	O
 Mie	NN	O	B-Material
 segments	NN	O	I-Material
 .	NN	O	O
+
 A	NN	O	O
 certain	NN	O	O
 degree	NN	O	O
@@ -2449,6 +2532,7 @@ description	NN	O	O
 132	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 In	NN	O	O
 our	NN	O	O
 current	NN	O	O
@@ -2489,6 +2573,7 @@ corresponding	NN	O	O
 hydrogen	NN	O	B-Material
 atoms	NN	O	I-Material
 .	NN	O	O
+
 By	NN	O	O
 applying	NN	O	O
 this	NN	O	O
@@ -2513,9 +2598,10 @@ n	NN	O	B-Material
 -	NN	O	I-Material
 C6H14	NN	O	I-Material
 ,	NN	O	O
-n	NN	O	B-Material
--	NN	O	I-Material
-C9H20	NN	O	I-Material
+n	NN	O	O
+
+-	NN	O	O
+C9H20	NN	O	O
 ,	NN	O	O
 n	NN	O	B-Material
 -	NN	O	I-Material
@@ -2531,6 +2617,7 @@ C18H38	NN	O	I-Material
 ,	NN	O	O
 etc	NN	O	O
 .	NN	O	O
+
 A	NN	O	O
 good	NN	O	O
 description	NN	O	B-Task
@@ -2559,6 +2646,7 @@ Mie	NN	O	B-Process
 )	NN	O	I-Process
 potential	NN	O	I-Process
 .	NN	O	O
+
 For	NN	O	O
 convenience	NN	O	O
 ,	NN	O	O
@@ -2609,6 +2697,7 @@ C	NN	O	O
 by	NN	O	O
 three	NN	O	O
 .	NN	O	O
+
 The	NN	O	O
 size	NN	O	O
 σ	NN	O	O
@@ -2640,6 +2729,7 @@ SAFT-γ	NN	O	B-Process
 Mie	NN	O	I-Process
 procedure	NN	O	I-Process
 .	NN	O	O
+
 The	NN	O	O
 chosen	NN	O	O
 mapping	NN	O	O
@@ -2685,6 +2775,7 @@ properties	NN	O	O
 ]	NN	O	O
 .	NN	O	O
 
+
 -DOCSTART- (S0021999113005652)
 
 This	NN	O	O
@@ -2724,6 +2815,7 @@ two	NN	O	B-Process
 compartment	NN	O	I-Process
 model	NN	O	I-Process
 .	NN	O	O
+
 The	NN	O	O
 major	NN	O	O
 purpose	NN	O	O
@@ -2753,6 +2845,7 @@ reaction	NN	O	I-Process
 in	NN	O	I-Process
 water	NN	O	I-Process
 .	NN	O	O
+
 Demonstrating	NN	O	O
 fundamental	NN	O	O
 data	NN	O	O
@@ -2790,6 +2883,7 @@ also	NN	O	O
 been	NN	O	O
 attempted	NN	O	O
 .	NN	O	O
+
 The	NN	O	O
 gas	NN	O	B-Process
 exchange	NN	O	I-Process
@@ -2826,6 +2920,7 @@ the	NN	O	I-Process
 water	NN	O	I-Process
 phase	NN	O	I-Process
 .	NN	O	O
+
 A	NN	O	O
 first	NN	O	O
 -	NN	O	O
@@ -2862,6 +2957,7 @@ phenomena	NN	O	I-Process
 in	NN	O	I-Process
 water	NN	O	I-Process
 .	NN	O	O
+
 While	NN	O	O
 a	NN	O	O
 traditional	NN	O	O
@@ -2914,6 +3010,7 @@ and	NN	O	I-Task
 concentration	NN	O	I-Task
 fields	NN	O	I-Task
 .	NN	O	O
+
 A	NN	O	O
 direct	NN	O	B-Process
 numerical	NN	O	I-Process
@@ -2954,6 +3051,7 @@ subgrid	NN	O	B-Process
 scale	NN	O	I-Process
 models	NN	O	I-Process
 .	NN	O	O
+
 We	NN	O	O
 assume	NN	O	O
 that	NN	O	O
@@ -3013,6 +3111,7 @@ at	NN	O	I-Process
 the	NN	O	I-Process
 interface	NN	O	I-Process
 .	NN	O	O
+
 Six	NN	O	O
 degrees	NN	O	O
 of	NN	O	O
@@ -3038,6 +3137,7 @@ gas	NN	O	I-Task
 exchange	NN	O	I-Task
 mechanisms	NN	O	I-Task
 .	NN	O	O
+
 Extrapolations	NN	O	O
 of	NN	O	O
 the	NN	O	O
@@ -3086,6 +3186,7 @@ numerical	NN	O	B-Task
 experiments	NN	O	I-Task
 .	NN	O	O
 
+
 -DOCSTART- (S0021999113005846)
 
 Although	NN	O	O
@@ -3110,6 +3211,7 @@ greater	NN	O	O
 practical	NN	O	O
 importance	NN	O	O
 .	NN	O	O
+
 In	NN	O	O
 nature	NN	O	O
 ,	NN	O	O
@@ -3148,6 +3250,7 @@ bottom	NN	O	I-Process
 boundary	NN	O	I-Process
 layer	NN	O	I-Process
 .	NN	O	O
+
 Regardless	NN	O	O
 of	NN	O	O
 the	NN	O	O
@@ -3207,6 +3310,7 @@ Gill	NN	O	O
 16	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 When	NN	O	O
 ω≈ωf	NN	O	B-Process
 ,	NN	O	O
@@ -3233,6 +3337,7 @@ damping	NN	O	I-Process
 and	NN	O	O
 |ω−ωf|	NN	O	B-Process
 .	NN	O	O
+
 Thus	NN	O	O
 ,	NN	O	O
 in	NN	O	O
@@ -3271,6 +3376,7 @@ forced	NN	O	O
 response	NN	O	O
 .	NN	O	O
 
+
 -DOCSTART- (S002199911500025X)
 
 A	NN	O	O
@@ -3298,6 +3404,7 @@ in	NN	O	O
 this	NN	O	O
 article	NN	O	O
 .	NN	O	O
+
 This	NN	O	O
 fully	NN	O	B-Process
 -	NN	O	I-Process
@@ -3327,6 +3434,7 @@ from	NN	O	I-Process
 capillary	NN	O	I-Process
 waves	NN	O	I-Process
 .	NN	O	O
+
 The	NN	O	O
 conducted	NN	O	O
 study	NN	O	O
@@ -3356,6 +3464,7 @@ of	NN	O	I-Process
 surface	NN	O	I-Process
 tension	NN	O	I-Process
 .	NN	O	O
+
 Since	NN	O	O
 surface	NN	O	B-Process
 tension	NN	O	I-Process
@@ -3397,6 +3506,7 @@ of	NN	O	I-Task
 surface	NN	O	I-Task
 tension	NN	O	I-Task
 .	NN	O	O
+
 Further	NN	O	O
 analysis	NN	O	O
 shows	NN	O	O
@@ -3429,6 +3539,7 @@ numerical	NN	O	I-Process
 methodology	NN	O	I-Process
 .	NN	O	O
 
+
 -DOCSTART- (S0021999115003423)
 
 The	NN	O	O
@@ -3440,6 +3551,7 @@ proceeds	NN	O	O
 as	NN	O	O
 follows	NN	O	O
 .	NN	O	O
+
 In	NN	O	O
 Section	NN	O	O
 2	NN	O	O
@@ -3474,6 +3586,7 @@ image	NN	O	I-Material
 data	NN	O	I-Material
 sets	NN	O	I-Material
 .	NN	O	O
+
 We	NN	O	O
 present	NN	O	O
 the	NN	O	O
@@ -3507,6 +3620,7 @@ experiments	NN	O	O
 8,10–12,4,13,9	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 We	NN	O	O
 finish	NN	O	O
 Section	NN	O	O
@@ -3545,6 +3659,7 @@ constrained	NN	O	I-Task
 optimisation	NN	O	I-Task
 problem	NN	O	I-Task
 .	NN	O	O
+
 In	NN	O	O
 Section	NN	O	O
 3	NN	O	O
@@ -3572,6 +3687,7 @@ to	NN	O	O
 the	NN	O	O
 implementation	NN	O	O
 .	NN	O	O
+
 In	NN	O	O
 particular	NN	O	O
 we	NN	O	O
@@ -3606,6 +3722,7 @@ quality	NN	O	O
 without	NN	O	O
 segmentation	NN	O	B-Process
 .	NN	O	O
+
 In	NN	O	O
 Section	NN	O	O
 4	NN	O	O
@@ -3628,6 +3745,7 @@ image	NN	O	B-Material
 data	NN	O	I-Material
 sets	NN	O	I-Material
 .	NN	O	O
+
 Finally	NN	O	O
 in	NN	O	O
 Section	NN	O	O
@@ -3649,6 +3767,7 @@ of	NN	O	O
 the	NN	O	O
 work	NN	O	O
 .	NN	O	O
+
 
 -DOCSTART- (S0021999115007895)
 
@@ -3679,6 +3798,7 @@ a	NN	O	O
 variational	NN	O	B-Process
 framework	NN	O	I-Process
 .	NN	O	O
+
 The	NN	O	O
 development	NN	O	O
 of	NN	O	O
@@ -3710,6 +3830,7 @@ in	NN	O	O
 1,19	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 This	NN	O	O
 approach	NN	O	B-Process
 allows	NN	O	O
@@ -3735,6 +3856,7 @@ an	NN	O	O
 action	NN	O	B-Process
 integral	NN	O	I-Process
 .	NN	O	O
+
 Hamiltonian	NN	O	B-Process
 mechanics	NN	O	I-Process
 is	NN	O	O
@@ -3757,6 +3879,7 @@ of	NN	O	I-Task
 a	NN	O	I-Task
 system	NN	O	I-Task
 .	NN	O	O
+
 This	NN	O	O
 is	NN	O	O
 expressed	NN	O	O
@@ -3780,6 +3903,7 @@ and	NN	O	O
 conservation	NN	O	O
 laws	NN	O	O
 .	NN	O	O
+
 When	NN	O	O
 one	NN	O	O
 approximates	NN	O	O
@@ -3801,6 +3925,7 @@ the	NN	O	O
 discrete	NN	O	O
 level	NN	O	O
 .	NN	O	O
+
 Given	NN	O	O
 that	NN	O	O
 Hamiltonian	NN	O	B-Process
@@ -3822,6 +3947,7 @@ significant	NN	O	O
 relevance	NN	O	O
 .	NN	O	O
 
+
 -DOCSTART- (S0021999115008153)
 
 As	NN	O	O
@@ -3840,6 +3966,7 @@ after	NN	O	I-Process
 every	NN	O	I-Process
 iteration	NN	O	I-Process
 .	NN	O	O
+
 In	NN	O	O
 order	NN	O	O
 to	NN	O	O
@@ -3862,6 +3989,7 @@ after	NN	O	I-Process
 every	NN	O	I-Process
 iteration	NN	O	I-Process
 .	NN	O	O
+
 Although	NN	O	O
 relatively	NN	O	O
 long	NN	O	O
@@ -3888,6 +4016,7 @@ for	NN	O	O
 GPGPU	NN	O	B-Material
 architectures	NN	O	I-Material
 .	NN	O	O
+
 Still	NN	O	O
 ,	NN	O	O
 full	NN	O	O
@@ -3903,6 +4032,7 @@ is	NN	O	O
 time	NN	O	O
 consuming	NN	O	O
 .	NN	O	O
+
 Instead	NN	O	O
 ,	NN	O	O
 the	NN	O	O
@@ -3926,6 +4056,7 @@ the	NN	O	O
 previous	NN	O	O
 iteration	NN	O	O
 .	NN	O	O
+
 Full	NN	O	O
 updates	NN	O	O
 of	NN	O	O
@@ -3951,6 +4082,7 @@ the	NN	O	O
 last	NN	O	O
 iteration	NN	O	O
 .	NN	O	O
+
 Accumulative	NN	O	O
 rounding	NN	O	O
 errors	NN	O	O
@@ -3980,6 +4112,7 @@ floating	NN	O	O
 point	NN	O	O
 numbers	NN	O	O
 .	NN	O	O
+
 
 -DOCSTART- (S0021999115008372)
 
@@ -4013,6 +4146,7 @@ meshes	NN	O	I-Material
 3,34,38	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 R	NN	O	B-Process
 -	NN	O	I-Process
 adaptivity	NN	O	I-Process
@@ -4046,10 +4180,12 @@ by	NN	O	O
 Dietachmayer	NN	O	O
 and	NN	O	O
 Droegemeier	NN	O	O
+
 [	NN	O	O
 14	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 It	NN	O	O
 is	NN	O	O
 an	NN	O	O
@@ -4111,6 +4247,7 @@ into	NN	O	O
 existing	NN	O	O
 models	NN	O	O
 .	NN	O	O
+
 Variational	NN	O	B-Process
 methods	NN	O	I-Process
 exist	NN	O	O
@@ -4134,6 +4271,7 @@ e.g.	NN	O	O
 ]	NN	O	O
 )	NN	O	O
 .	NN	O	O
+
 Alternatively	NN	O	O
 ,	NN	O	O
 the	NN	O	O
@@ -4193,6 +4331,7 @@ tangling	NN	O	I-Process
 7	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 We	NN	O	O
 will	NN	O	O
 see	NN	O	O
@@ -4245,6 +4384,7 @@ r	NN	O	B-Process
 adaptivity	NN	O	I-Process
 .	NN	O	O
 
+
 -DOCSTART- (S0022311513010313)
 
 The	NN	O	O
@@ -4268,6 +4408,7 @@ materials	NN	O	O
 and	NN	O	O
 geometries	NN	O	O
 .	NN	O	O
+
 “	NN	O	B-Material
 Mock	NN	O	I-Material
 up	NN	O	I-Material
@@ -4384,6 +4525,7 @@ a	NN	O	O
 PuO2	NN	O	B-Material
 surrogate	NN	O	I-Material
 .	NN	O	O
+
 Commercially	NN	O	O
 available	NN	O	O
 ground	NN	O	O
@@ -4405,6 +4547,7 @@ additive	NN	O	O
 27	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 The	NN	O	O
 analysed	NN	O	O
 chemical	NN	O	O
@@ -4415,6 +4558,7 @@ in	NN	O	O
 Table	NN	O	O
 3	NN	O	O
 .	NN	O	O
+
 Calumite	NN	O	B-Material
 is	NN	O	O
 a	NN	O	O
@@ -4432,12 +4576,15 @@ limits	NN	O	O
 of	NN	O	O
 ca	NN	O	O
 .	NN	O	O
+
 40	NN	O	O
 to	NN	O	O
 ca	NN	O	O
 .	NN	O	O
+
 400μm	NN	O	O
 .	NN	O	O
+
 
 -DOCSTART- (S0022311513011422)
 
@@ -4473,6 +4620,7 @@ proposed	NN	O	O
 and	NN	O	O
 identified	NN	O	O
 .	NN	O	O
+
 A	NN	O	O
 complete	NN	O	B-Task
 characterisation	NN	O	I-Task
@@ -4511,6 +4659,7 @@ temperatures	NN	O	O
 and	NN	O	O
 irradiation	NN	O	B-Process
 .	NN	O	O
+
 Ribis	NN	O	O
 and	NN	O	O
 de	NN	O	O
@@ -4532,6 +4681,7 @@ at	NN	O	O
 high	NN	O	O
 temperatures	NN	O	O
 .	NN	O	O
+
 They	NN	O	O
 show	NN	O	O
 that	NN	O	O
@@ -4550,12 +4700,14 @@ Ti	NN	O	B-Material
 containing	NN	O	O
 phase	NN	O	O
 .	NN	O	O
+
 Similarly	NN	O	O
 ,	NN	O	O
 Ratti	NN	O	O
 et	NN	O	O
 al	NN	O	O
 .	NN	O	O
+
 [	NN	O	O
 9	NN	O	O
 ]	NN	O	O
@@ -4597,6 +4749,7 @@ alloy	NN	O	B-Material
 without	NN	O	O
 titanium	NN	O	B-Material
 .	NN	O	O
+
 For	NN	O	O
 example	NN	O	O
 ,	NN	O	O
@@ -4657,10 +4810,12 @@ phase	NN	O	O
 to	NN	O	O
 another	NN	O	O
 .	NN	O	O
+
 Whittle	NN	O	O
 et	NN	O	O
 al	NN	O	O
 .	NN	O	O
+
 [	NN	O	O
 10	NN	O	O
 ]	NN	O	O
@@ -4683,6 +4838,7 @@ ways	NN	O	O
 to	NN	O	O
 irradiation	NN	O	B-Process
 .	NN	O	O
+
 They	NN	O	O
 revealed	NN	O	O
 that	NN	O	O
@@ -4706,6 +4862,7 @@ induced	NN	O	O
 damage	NN	O	O
 .	NN	O	O
 
+
 -DOCSTART- (S0022311514006722)
 
 Zirconium	NN	O	B-Material
@@ -4723,6 +4880,7 @@ water	NN	O	O
 nuclear	NN	O	B-Material
 reactors	NN	O	I-Material
 .	NN	O	O
+
 As	NN	O	O
 such	NN	O	O
 these	NN	O	O
@@ -4745,6 +4903,7 @@ such	NN	O	O
 as	NN	O	O
 oxidation	NN	O	B-Process
 .	NN	O	O
+
 At	NN	O	O
 high	NN	O	O
 burn	NN	O	O
@@ -4777,6 +4936,7 @@ efficiency	NN	O	O
 and	NN	O	O
 safety	NN	O	O
 .	NN	O	O
+
 The	NN	O	O
 oxidation	NN	O	B-Process
 kinetics	NN	O	O
@@ -4802,6 +4962,7 @@ transitions	NN	O	O
 1–5	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 These	NN	O	O
 transitions	NN	O	O
 are	NN	O	O
@@ -4827,6 +4988,7 @@ of	NN	O	O
 mechanical	NN	O	O
 issues	NN	O	O
 .	NN	O	O
+
 Understanding	NN	O	B-Task
 how	NN	O	I-Task
 these	NN	O	I-Task
@@ -4847,6 +5009,7 @@ the	NN	O	I-Task
 corrosion	NN	O	I-Task
 process	NN	O	I-Task
 .	NN	O	O
+
 
 -DOCSTART- (S0022311514006941)
 
@@ -4871,10 +5034,12 @@ classical	NN	O	I-Material
 glass	NN	O	I-Material
 matrix	NN	O	I-Material
 .	NN	O	O
+
 Carter	NN	O	O
 et	NN	O	O
 al	NN	O	O
 .	NN	O	O
+
 [	NN	O	O
 3	NN	O	O
 ]	NN	O	O
@@ -4883,6 +5048,7 @@ Zhang	NN	O	O
 et	NN	O	O
 al	NN	O	O
 .	NN	O	O
+
 [	NN	O	O
 4	NN	O	O
 ]	NN	O	O
@@ -4898,6 +5064,7 @@ glass	NN	O	B-Material
 ceramic	NN	O	I-Material
 wasteforms	NN	O	I-Material
 .	NN	O	O
+
 These	NN	O	O
 wasteforms	NN	O	O
 were	NN	O	O
@@ -4933,6 +5100,7 @@ in	NN	O	O
 Sydney	NN	O	O
 respectively	NN	O	O
 .	NN	O	O
+
 In	NN	O	O
 the	NN	O	O
 work	NN	O	O
@@ -4941,11 +5109,13 @@ Carter	NN	O	O
 et	NN	O	O
 al	NN	O	O
 .	NN	O	O
+
 and	NN	O	O
 Zhang	NN	O	O
 et	NN	O	O
 al	NN	O	O
 .	NN	O	O
+
 the	NN	O	O
 intended	NN	O	O
 crystalline	NN	O	B-Material
@@ -4959,6 +5129,7 @@ pyrochlore	NN	O	I-Material
 ,	NN	O	O
 CaUTi2O7	NN	O	B-Material
 .	NN	O	O
+
 The	NN	O	O
 glass	NN	O	B-Material
 matrix	NN	O	I-Material
@@ -4988,6 +5159,7 @@ basis	NN	O	O
 by	NN	O	O
 sodium	NN	O	B-Material
 .	NN	O	O
+
 The	NN	O	O
 stoichiometric	NN	O	O
 composition	NN	O	O
@@ -5000,6 +5172,7 @@ wasteform	NN	O	O
 was	NN	O	O
 Na2AlBSi6O16	NN	O	B-Material
 .	NN	O	O
+
 This	NN	O	O
 glass	NN	O	B-Material
 provides	NN	O	O
@@ -5015,6 +5188,7 @@ be	NN	O	O
 varied	NN	O	O
 systematically	NN	O	O
 .	NN	O	O
+
 Given	NN	O	O
 that	NN	O	O
 the	NN	O	O
@@ -5063,6 +5237,7 @@ crystalline	NN	O	I-Task
 phase	NN	O	I-Task
 stability	NN	O	I-Task
 .	NN	O	O
+
 The	NN	O	O
 x=1	NN	O	O
 end	NN	O	O
@@ -5074,6 +5249,7 @@ albite	NN	O	I-Material
 ,	NN	O	O
 NaAlSi3O8	NN	O	B-Material
 .	NN	O	O
+
 The	NN	O	O
 melting	NN	O	O
 point	NN	O	O
@@ -5104,6 +5280,7 @@ a	NN	O	O
 HIP	NN	O	O
 cycle	NN	O	O
 .	NN	O	O
+
 From	NN	O	O
 the	NN	O	O
 available	NN	O	O
@@ -5135,6 +5312,7 @@ is	NN	O	O
 °	NN	O	O
 C	NN	O	O
 .	NN	O	O
+
 No	NN	O	O
 phase	NN	O	O
 diagrams	NN	O	O
@@ -5142,13 +5320,17 @@ for	NN	O	O
 the	NN	O	O
 quaternary	NN	O	O
 system	NN	O	O
-Na2O	NN	O	B-Material
-–	NN	O	I-Material
-Al2O3–B2O3–SiO2	NN	O	I-Material
+
+Na2O	NN	O	O
+
+–	NN	O	O
+
+Al2O3–B2O3–SiO2	NN	O	O
 could	NN	O	O
 be	NN	O	O
 found	NN	O	O
 .	NN	O	O
+
 
 -DOCSTART- (S0022311514009271)
 
@@ -5187,6 +5369,7 @@ responds	NN	O	O
 to	NN	O	O
 stress	NN	O	O
 .	NN	O	O
+
 Indeed	NN	O	O
 ,	NN	O	O
 structure	NN	O	O
@@ -5201,6 +5384,7 @@ grain	NN	O	I-Task
 boundary	NN	O	I-Task
 stability	NN	O	I-Task
 .	NN	O	O
+
 All	NN	O	O
 potential	NN	O	O
 models	NN	O	O
@@ -5214,6 +5398,7 @@ the	NN	O	I-Task
 defect	NN	O	I-Task
 energies	NN	O	I-Task
 .	NN	O	O
+
 The	NN	O	O
 Morelon	NN	O	B-Process
 potential	NN	O	I-Process
@@ -5239,6 +5424,7 @@ the	NN	O	O
 bulk	NN	O	O
 modulus	NN	O	O
 .	NN	O	O
+
 The	NN	O	O
 energies	NN	O	O
 calculated	NN	O	O
@@ -5273,6 +5459,7 @@ taken	NN	O	O
 into	NN	O	O
 account	NN	O	O
 .	NN	O	O
+
 For	NN	O	O
 completeness	NN	O	O
 ,	NN	O	O
@@ -5292,6 +5479,7 @@ Catlow	NN	O	B-Process
 potential	NN	O	I-Process
 model	NN	O	I-Process
 .	NN	O	O
+
 The	NN	O	O
 Morl	NN	O	B-Process
 ,	NN	O	I-Process
@@ -5333,6 +5521,7 @@ UO2	NN	O	B-Material
 ]	NN	O	O
 )	NN	O	O
 .	NN	O	O
+
 The	NN	O	O
 major	NN	O	O
 deficiency	NN	O	O
@@ -5360,6 +5549,7 @@ will	NN	O	O
 be	NN	O	O
 underestimated	NN	O	O
 .	NN	O	O
+
 However	NN	O	O
 ,	NN	O	O
 this	NN	O	O
@@ -5385,6 +5575,7 @@ mobility	NN	O	O
 will	NN	O	O
 contribute	NN	O	O
 .	NN	O	O
+
 
 -DOCSTART- (S0022311515002354)
 
@@ -5418,6 +5609,7 @@ toughness	NN	O	O
 35–40	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 These	NN	O	O
 changes	NN	O	O
 can	NN	O	O
@@ -5441,6 +5633,7 @@ storage	NN	O	O
 13	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 As	NN	O	O
 well	NN	O	O
 as	NN	O	O
@@ -5482,6 +5675,7 @@ cracking	NN	O	I-Process
 DHC	NN	O	B-Process
 )	NN	O	O
 .	NN	O	O
+
 The	NN	O	O
 former	NN	O	O
 mechanism	NN	O	O
@@ -5521,6 +5715,7 @@ concentrations	NN	O	O
 13	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 The	NN	O	O
 latter	NN	O	O
 mechanism	NN	O	O
@@ -5560,6 +5755,7 @@ raiser	NN	O	I-Process
 5,41,42	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 The	NN	O	O
 process	NN	O	O
 occurs	NN	O	O
@@ -5587,6 +5783,7 @@ material	NN	O	O
 5,41,42	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 
 -DOCSTART- (S0022311515301653)
 
@@ -5617,6 +5814,7 @@ on	NN	O	O
 uranium	NN	O	B-Material
 dioxide	NN	O	I-Material
 .	NN	O	O
+
 For	NN	O	O
 the	NN	O	O
 Generation	NN	O	B-Material
@@ -5663,6 +5861,7 @@ reactor	NN	O	I-Material
 VHTR	NN	O	B-Material
 )	NN	O	O
 .	NN	O	O
+
 In	NN	O	O
 the	NN	O	O
 former	NN	O	O
@@ -5684,6 +5883,7 @@ high	NN	O	O
 burnup	NN	O	B-Process
 performance	NN	O	O
 .	NN	O	O
+
 In	NN	O	O
 the	NN	O	O
 latter	NN	O	O
@@ -5707,6 +5907,7 @@ and	NN	O	O
 fissile	NN	O	O
 density	NN	O	O
 .	NN	O	O
+
 However	NN	O	O
 ,	NN	O	O
 in	NN	O	O
@@ -5740,6 +5941,7 @@ a	NN	O	O
 recent	NN	O	O
 publication	NN	O	O
 .	NN	O	O
+
 During	NN	O	O
 burnup	NN	O	B-Process
 ,	NN	O	O
@@ -5752,6 +5954,7 @@ oxidize	NN	O	O
 to	NN	O	O
 UO2+x	NN	O	B-Material
 .	NN	O	O
+
 UO2+x	NN	O	B-Material
 reacts	NN	O	O
 with	NN	O	O
@@ -5769,6 +5972,7 @@ xC	NN	O	B-Material
 UO2	NN	O	B-Material
 +	NN	O	O
 xCO	NN	O	B-Material
+
 
 -DOCSTART- (S0022311515303901)
 
@@ -5810,6 +6014,7 @@ provide	NN	O	O
 neutron	NN	O	B-Process
 moderation	NN	O	I-Process
 .	NN	O	O
+
 During	NN	O	O
 reactor	NN	O	B-Material
 operation	NN	O	O
@@ -5828,6 +6033,7 @@ the	NN	O	O
 CO2	NN	O	B-Material
 coolant	NN	O	I-Material
 .	NN	O	O
+
 This	NN	O	O
 CO	NN	O	B-Material
 in	NN	O	O
@@ -5848,6 +6054,7 @@ surfaces	NN	O	I-Task
 12	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 This	NN	O	O
 non	NN	O	B-Material
 -	NN	O	I-Material
@@ -5869,6 +6076,7 @@ graphite	NN	O	B-Material
 12,13	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 During	NN	O	O
 the	NN	O	O
 lifetime	NN	O	O
@@ -5904,6 +6112,7 @@ oxidation	NN	O	I-Task
 14	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 Methane	NN	O	B-Material
 (	NN	O	O
 CH4	NN	O	B-Material
@@ -5939,6 +6148,7 @@ strength	NN	O	I-Process
 16	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 It	NN	O	O
 is	NN	O	O
 assumed	NN	O	O
@@ -5959,6 +6169,7 @@ high	NN	O	O
 levels	NN	O	O
 observed	NN	O	O
 .	NN	O	O
+
 
 -DOCSTART- (S0029549313003439)
 
@@ -5998,6 +6209,7 @@ dimensional	NN	O	O
 reactor	NN	O	B-Material
 core	NN	O	I-Material
 .	NN	O	O
+
 In	NN	O	O
 a	NN	O	O
 majority	NN	O	O
@@ -6039,6 +6251,7 @@ dimensional	NN	O	I-Process
 lattice	NN	O	I-Process
 geometries	NN	O	I-Process
 .	NN	O	O
+
 There	NN	O	O
 has	NN	O	O
 been	NN	O	O
@@ -6091,6 +6304,7 @@ to	NN	O	O
 these	NN	O	O
 efforts	NN	O	O
 .	NN	O	O
+
 The	NN	O	O
 goal	NN	O	O
 of	NN	O	O
@@ -6119,6 +6333,7 @@ multi	NN	O	I-Material
 group	NN	O	I-Material
 library	NN	O	I-Material
 .	NN	O	O
+
 Results	NN	O	O
 are	NN	O	O
 presented	NN	O	O
@@ -6136,6 +6351,7 @@ Ridge	NN	O	O
 National	NN	O	O
 Laboratories	NN	O	O
 .	NN	O	O
+
 
 -DOCSTART- (S0029549314002854)
 
@@ -6162,11 +6378,13 @@ ferritic	NN	O	I-Material
 stainless	NN	O	I-Material
 steel	NN	O	I-Material
 .	NN	O	O
+
 Most	NN	O	O
 connections	NN	O	O
 are	NN	O	O
 welded	NN	O	O
 .	NN	O	O
+
 The	NN	O	O
 pipes	NN	O	B-Material
 may	NN	O	O
@@ -6193,6 +6411,7 @@ etc	NN	O	O
 .	NN	O	O
 )	NN	O	O
 .	NN	O	O
+
 Event	NN	O	B-Task
 screening	NN	O	I-Task
 in	NN	O	O
@@ -6215,6 +6434,7 @@ to	NN	O	O
 leaks	NN	O	O
 )	NN	O	O
 .	NN	O	O
+
 Three	NN	O	O
 main	NN	O	O
 causes	NN	O	O
@@ -6235,6 +6455,7 @@ of	NN	O	O
 manufacturing	NN	O	O
 defects	NN	O	O
 .	NN	O	O
+
 Human	NN	O	O
 factor	NN	O	O
 induced	NN	O	O
@@ -6259,6 +6480,7 @@ to	NN	O	O
 operation	NN	O	O
 errors	NN	O	O
 .	NN	O	O
+
 Fatigue	NN	O	O
 was	NN	O	O
 found	NN	O	O
@@ -6291,6 +6513,7 @@ of	NN	O	O
 these	NN	O	O
 factors	NN	O	O
 .	NN	O	O
+
 Corrosion	NN	O	O
 was	NN	O	O
 induced	NN	O	O
@@ -6323,6 +6546,7 @@ fluid	NN	O	B-Material
 inside	NN	O	O
 pipes	NN	O	B-Material
 .	NN	O	O
+
 Manufacturing	NN	O	O
 defects	NN	O	O
 mostly	NN	O	O
@@ -6345,6 +6569,7 @@ heat	NN	O	O
 treatment	NN	O	O
 .	NN	O	O
 
+
 -DOCSTART- (S0038092X14004824)
 
 Historically	NN	O	O
@@ -6360,6 +6585,7 @@ started	NN	O	O
 decades	NN	O	O
 ago	NN	O	O
 .	NN	O	O
+
 Early	NN	O	O
 studies	NN	O	O
 (	NN	O	O
@@ -6405,6 +6631,7 @@ as	NN	O	O
 circumsolar	NN	O	O
 irradiance	NN	O	O
 .	NN	O	O
+
 Pastiels	NN	O	O
 (	NN	O	O
 1959	NN	O	O
@@ -6435,6 +6662,7 @@ of	NN	O	O
 the	NN	O	O
 latter	NN	O	O
 .	NN	O	O
+
 Various	NN	O	O
 communications	NN	O	O
 were	NN	O	O
@@ -6471,6 +6699,7 @@ the	NN	O	I-Task
 circumsolar	NN	O	I-Task
 enhancement	NN	O	I-Task
 .	NN	O	O
+
 Ångström	NN	O	O
 (	NN	O	O
 1961	NN	O	O
@@ -6500,6 +6729,7 @@ Major	NN	O	O
 1980	NN	O	O
 )	NN	O	O
 .	NN	O	O
+
 The	NN	O	O
 whole	NN	O	O
 issue	NN	O	O
@@ -6527,6 +6757,7 @@ had	NN	O	O
 differing	NN	O	O
 geometries	NN	O	O
 .	NN	O	O
+
 This	NN	O	O
 was	NN	O	O
 considerably	NN	O	O
@@ -6557,6 +6788,7 @@ all	NN	O	O
 recent	NN	O	O
 instruments	NN	O	O
 .	NN	O	O
+
 The	NN	O	O
 experimental	NN	O	O
 issues	NN	O	O
@@ -6572,6 +6804,7 @@ in	NN	O	O
 Section	NN	O	O
 3.2	NN	O	O
 .	NN	O	O
+
 
 -DOCSTART- (S0038092X15001024)
 
@@ -6590,6 +6823,7 @@ for	NN	O	O
 seasonal	NN	O	O
 variations	NN	O	O
 .	NN	O	O
+
 A	NN	O	O
 Markov	NN	O	B-Process
 chain	NN	O	I-Process
@@ -6620,6 +6854,7 @@ four	NN	O	O
 chains	NN	O	O
 each	NN	O	O
 .	NN	O	O
+
 The	NN	O	O
 okta	NN	O	B-Process
 number	NN	O	I-Process
@@ -6643,6 +6878,7 @@ and	NN	O	O
 diurnal	NN	O	O
 variation	NN	O	O
 .	NN	O	O
+
 Eight	NN	O	O
 okta	NN	O	B-Process
 Markov	NN	O	I-Process
@@ -6687,6 +6923,7 @@ for	NN	O	O
 each	NN	O	O
 season	NN	O	O
 .	NN	O	O
+
 The	NN	O	O
 intent	NN	O	O
 is	NN	O	O
@@ -6713,6 +6950,7 @@ of	NN	O	O
 solar	NN	O	O
 energy	NN	O	O
 .	NN	O	O
+
 5	NN	O	O
 am	NN	O	O
 is	NN	O	O
@@ -6736,6 +6974,7 @@ applied	NN	O	O
 study	NN	O	O
 locations	NN	O	O
 .	NN	O	O
+
 5h	NN	O	O
 represents	NN	O	O
 5	NN	O	O
@@ -6763,6 +7002,7 @@ represented	NN	O	O
 ,	NN	O	O
 Fig	NN	O	O
 .	NN	O	O
+
 8	NN	O	O
 demonstrates	NN	O	O
 the	NN	O	O
@@ -6770,8 +7010,10 @@ diurnal	NN	O	O
 transition	NN	O	O
 differences	NN	O	O
 .	NN	O	O
+
 Fig	NN	O	O
 .	NN	O	O
+
 2	NN	O	O
 visually	NN	O	O
 demonstrates	NN	O	O
@@ -6796,8 +7038,10 @@ seen	NN	O	O
 in	NN	O	O
 Fig	NN	O	O
 .	NN	O	O
+
 11	NN	O	O
 .	NN	O	O
+
 
 -DOCSTART- (S0038092X15003059)
 
@@ -6822,10 +7066,12 @@ of	NN	O	O
 CPV	NN	O	B-Process
 modules	NN	O	O
 .	NN	O	O
+
 Rodrigo	NN	O	O
 et	NN	O	O
 al	NN	O	O
 .	NN	O	O
+
 (	NN	O	O
 2014	NN	O	O
 )	NN	O	O
@@ -6848,6 +7094,7 @@ HCPV	NN	O	B-Process
 )	NN	O	O
 modules	NN	O	O
 .	NN	O	O
+
 The	NN	O	O
 methods	NN	O	O
 were	NN	O	O
@@ -6874,6 +7121,7 @@ and	NN	O	O
 atmospheric	NN	O	O
 parameters	NN	O	O
 .	NN	O	O
+
 The	NN	O	O
 first	NN	O	O
 two	NN	O	O
@@ -6907,10 +7155,12 @@ Error	NN	O	O
 (	NN	O	O
 RMSE	NN	O	O
 )	NN	O	O
+
 1.7–2.5	NN	O	O
 K	NN	O	O
 )	NN	O	O
 .	NN	O	O
+
 Most	NN	O	O
 of	NN	O	O
 the	NN	O	O
@@ -6921,6 +7171,7 @@ Rodrigo	NN	O	O
 et	NN	O	O
 al	NN	O	O
 .	NN	O	O
+
 (	NN	O	O
 2014	NN	O	O
 )	NN	O	O
@@ -6934,6 +7185,7 @@ open	NN	O	B-Process
 circuit	NN	O	I-Process
 conditions	NN	O	I-Process
 .	NN	O	O
+
 Methods	NN	O	O
 that	NN	O	O
 predict	NN	O	O
@@ -6975,6 +7227,7 @@ Yandt	NN	O	O
 et	NN	O	O
 al	NN	O	O
 .	NN	O	O
+
 (	NN	O	O
 2012	NN	O	O
 )	NN	O	O
@@ -6996,6 +7249,7 @@ Fernández	NN	O	O
 et	NN	O	O
 al	NN	O	O
 .	NN	O	O
+
 (	NN	O	O
 2014b	NN	O	O
 )	NN	O	O
@@ -7012,6 +7266,7 @@ Fernández	NN	O	O
 et	NN	O	O
 al	NN	O	O
 .	NN	O	O
+
 (	NN	O	O
 2014a	NN	O	O
 )	NN	O	O
@@ -7071,6 +7326,7 @@ al	NN	O	O
 )	NN	O	O
 )	NN	O	O
 .	NN	O	O
+
 The	NN	O	O
 main	NN	O	O
 disadvantage	NN	O	O
@@ -7097,6 +7353,7 @@ temperature	NN	O	I-Task
 calculation	NN	O	I-Task
 .	NN	O	O
 
+
 -DOCSTART- (S0045782514001947)
 
 Our	NN	O	O
@@ -7116,12 +7373,14 @@ different	NN	O	O
 flow	NN	O	B-Process
 types	NN	O	O
 .	NN	O	O
+
 However	NN	O	O
 ,	NN	O	O
 Edeling	NN	O	O
 et	NN	O	O
 al	NN	O	O
 .	NN	O	O
+
 [	NN	O	O
 9	NN	O	O
 ]	NN	O	O
@@ -7139,6 +7398,7 @@ boundary	NN	O	B-Process
 layer	NN	O	I-Process
 flows	NN	O	I-Process
 .	NN	O	O
+
 They	NN	O	O
 summarized	NN	O	O
 this	NN	O	O
@@ -7174,6 +7434,7 @@ p	NN	O	B-Material
 box	NN	O	I-Material
 )	NN	O	O
 .	NN	O	O
+
 This	NN	O	O
 p	NN	O	B-Material
 -	NN	O	I-Material
@@ -7192,6 +7453,7 @@ within	NN	O	O
 each	NN	O	O
 calibration	NN	O	O
 .	NN	O	O
+
 A	NN	O	O
 prediction	NN	O	O
 of	NN	O	O
@@ -7226,6 +7488,7 @@ with	NN	O	O
 measurement	NN	O	O
 data	NN	O	O
 .	NN	O	O
+
 This	NN	O	O
 approach	NN	O	O
 is	NN	O	O
@@ -7271,6 +7534,7 @@ the	NN	O	I-Process
 outcomes	NN	O	I-Process
 afterwards	NN	O	O
 .	NN	O	O
+
 This	NN	O	O
 is	NN	O	O
 a	NN	O	O
@@ -7282,6 +7546,7 @@ for	NN	O	O
 future	NN	O	O
 research	NN	O	O
 .	NN	O	O
+
 
 -DOCSTART- (S0045782515001322)
 
@@ -7339,6 +7604,7 @@ hours	NN	O	O
 for	NN	O	O
 FE	NN	O	B-Process
 .	NN	O	O
+
 Table	NN	O	O
 1	NN	O	O
 reports	NN	O	O
@@ -7351,6 +7617,7 @@ for	NN	O	O
 both	NN	O	O
 methods	NN	O	O
 .	NN	O	O
+
 Free	NN	O	O
 expansion	NN	O	O
 is	NN	O	O
@@ -7387,6 +7654,7 @@ take	NN	O	O
 approximately	NN	O	O
 30	NN	O	O
 s.	NN	O	O
+
 Most	NN	O	O
 of	NN	O	O
 the	NN	O	O
@@ -7417,6 +7685,7 @@ the	NN	O	O
 stent	NN	O	O
 structure	NN	O	O
 .	NN	O	O
+
 Interestingly	NN	O	O
 ,	NN	O	O
 in	NN	O	O
@@ -7453,6 +7722,7 @@ aortic	NN	O	O
 dissection	NN	O	O
 )	NN	O	O
 .	NN	O	O
+
 Another	NN	O	O
 fact	NN	O	O
 worth	NN	O	O
@@ -7474,6 +7744,7 @@ in	NN	O	O
 both	NN	O	O
 methods	NN	O	O
 .	NN	O	O
+
 While	NN	O	O
 the	NN	O	O
 computational	NN	O	O
@@ -7502,6 +7773,7 @@ the	NN	O	O
 FE	NN	O	B-Process
 simulations	NN	O	I-Process
 .	NN	O	O
+
 Such	NN	O	O
 outcome	NN	O	O
 is	NN	O	O
@@ -7535,6 +7807,7 @@ the	NN	O	O
 vessel	NN	O	B-Material
 wall	NN	O	I-Material
 .	NN	O	O
+
 On	NN	O	O
 the	NN	O	O
 contrary	NN	O	O
@@ -7560,6 +7833,7 @@ of	NN	O	O
 the	NN	O	O
 simulations	NN	O	B-Process
 .	NN	O	O
+
 
 -DOCSTART- (S0079642514000784)
 
@@ -7595,6 +7869,7 @@ vdW	NN	O	I-Process
 )	NN	O	I-Process
 interactions	NN	O	I-Process
 .	NN	O	O
+
 The	NN	O	O
 former	NN	O	O
 can	NN	O	O
@@ -7615,6 +7890,7 @@ by	NN	O	O
 chemical	NN	O	B-Process
 substitution	NN	O	I-Process
 .	NN	O	O
+
 The	NN	O	O
 strength	NN	O	O
 of	NN	O	O
@@ -7666,6 +7942,7 @@ and	NN	O	O
 quadrupole	NN	O	O
 moment	NN	O	O
 .	NN	O	O
+
 Li	NN	O	O
 et	NN	O	O
 al	NN	O	O
@@ -7688,6 +7965,7 @@ and	NN	O	O
 herein	NN	O	O
 Table	NN	O	O
 1	NN	O	O
+
 we	NN	O	O
 show	NN	O	O
 a	NN	O	O
@@ -7712,10 +7990,12 @@ NH3	NN	O	B-Material
 SO2	NN	O	B-Material
 and	NN	O	O
 H2S	NN	O	B-Material
+
 [	NN	O	O
 90	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 For	NN	O	O
 instance	NN	O	O
 ,	NN	O	O
@@ -7743,6 +8023,7 @@ but	NN	O	O
 no	NN	O	O
 polarity	NN	O	O
 .	NN	O	O
+
 Adsorbents	NN	O	B-Material
 with	NN	O	O
 highly	NN	O	O
@@ -7759,6 +8040,7 @@ high	NN	O	O
 dipole	NN	O	O
 moment	NN	O	O
 .	NN	O	O
+
 The	NN	O	O
 adsorbents	NN	O	B-Material
 with	NN	O	O
@@ -7783,6 +8065,7 @@ molecules	NN	O	I-Material
 91	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 Normally	NN	O	O
 ,	NN	O	O
 the	NN	O	O
@@ -7819,6 +8102,7 @@ H2S	NN	O	B-Material
 NH3	NN	O	B-Material
 and	NN	O	O
 H2O.	NN	O	B-Material
+
 Thus	NN	O	O
 ,	NN	O	O
 surface	NN	O	B-Process
@@ -7848,6 +8132,7 @@ enhance	NN	O	B-Task
 gas	NN	O	I-Task
 adsorption	NN	O	I-Task
 .	NN	O	O
+
 For	NN	O	O
 this	NN	O	O
 purpose	NN	O	O
@@ -7864,6 +8149,7 @@ made	NN	O	O
 carbonaceous	NN	O	B-Material
 adsorbents	NN	O	I-Material
 .	NN	O	O
+
 
 -DOCSTART- (S0079642515000705)
 
@@ -7891,6 +8177,7 @@ non	NN	O	O
 local	NN	O	O
 phenomenon	NN	O	O
 .	NN	O	O
+
 In	NN	O	O
 the	NN	O	O
 literature	NN	O	O
@@ -7933,6 +8220,7 @@ direction	NN	O	I-Process
 38,41	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 Continuum	NN	O	B-Process
 approaches	NN	O	I-Process
 ,	NN	O	O
@@ -7974,6 +8262,7 @@ been	NN	O	O
 also	NN	O	O
 explored	NN	O	O
 .	NN	O	O
+
 For	NN	O	O
 instance	NN	O	O
 ,	NN	O	O
@@ -7981,6 +8270,7 @@ Poxson	NN	O	O
 et	NN	O	O
 al	NN	O	O
 .	NN	O	O
+
 [	NN	O	O
 228	NN	O	O
 ]	NN	O	O
@@ -8000,6 +8290,7 @@ as	NN	O	O
 surface	NN	O	B-Process
 diffusion	NN	O	I-Process
 .	NN	O	O
+
 This	NN	O	O
 model	NN	O	O
 accurately	NN	O	O
@@ -8039,11 +8330,13 @@ of	NN	O	O
 the	NN	O	O
 film	NN	O	B-Material
 .	NN	O	O
+
 Moreover	NN	O	O
 ,	NN	O	O
 in	NN	O	O
 Ref	NN	O	O
 .	NN	O	O
+
 [	NN	O	O
 39	NN	O	O
 ]	NN	O	O
@@ -8075,6 +8368,7 @@ the	NN	O	O
 fan	NN	O	O
 angle	NN	O	O
 .	NN	O	O
+
 This	NN	O	O
 material	NN	O	O
 -	NN	O	O
@@ -8109,6 +8403,7 @@ with	NN	O	O
 film	NN	O	B-Material
 thickness	NN	O	O
 .	NN	O	O
+
 This	NN	O	O
 model	NN	O	O
 was	NN	O	O
@@ -8151,6 +8446,7 @@ several	NN	O	O
 materials	NN	O	O
 .	NN	O	O
 
+
 -DOCSTART- (S0167844214000652)
 
 A	NN	O	O
@@ -8183,6 +8479,7 @@ their	NN	O	I-Process
 common	NN	O	I-Process
 face	NN	O	I-Process
 .	NN	O	O
+
 Initially	NN	O	O
 ,	NN	O	O
 the	NN	O	O
@@ -8213,6 +8510,7 @@ to	NN	O	O
 force	NN	O	O
 redistribution	NN	O	O
 .	NN	O	O
+
 Interaction	NN	O	O
 and	NN	O	O
 coalescence	NN	O	O
@@ -8227,6 +8525,7 @@ micro	NN	O	B-Material
 cracks	NN	O	I-Material
 increases	NN	O	O
 .	NN	O	O
+
 These	NN	O	O
 situations	NN	O	O
 are	NN	O	O
@@ -8234,8 +8533,10 @@ illustrated	NN	O	O
 in	NN	O	O
 Fig	NN	O	O
 .	NN	O	O
+
 3	NN	O	O
 .	NN	O	O
+
 The	NN	O	O
 structure	NN	O	O
 of	NN	O	O
@@ -8284,11 +8585,13 @@ continuous	NN	O	O
 larger	NN	O	O
 crack	NN	O	B-Material
 .	NN	O	O
+
 With	NN	O	O
 reference	NN	O	O
 to	NN	O	O
 Fig	NN	O	O
 .	NN	O	O
+
 3	NN	O	O
 ,	NN	O	O
 each	NN	O	O
@@ -8303,6 +8606,7 @@ each	NN	O	O
 pair	NN	O	O
 of	NN	O	O
 neighbouring	NN	O	O
+
 failed	NN	O	B-Material
 faces	NN	O	I-Material
 is	NN	O	O
@@ -8310,6 +8614,7 @@ a	NN	O	O
 graph	NN	O	O
 edge	NN	O	O
 .	NN	O	O
+
 
 -DOCSTART- (S0254058415300766)
 
@@ -8334,6 +8639,7 @@ devices	NN	O	I-Task
 1	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 Dilute	NN	O	B-Material
 magnetic	NN	O	I-Material
 semiconductors	NN	O	I-Material
@@ -8352,6 +8658,7 @@ show	NN	O	I-Material
 half	NN	O	I-Material
 metallicity	NN	O	I-Material
 .	NN	O	O
+
 These	NN	O	O
 materials	NN	O	O
 have	NN	O	O
@@ -8387,6 +8694,7 @@ electrons	NN	O	I-Material
 2	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 The	NN	O	O
 major	NN	O	O
 advantage	NN	O	O
@@ -8429,6 +8737,7 @@ electrons	NN	O	B-Material
 3	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 The	NN	O	O
 major	NN	O	O
 issue	NN	O	O
@@ -8448,6 +8757,7 @@ above	NN	O	I-Task
 room	NN	O	I-Task
 temperature	NN	O	I-Task
 .	NN	O	O
+
 That	NN	O	O
 's	NN	O	O
 why	NN	O	O
@@ -8461,6 +8771,7 @@ band	NN	O	I-Material
 gap	NN	O	I-Material
 materials	NN	O	I-Material
 .	NN	O	O
+
 A	NN	O	O
 lot	NN	O	O
 of	NN	O	O
@@ -8506,6 +8817,7 @@ SnO2	NN	O	B-Material
 ]	NN	O	O
 .	NN	O	O
 
+
 -DOCSTART- (S0301010409001219)
 
 It	NN	O	O
@@ -8544,6 +8856,7 @@ the	NN	O	O
 laser	NN	O	B-Material
 field	NN	O	I-Material
 .	NN	O	O
+
 Depending	NN	O	O
 on	NN	O	O
 the	NN	O	O
@@ -8566,6 +8879,7 @@ suppressed	NN	O	O
 14,18,22	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 Controlling	NN	O	O
 the	NN	O	O
 outcome	NN	O	O
@@ -8595,6 +8909,7 @@ the	NN	O	O
 recent	NN	O	O
 years	NN	O	O
 .	NN	O	O
+
 However	NN	O	O
 ,	NN	O	O
 efforts	NN	O	O
@@ -8626,6 +8941,7 @@ study	NN	O	O
 20,22–24	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 Here	NN	O	O
 we	NN	O	O
 report	NN	O	O
@@ -8653,6 +8969,7 @@ fragmentation	NN	O	B-Material
 channel	NN	O	I-Material
 available	NN	O	O
 .	NN	O	O
+
 We	NN	O	O
 found	NN	O	O
 that	NN	O	O
@@ -8688,6 +9005,7 @@ other	NN	O	O
 possible	NN	O	O
 channels	NN	O	B-Material
 .	NN	O	O
+
 In	NN	O	O
 fact	NN	O	O
 ,	NN	O	O
@@ -8722,6 +9040,7 @@ the	NN	O	O
 positive	NN	O	B-Material
 chirp	NN	O	I-Material
 .	NN	O	O
+
 Moreover	NN	O	O
 ,	NN	O	O
 the	NN	O	O
@@ -8760,6 +9079,7 @@ noise	NN	O	O
 level	NN	O	O
 .	NN	O	O
 
+
 -DOCSTART- (S0301010413002139)
 
 The	NN	O	O
@@ -8788,6 +9108,7 @@ state	NN	O	O
 10–14	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 Spectral	NN	O	B-Process
 assignments	NN	O	I-Process
 have	NN	O	O
@@ -8815,6 +9136,7 @@ isolated	NN	O	B-Process
 molecule	NN	O	I-Process
 approximation	NN	O	I-Process
 .	NN	O	O
+
 For	NN	O	O
 systems	NN	O	O
 that	NN	O	O
@@ -8835,6 +9157,7 @@ experiment	NN	O	O
 and	NN	O	O
 theory	NN	O	O
 .	NN	O	O
+
 A	NN	O	O
 striking	NN	O	O
 example	NN	O	O
@@ -8888,6 +9211,7 @@ between	NN	O	O
 the	NN	O	O
 tautomers	NN	O	B-Material
 .	NN	O	O
+
 In	NN	O	O
 the	NN	O	O
 present	NN	O	O
@@ -8918,6 +9242,7 @@ essential	NN	O	O
 19	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 The	NN	O	O
 only	NN	O	O
 work	NN	O	O
@@ -8943,6 +9268,7 @@ to	NN	O	O
 extract	NN	O	O
 assignments	NN	O	O
 .	NN	O	O
+
 The	NN	O	O
 aim	NN	O	O
 of	NN	O	O
@@ -8982,6 +9308,7 @@ experimental	NN	O	I-Process
 methods	NN	O	I-Process
 .	NN	O	O
 
+
 -DOCSTART- (S0301010413004096)
 
 It	NN	O	O
@@ -9010,6 +9337,7 @@ the	NN	O	O
 observed	NN	O	O
 signal	NN	O	O
 .	NN	O	O
+
 This	NN	O	O
 technique	NN	O	O
 therefore	NN	O	O
@@ -9026,6 +9354,7 @@ with	NN	O	O
 low	NN	O	O
 uptakes	NN	O	O
 .	NN	O	O
+
 Furthermore	NN	O	O
 ,	NN	O	O
 static	NN	O	B-Task
@@ -9044,6 +9373,7 @@ adsorbed	NN	O	B-Material
 gas	NN	O	I-Material
 molecules	NN	O	I-Material
 .	NN	O	O
+
 Thus	NN	O	O
 ,	NN	O	O
 it	NN	O	O
@@ -9077,6 +9407,7 @@ suitable	NN	O	O
 characterisation	NN	O	B-Process
 techniques	NN	O	I-Process
 .	NN	O	O
+
 We	NN	O	O
 report	NN	O	O
 herein	NN	O	O
@@ -9132,6 +9463,7 @@ uptake	NN	O	O
 of	NN	O	O
 H2	NN	O	B-Material
 .	NN	O	O
+
 This	NN	O	O
 neutron	NN	O	B-Task
 spectroscopy	NN	O	I-Task
@@ -9177,6 +9509,7 @@ Al	NN	O	B-Process
 O⋯H2	NN	O	I-Process
 )	NN	O	O
 .	NN	O	O
+
 Interestingly	NN	O	O
 ,	NN	O	O
 the	NN	O	O
@@ -9239,6 +9572,7 @@ MOF	NN	O	B-Material
 host	NN	O	O
 .	NN	O	O
 
+
 -DOCSTART- (S0301010415002189)
 
 The	NN	O	O
@@ -9254,6 +9588,7 @@ and	NN	O	O
 experimental	NN	O	O
 studies	NN	O	O
 .	NN	O	O
+
 A	NN	O	O
 pioneering	NN	O	O
 theoretical	NN	O	O
@@ -9283,6 +9618,7 @@ conformation	NN	O	I-Process
 6	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 Several	NN	O	O
 extended	NN	O	O
 PES	NN	O	B-Process
@@ -9327,6 +9663,7 @@ functions	NN	O	I-Process
 9	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 Recently	NN	O	O
 ,	NN	O	O
 the	NN	O	O
@@ -9349,6 +9686,7 @@ been	NN	O	O
 tested	NN	O	O
 for	NN	O	O
 Na3	NN	O	B-Material
+
 [	NN	O	O
 10	NN	O	O
 ]	NN	O	O
@@ -9402,6 +9740,7 @@ spectra	NN	O	I-Material
 ]	NN	O	O
 .	NN	O	O
 
+
 -DOCSTART- (S0301010415300355)
 
 Alternatively	NN	O	O
@@ -9423,6 +9762,7 @@ as	NN	O	O
 reducing	NN	O	B-Material
 agents	NN	O	I-Material
 .	NN	O	O
+
 Evidence	NN	O	O
 has	NN	O	O
 been	NN	O	O
@@ -9458,6 +9798,7 @@ methanol	NN	O	B-Material
 with	NN	O	O
 suitable	NN	O	O
 catalyzers	NN	O	B-Material
+
 [	NN	O	O
 27–29	NN	O	O
 ]	NN	O	O
@@ -9476,6 +9817,7 @@ understood	NN	O	O
 30–32	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 The	NN	O	O
 theoretically	NN	O	O
 predicted	NN	O	O
@@ -9502,6 +9844,7 @@ respectively	NN	O	O
 see	NN	O	O
 Fig	NN	O	O
 .	NN	O	O
+
 4	NN	O	O
 )	NN	O	O
 ,	NN	O	O
@@ -9524,6 +9867,7 @@ about	NN	O	O
 1	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 Pyridinyl	NN	O	B-Material
 is	NN	O	O
 thus	NN	O	O
@@ -9537,6 +9881,7 @@ and	NN	O	O
 related	NN	O	O
 radicals	NN	O	B-Material
 .	NN	O	O
+
 It	NN	O	O
 is	NN	O	O
 therefore	NN	O	O
@@ -9556,6 +9901,7 @@ in	NN	O	I-Task
 dark	NN	O	I-Task
 reactions	NN	O	I-Task
 .	NN	O	O
+
 
 -DOCSTART- (S0301932213000487)
 
@@ -9591,6 +9937,7 @@ equation	NN	O	I-Task
 of	NN	O	I-Task
 motion	NN	O	I-Task
 .	NN	O	O
+
 For	NN	O	O
 very	NN	O	O
 dilute	NN	O	B-Material
@@ -9606,6 +9953,7 @@ most	NN	O	O
 natural	NN	O	O
 choice	NN	O	O
 .	NN	O	O
+
 However	NN	O	O
 ,	NN	O	O
 when	NN	O	O
@@ -9631,6 +9979,7 @@ only	NN	O	O
 realistic	NN	O	O
 option	NN	O	O
 .	NN	O	O
+
 It	NN	O	O
 is	NN	O	O
 interesting	NN	O	O
@@ -9647,8 +9996,10 @@ affects	NN	O	O
 the	NN	O	O
 statistics	NN	O	O
 .	NN	O	O
+
 Fig	NN	O	O
 .	NN	O	O
+
 14	NN	O	O
 compares	NN	O	O
 the	NN	O	O
@@ -9663,6 +10014,7 @@ the	NN	O	O
 experimental	NN	O	O
 data	NN	O	O
 .	NN	O	O
+
 The	NN	O	O
 same	NN	O	O
 comparison	NN	O	O
@@ -9673,6 +10025,7 @@ the	NN	O	O
 smooth	NN	O	B-Material
 walls	NN	O	I-Material
 .	NN	O	O
+
 The	NN	O	O
 differences	NN	O	O
 between	NN	O	O
@@ -9690,6 +10043,7 @@ are	NN	O	O
 almost	NN	O	O
 negligible	NN	O	O
 .	NN	O	O
+
 However	NN	O	O
 ,	NN	O	O
 the	NN	O	O
@@ -9708,6 +10062,7 @@ walls	NN	O	I-Material
 are	NN	O	O
 minor	NN	O	O
 .	NN	O	O
+
 This	NN	O	O
 is	NN	O	O
 because	NN	O	O
@@ -9759,6 +10114,7 @@ wall	NN	O	I-Material
 is	NN	O	O
 considered	NN	O	O
 .	NN	O	O
+
 This	NN	O	O
 is	NN	O	O
 because	NN	O	O
@@ -9779,6 +10135,7 @@ amount	NN	O	O
 of	NN	O	O
 time	NN	O	O
 .	NN	O	O
+
 Similarly	NN	O	O
 ,	NN	O	O
 the	NN	O	O
@@ -9791,10 +10148,12 @@ the	NN	O	O
 fluid	NN	O	B-Material
 statistics	NN	O	O
 .	NN	O	O
+
 However	NN	O	O
 ,	NN	O	O
 Fig	NN	O	O
 .	NN	O	O
+
 15	NN	O	O
 ,	NN	O	O
 which	NN	O	O
@@ -9812,6 +10171,7 @@ are	NN	O	O
 somewhat	NN	O	O
 larger	NN	O	O
 .	NN	O	O
+
 Additionally	NN	O	O
 ,	NN	O	O
 the	NN	O	O
@@ -9855,10 +10215,12 @@ shown	NN	O	O
 in	NN	O	O
 Figs	NN	O	O
 .	NN	O	O
+
 16	NN	O	O
 and	NN	O	O
 17	NN	O	O
 .	NN	O	O
+
 
 -DOCSTART- (S0301932213001985)
 
@@ -9885,6 +10247,7 @@ finite	NN	O	B-Process
 difference	NN	O	I-Process
 scheme	NN	O	I-Process
 .	NN	O	O
+
 By	NN	O	O
 appropriately	NN	O	O
 choosing	NN	O	O
@@ -9922,6 +10285,7 @@ Xiao	NN	O	O
 2012	NN	O	O
 )	NN	O	O
 .	NN	O	O
+
 Although	NN	O	O
 a	NN	O	O
 high	NN	O	B-Process
@@ -9997,6 +10361,7 @@ maintains	NN	O	O
 order	NN	O	O
 accuracy	NN	O	O
 .	NN	O	O
+
 This	NN	O	O
 is	NN	O	O
 a	NN	O	O
@@ -10023,6 +10388,7 @@ jet	NN	O	I-Task
 primary	NN	O	I-Task
 breakup	NN	O	I-Task
 .	NN	O	O
+
 
 -DOCSTART- (S0301932214001931)
 
@@ -10059,6 +10425,7 @@ significant	NN	O	O
 Stokes	NN	O	O
 number	NN	O	O
 .	NN	O	O
+
 To	NN	O	O
 achieve	NN	O	O
 this	NN	O	O
@@ -10096,6 +10463,7 @@ Zastawny	NN	O	O
 et	NN	O	O
 al	NN	O	O
 .	NN	O	O
+
 (	NN	O	O
 2012	NN	O	O
 )	NN	O	O
@@ -10103,6 +10471,7 @@ al	NN	O	O
 are	NN	O	O
 performed	NN	O	O
 .	NN	O	O
+
 The	NN	O	O
 well	NN	O	O
 -	NN	O	O
@@ -10132,6 +10501,7 @@ a	NN	O	O
 reference	NN	O	O
 case	NN	O	O
 .	NN	O	O
+
 The	NN	O	O
 measurements	NN	O	O
 in	NN	O	O
@@ -10156,6 +10526,7 @@ particle	NN	O	B-Material
 velocity	NN	O	O
 simultaneously	NN	O	O
 .	NN	O	O
+
 The	NN	O	O
 numerical	NN	O	B-Process
 framework	NN	O	I-Process
@@ -10179,6 +10550,7 @@ Wachem	NN	O	O
 2013	NN	O	O
 )	NN	O	O
 .	NN	O	O
+
 In	NN	O	O
 that	NN	O	O
 paper	NN	O	O
@@ -10220,6 +10592,7 @@ hard	NN	O	B-Process
 sphere	NN	O	I-Process
 model	NN	O	I-Process
 .	NN	O	O
+
 Moreover	NN	O	O
 ,	NN	O	O
 this	NN	O	O
@@ -10237,6 +10610,7 @@ the	NN	O	O
 LES	NN	O	B-Process
 framework	NN	O	I-Process
 .	NN	O	O
+
 In	NN	O	O
 the	NN	O	O
 current	NN	O	O
@@ -10254,6 +10628,7 @@ non	NN	O	B-Material
 spherical	NN	O	I-Material
 particles	NN	O	I-Material
 .	NN	O	O
+
 
 -DOCSTART- (S0378381215300297)
 
@@ -10282,6 +10657,7 @@ properties	NN	O	O
 of	NN	O	O
 fluids	NN	O	B-Material
 .	NN	O	O
+
 The	NN	O	O
 reader	NN	O	O
 is	NN	O	O
@@ -10309,6 +10685,7 @@ available	NN	O	O
 50–53	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 The	NN	O	O
 fundamental	NN	O	O
 difference	NN	O	O
@@ -10329,6 +10706,7 @@ unbounded	NN	O	B-Material
 constituent	NN	O	I-Material
 particles	NN	O	I-Material
 .	NN	O	O
+
 Hard	NN	O	B-Material
 spheres	NN	O	I-Material
 ,	NN	O	O
@@ -10356,6 +10734,7 @@ incarnations	NN	O	O
 of	NN	O	O
 SAFT	NN	O	B-Process
 .	NN	O	O
+
 For	NN	O	O
 the	NN	O	O
 purpose	NN	O	O
@@ -10387,6 +10766,7 @@ Laffitte	NN	O	O
 et	NN	O	O
 al	NN	O	O
 .	NN	O	O
+
 [	NN	O	O
 54	NN	O	O
 ]	NN	O	O
@@ -10405,10 +10785,12 @@ Papaioannou	NN	O	O
 et	NN	O	O
 al	NN	O	O
 .	NN	O	O
+
 [	NN	O	O
 55	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 This	NN	O	O
 particular	NN	O	O
 version	NN	O	O
@@ -10458,6 +10840,7 @@ by	NN	O	O
 decades	NN	O	O
 )	NN	O	O
 .	NN	O	O
+
 The	NN	O	O
 Mie	NN	O	B-Process
 potential	NN	O	I-Process
@@ -10584,6 +10967,7 @@ parameters	NN	O	O
 57	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 Accordingly	NN	O	O
 ,	NN	O	O
 we	NN	O	O
@@ -10623,10 +11007,12 @@ parameter	NN	O	O
 as	NN	O	O
 λ=λr	NN	O	O
 .	NN	O	O
+
 The	NN	O	O
 potential	NN	O	O
 simplifies	NN	O	O
 to(2)ϕ(r)=λλ−6λ66/(λ−6)εσrλ−σr6	NN	O	O
+
 
 -DOCSTART- (S1359028614000989)
 
@@ -10654,6 +11040,7 @@ and	NN	O	I-Task
 statistical	NN	O	I-Task
 modeling	NN	O	I-Task
 .	NN	O	O
+
 Approaches	NN	O	O
 for	NN	O	O
 extraction	NN	O	B-Task
@@ -10701,6 +11088,7 @@ statistical	NN	O	B-Process
 model	NN	O	I-Process
 level	NN	O	O
 .	NN	O	O
+
 To	NN	O	O
 capture	NN	O	B-Task
 the	NN	O	I-Task
@@ -10752,6 +11140,7 @@ contents	NN	O	O
 68,69	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 The	NN	O	O
 raw	NN	O	O
 data	NN	O	O
@@ -10766,6 +11155,7 @@ query	NN	O	B-Task
 and	NN	O	O
 modeling	NN	O	B-Task
 .	NN	O	O
+
 Similarly	NN	O	O
 ,	NN	O	O
 the	NN	O	O
@@ -10795,6 +11185,7 @@ and	NN	O	I-Process
 macroscopic	NN	O	I-Process
 approaches	NN	O	I-Process
 .	NN	O	O
+
 Laboratory	NN	O	B-Task
 and	NN	O	I-Task
 real	NN	O	I-Task
@@ -10829,6 +11220,7 @@ degradation	NN	O	B-Task
 science	NN	O	I-Task
 .	NN	O	O
 
+
 -DOCSTART- (S1877750315000575)
 
 There	NN	O	O
@@ -10845,6 +11237,7 @@ systems	NN	O	I-Task
 using	NN	O	O
 simulations	NN	O	B-Process
 .	NN	O	O
+
 One	NN	O	O
 category	NN	O	O
 of	NN	O	O
@@ -10876,6 +11269,7 @@ global	NN	O	O
 network	NN	O	O
 performance	NN	O	O
 .	NN	O	O
+
 Our	NN	O	O
 approach	NN	O	O
 is	NN	O	O
@@ -10905,6 +11299,7 @@ that	NN	O	O
 receive	NN	O	O
 information	NN	O	O
 .	NN	O	O
+
 We	NN	O	O
 analyse	NN	O	B-Task
 what	NN	O	I-Task
@@ -10923,6 +11318,7 @@ this	NN	O	O
 effect	NN	O	O
 appears	NN	O	O
 .	NN	O	O
+
 Information	NN	O	O
 is	NN	O	O
 disseminated	NN	O	O
@@ -10940,6 +11336,7 @@ the	NN	O	O
 roads	NN	O	O
 are	NN	O	O
 .	NN	O	O
+
 This	NN	O	O
 approach	NN	O	O
 is	NN	O	O
@@ -10964,6 +11361,7 @@ have	NN	O	O
 on	NN	O	O
 traffic	NN	O	O
 .	NN	O	O
+
 This	NN	O	O
 can	NN	O	O
 be	NN	O	O
@@ -10983,6 +11381,7 @@ steering	NN	O	O
 tool	NN	O	O
 .	NN	O	O
 
+
 -DOCSTART- (S1877750315300119)
 
 Generalized	NN	O	B-Process
@@ -10990,6 +11389,7 @@ polynomial	NN	O	I-Process
 chaos	NN	O	I-Process
 expansions	NN	O	I-Process
 .	NN	O	O
+
 One	NN	O	O
 approach	NN	O	O
 to	NN	O	O
@@ -11022,6 +11422,7 @@ expansion	NN	O	I-Process
 34	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 As	NN	O	O
 described	NN	O	O
 in	NN	O	O
@@ -11048,6 +11449,7 @@ hypercube	NN	O	O
 0	NN	O	O
 ,	NN	O	O
 1]D.	NN	O	O
+
 With	NN	O	O
 a	NN	O	O
 double	NN	O	O
@@ -11073,6 +11475,7 @@ t	NN	O	O
 ,	NN	O	O
 R)=∑n∈INcn(x	NN	O	O
 ,	NN	O	O
+
 t)Φn(R),where	NN	O	O
 R	NN	O	O
 is	NN	O	O
@@ -11094,6 +11497,7 @@ of	NN	O	O
 independent	NN	O	O
 components	NN	O	O
 .	NN	O	O
+
 Also	NN	O	O
 ,	NN	O	O
 {	NN	O	O
@@ -11111,6 +11515,7 @@ LR	NN	O	O
 not	NN	O	O
 LQ	NN	O	O
 .	NN	O	O
+
 In	NN	O	O
 any	NN	O	O
 case	NN	O	O
@@ -11134,6 +11539,7 @@ discretized	NN	O	B-Process
 Stieltjes	NN	O	I-Process
 procedure	NN	O	I-Process
 .	NN	O	O
+
 We	NN	O	O
 remark	NN	O	O
 that	NN	O	O
@@ -11155,6 +11561,7 @@ smooth	NN	O	O
 34	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 Dakota	NN	O	O
 ,	NN	O	O
 Turns	NN	O	O
@@ -11182,6 +11589,7 @@ in	NN	O	O
 Table	NN	O	O
 2	NN	O	O
 .	NN	O	O
+
 Since	NN	O	O
 Chaospy	NN	O	O
 has	NN	O	O
@@ -11205,6 +11613,7 @@ for	NN	O	O
 all	NN	O	O
 densities	NN	O	O
 .	NN	O	O
+
 
 -DOCSTART- (S2352179115300041)
 
@@ -11274,6 +11683,7 @@ oxygen	NN	O	B-Material
 10	NN	O	O
 ]	NN	O	O
 .	NN	O	O
+
 However	NN	O	O
 ,	NN	O	O
 the	NN	O	O
@@ -11305,6 +11715,7 @@ the	NN	O	O
 device	NN	O	O
 design	NN	O	O
 .	NN	O	O
+
 The	NN	O	O
 analysis	NN	O	O
 of	NN	O	O
@@ -11355,6 +11766,7 @@ and	NN	O	O
 remote	NN	O	B-Material
 parts	NN	O	I-Material
 .	NN	O	O
+
 At	NN	O	O
 present	NN	O	O
 ,	NN	O	O
@@ -11398,6 +11810,7 @@ large	NN	O	O
 heat	NN	O	O
 loads	NN	O	O
 .	NN	O	O
+
 Nevertheless	NN	O	O
 ,	NN	O	O
 many	NN	O	O
@@ -11456,6 +11869,7 @@ events	NN	O	O
 ,	NN	O	O
 etc	NN	O	O
 .	NN	O	O
+
 The	NN	O	O
 temperatures	NN	O	O
 used	NN	O	O
@@ -11484,6 +11898,7 @@ extrapolated	NN	O	O
 to	NN	O	O
 them	NN	O	O
 .	NN	O	O
+
 Moreover	NN	O	O
 ,	NN	O	O
 even	NN	O	O
@@ -11520,4 +11935,5 @@ by	NN	O	O
 unexpected	NN	O	O
 reasons	NN	O	O
 .	NN	O	O
+
 
