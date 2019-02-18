@@ -84,7 +84,12 @@ for split in ['train', 'dev', 'test']:
                     tup = line.strip().split('\t')
                     if tup[0].startswith('T'):
                         entity_id = tup[0]
-                        entity_type, start, stop = tup[1].split(' ')
+                        # note: occasionally data looks really stupid like `Task 400 436;437 453` in `S0167931713005042.ann`
+                        try:
+                            entity_type, start, stop = tup[1].split(' ')
+                        except ValueError as e:
+                            print(f'Tried unpacking line {tup} in {id}')
+                            continue
                         start = int(start)
                         stop = int(stop)
                         entity_text = tup[2]
