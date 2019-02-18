@@ -25,7 +25,7 @@ Input:
 Output 1:  Entity extraction (CONLL2003 format)
 
 
-Output 1:  Relation classification
+Output 2:  Relation classification
     JSONlines where each JSON is:
     {
         "text": "Based on the theoretical analysis , the [[ value of the measuring resistor ]] ...",
@@ -108,6 +108,7 @@ for split in ['train', 'dev', 'test']:
                                                        mention_spans=clean_mention_spans)
 
             # write
+            print(f'Writing {id}')
             f_out.write(f'-DOCSTART- ({id})\n\n')
             for token_spans, token_labels in zip(sent_token_spans, sent_token_labels):
                 for token_span, token_label in zip(token_spans, token_labels):
