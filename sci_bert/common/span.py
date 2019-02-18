@@ -34,14 +34,14 @@ class Span:
         return self.stop <= other.start
 
     def __gt__(self, other):
-        return other < self
+        return other.__lt__(self)
 
     def __le__(self, other):
         # self is left of other, but not disjoint
         return self.start <= other.start and self.stop < other.stop and not self < other
 
     def __ge__(self, other):
-        return other <= self
+        return other.__le__(self)
 
     def __repr__(self):
         return str((self.start, self.stop))
@@ -54,9 +54,9 @@ class Span:
         return item.start > self.start and item.stop < self.stop
 
     @classmethod
-    def cluster_spans(cls, spans: List['Span']) -> List[List['Span']]:
+    def sort_cluster_spans(cls, spans: Set['Span']) -> List[List['Span']]:
         """Iterate over spans; accumulate each span in same group"""
-        spans = sorted(spans, key=lambda s: (s.start, s.stop))
+        spans: List['Span'] = sorted(spans, key=lambda s: (s.start, s.stop))
         clusters: List[Dict] = [{
             'proxy': Span(start=spans[0].start, stop=spans[0].stop),
             'spans': [spans[0]]
