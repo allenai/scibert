@@ -212,10 +212,10 @@ def _is_proper_sents(sent_spans: List[List[Span]]) -> bool:
             return False
     return True
 
+
 def _is_proper_sent(spans: List[Span]) -> bool:
     # check for sorted tokens & disjoint tokens
     return all(spans[i].start <= spans[i + 1].start and spans[i] < spans[i + 1] for i in range(len(spans) - 1))
-
 
 
 def _label_token_spans(token_spans: List[TokenSpan],
@@ -313,27 +313,3 @@ def _match_mention_spans_to_sentences(sent_token_spans: List[List[TokenSpan]],
 
     assert len(sent_mention_spans) == len(sent_token_spans)
     return sent_mention_spans
-
-    #
-    #
-    # # split mention spans to match sentences
-    # sent_mention_spans = []
-    # temp_hold_mentions = []
-    # index_sent, index_mention = 0, 0
-    # while index_sent < num_sents and index_mention < num_mentions:
-    #     mention_span = mention_spans[index_mention]
-    #     sent_start = sent_token_spans[index_sent][0].start
-    #     sent_stop = sent_token_spans[index_sent][-1].stop
-    #     # if mention within sentence, keep it
-    #     if mention_span.start >= sent_start and mention_span.stop <= sent_stop:
-    #         temp_hold_mentions.append(mention_span)
-    #         index_mention += 1
-    #     # skip if cross-sentence mention
-    #     elif mention_span.start >= sent_start and mention_span.stop > sent_stop and mention_span.start < sent_stop:
-    #         print(f'Mention {mention_span} crosses sentence boundary')
-    #         index_mention += 1
-    #     # if not, append accumulated spans & move to next sentence
-    #     else:
-    #         sent_mention_spans.append(temp_hold_mentions)
-    #         temp_hold_mentions = []
-    #         index_sent += 1
