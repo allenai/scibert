@@ -243,7 +243,7 @@ def _label_token_spans(token_spans: List[TokenSpan],
         elif token_span > mention_span:
             index_mention += 1
         # case 3: token captures start of mention
-        elif token_span.start <= mention_span.start and token_span.stop <= mention_span.stop:
+        elif token_span.start <= mention_span.start:
             token_labels.append('B-{}'.format(mention_span.entity_types[0]))
             index_token += 1
             # handles case when last token is 'B'
@@ -254,7 +254,7 @@ def _label_token_spans(token_spans: List[TokenSpan],
             token_labels.append('I-{}'.format(mention_span.entity_types[0]))
             index_token += 1
         # case 5: token captures end of mention
-        elif token_span.start > mention_span.start and token_span.stop >= mention_span.stop:
+        elif token_span.stop >= mention_span.stop:
             token_labels.append('I-{}'.format(mention_span.entity_types[0]))
             index_token += 1
             index_mention += 1
