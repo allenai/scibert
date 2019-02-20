@@ -112,7 +112,7 @@ class TextClassifier(Model):
         examples_count = 0.0
         for name, metric in self.label_f1_metrics.items():
 
-            # Hack: get number of positive examples for this class. We needs this to compute microF1
+            # Hack: get fp, fn, tp, tn for this class. We needs this to compute microF1
             # This is bad because it accesses private attributes of the metric.
             # It has to be called before get_metric(reset) before `reset` might delete these numbers
             fp += float(metric._false_positives)
