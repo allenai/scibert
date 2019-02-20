@@ -92,7 +92,6 @@ class TextClassifier(Model):
             for i in range(self.num_classes):
                 metric = self.label_f1_metrics[self.vocab.get_token_from_index(index=i, namespace="labels")]
                 metric(class_probs, label)
-
             self.label_accuracy(logits, label)
         return output_dict
 
@@ -127,7 +126,6 @@ class TextClassifier(Model):
                 metric_dict[name + '_R'] = metric_val[1]
                 metric_dict[name + '_F1'] = metric_val[2]
             sum_f1 += metric_val[2]
-
 
         names = list(self.label_f1_metrics.keys())
         total_len = len(names)
