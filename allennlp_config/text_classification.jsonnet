@@ -23,7 +23,7 @@
   "evaluate_on_test": true,
   "model": {
     "type": "text_classifier",
-    "verbose_metrics": true,
+    "verbose_metrics": false,
     "text_field_embedder": {
         "allow_unmatched_keys": true,
         "embedder_to_indexer_map": {

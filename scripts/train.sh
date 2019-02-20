@@ -15,7 +15,7 @@ export NUMPY_SEED=$NUMPY_SEED
 export BERT_VOCAB=vocab/s2vocab_cased.vocab
 export BERT_WEIGHTS=pytorch_models/s2bert_s2vocab_cased_512.tar.gz
 export is_lowercase=false
-export TRAIN_PATH=data/$task/$dataset/train.txt
+export TRAIN_PATH=data/$task/$dataset/sample.txt # train.txt
 export DEV_PATH=data/$task/$dataset/dev.txt
 export TEST_PATH=data/$task/$dataset/test.txt
 
