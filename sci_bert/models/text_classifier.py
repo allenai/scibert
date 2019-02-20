@@ -105,7 +105,15 @@ class TextClassifier(Model):
         metric_dict = {}
 
         sum_f1 = 0.0
+        weighted_sum_f1 = 0.0
+        examples_count = 0.0
         for name, metric in self.label_f1_metrics.items():
+
+            # Hack: get number of positive examples for this class. We needs this to compute microF1
+            # This is bad because it accesses private attributes of the metric.
+            # It has to be called before get_metric(reset) before `reset` might delete these numbers
+            examples_per_labal_count = float(metric._false_positives + metric._true_positives)
+
             metric_val = metric.get_metric(reset)
             if self.verbose_metrics:
                 metric_dict[name + '_P'] = metric_val[0]
@@ -113,9 +121,13 @@ class TextClassifier(Model):
                 metric_dict[name + '_F1'] = metric_val[2]
             sum_f1 += metric_val[2]
 
+            weighted_sum_f1 += metric_val[2] * examples_per_labal_count
+            examples_count += examples_per_labal_count
+
         names = list(self.label_f1_metrics.keys())
         total_len = len(names)
         average_f1 = sum_f1 / total_len
         metric_dict['average_F1'] = average_f1
+        metric_dict['micro_average_F1'] = weighted_sum_f1/examples_count if examples_count > 0 else 0
         metric_dict['accuracy'] = self.label_accuracy.get_metric(reset)
         return metric_dict
