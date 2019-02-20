@@ -1,6 +1,6 @@
 # Run allennlp training locally
 
-dataset='pico'
+dataset='chemprot'
 task='text_classification'
 config_file=allennlp_config/"$task".jsonnet
 

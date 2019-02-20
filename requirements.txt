@@ -2,3 +2,4 @@ allennlp==0.8.1
 torch==0.4.1
 pytorch-pretrained-bert==0.4.0
 jsonlines
+lxml
