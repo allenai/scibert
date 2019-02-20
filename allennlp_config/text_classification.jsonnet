@@ -76,7 +76,7 @@
     "num_epochs": 30,
     "grad_clipping": 5.0,
     "patience": 10,
-    "validation_metric": "+average_F1", //"-loss",
+    "validation_metric": "+micro_f1", //"-loss",
     "cuda_device": 0,
     "optimizer": {
         "type": "adam",

@@ -112,7 +112,7 @@ class TextClassifier(Model):
         examples_count = 0.0
         for name, metric in self.label_f1_metrics.items():
 
-            # Hack: get fp, fn, tp, tn for this class. We needs this to compute microF1
+            # Hack: get fp, fn, tp, tn for this class. We needs this to compute micro f1
             # This is bad because it accesses private attributes of the metric.
             # It has to be called before get_metric(reset) before `reset` might delete these numbers
             fp += float(metric._false_positives)
@@ -130,9 +130,13 @@ class TextClassifier(Model):
         names = list(self.label_f1_metrics.keys())
         total_len = len(names)
         average_f1 = sum_f1 / total_len
-        metric_dict['average_F1'] = average_f1
-        p = tp/(tp+fp) or 0
-        r = tp/(tp+fn) or 0
-        metric_dict['micro_average_F1'] = 2 * p * r / (p + r) or 0
+        metric_dict['average_f1'] = average_f1
+        try:
+            p = tp / (tp + fp)
+            r = tp / (tp + fn)
+            micro_f1 = 2 * p * r / (p + r)
+        except:
+            micro_f1 = 0
+        metric_dict['micro_f1'] = micro_f1
         metric_dict['accuracy'] = self.label_accuracy.get_metric(reset)
         return metric_dict
