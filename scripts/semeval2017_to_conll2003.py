@@ -119,7 +119,7 @@ for split in ['train', 'dev', 'test']:
             f_out.write(f'-DOCSTART- ({id})\n\n')
             for token_spans, token_labels in zip(instance['spans'], instance['labels']):
                 for token_span, token_label in zip(token_spans, token_labels):
-                    f_out.write('\t'.join([token_span.text, 'NN', 'O', token_label]))
+                    f_out.write('\t'.join([token_span.text, str(token_span.start), str(token_span.stop), token_label]))
                     f_out.write('\n')  # new token
                 f_out.write('\n')  # new sent
             f_out.write('\n')  # new paper
