@@ -30,6 +30,16 @@ def fetch_beaker_group_experiments_results(results_dir: str, group_id: str):
             subprocess.check_output(['beaker', 'dataset', 'fetch', '--output', f'{experiment_dir}', f'{result_id}'], stderr=subprocess.STDOUT).decode('UTF-8')
 
 
+def fetch_beaker_experiment_results(results_dir: str, experiment_id: str):
+    experiment_dir = os.path.join(results_dir, experiment_id)
+    experiment_json = json.loads(subprocess.check_output(['beaker', 'experiment', 'inspect', f'{experiment_id}'], stderr=subprocess.STDOUT).decode('UTF-8'))
+    result_id = experiment_json[0]['nodes'][0]['result_id']
+    os.makedirs(experiment_dir, exist_ok=True)
+    if len(os.listdir(experiment_dir)) == 0:
+        subprocess.check_output(['beaker', 'dataset', 'fetch', '--output', f'{experiment_dir}', f'{result_id}'], stderr=subprocess.STDOUT).decode('UTF-8')
+    return experiment_dir
+
+
 def load_bert_reader_model_from_beaker_experiment_dir(experiment_dir: str,
                                                       bert_vocab_dir: str,
                                                       bert_weights_dir: str,
@@ -130,25 +140,29 @@ def extract_spans_with_allennlp(all_tokens_spans, instances, model):
 if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('experiment_dir', type=str,
-                        help='Location of beaker experiment dump')
-    parser.add_argument('bert_vocab_dir', type=str,
+    parser.add_argument('--beaker_dir', type=str,
+                        help='Location of beaker experiments dump')
+    parser.add_argument('--experiment_id', type=str,
+                        help='Beaker experiment ID')
+    parser.add_argument('--bert_vocab_dir', type=str,
                         help='Location of BERT vocab files')
-    parser.add_argument('bert_weights_dir', type=str,
+    parser.add_argument('--bert_weights_dir', type=str,
                         help='Location of BERT weights files')
-    parser.add_argument('conll_file', type=str,
+    parser.add_argument('--conll_file', type=str,
                         help='CONLL2003 file to predict')
-    parser.add_argument('output_dir', type=str,
+    parser.add_argument('--output_dir', type=str,
                         help='Output directory to dump predicted .ann files')
     parser.add_argument('--gpu', action='store_true',
                         help='Flag to use GPU')
     args = parser.parse_args()
 
     # fetch_beaker_group_experiments_results(results_dir='beaker/', group_id='gr_nfp4yg5x4rsx')
+    experiment_dir = fetch_beaker_experiment_results(results_dir=args.beaker_dir,
+                                                     experiment_id=args.experiment_id)
 
     os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 
-    reader, model = load_bert_reader_model_from_beaker_experiment_dir(experiment_dir=args.experiment_dir,
+    reader, model = load_bert_reader_model_from_beaker_experiment_dir(experiment_dir=experiment_dir,
                                                                       bert_vocab_dir=args.bert_vocab_dir,
                                                                       bert_weights_dir=args.bert_weights_dir,
                                                                       cuda_device=0 if args.gpu else -1)
