@@ -60,13 +60,13 @@ class EBMNLPDatasetReader(DatasetReader):
     @overrides
     def text_to_instance(self,
                          tokens: List[Token],
-                         labels: Dict[str, List[int]] = None):
+                         labels: List[str] = None):
         sequence = TextField(tokens, self._token_indexers)
         instance_fields: Dict[str, Field] = {'tokens': sequence}
         instance_fields["metadata"] = MetadataField({"words": [x.text for x in tokens]})
         
         # Set the field 'labels' according to the specified PIO element
         if labels is not None:
-            instance_fields['labels'] = SequenceLabelField(labels[self.element], sequence, 'labels')
+            instance_fields['labels'] = SequenceLabelField(labels, sequence, 'labels')
 
         return Instance(instance_fields)
