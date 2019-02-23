@@ -9,10 +9,6 @@ Also, the PICO data is separate files for each paper instead of 1 long file.
 
 ** Concats those and adds --DOCSTART-- to mark the paaper IDS
 
-Finally, ebmnlp is annotated with I/O tags
-
-** Converts to BIO
-
 Also, PICO data is not sentence split, but BERT truncates if sequence is
 longer than 250 tokens.  This causes bugs.
 
@@ -23,7 +19,7 @@ longer than 250 tokens.  This causes bugs.
 import os
 
 old_dirname = 'ebmnlp_amandalynne/'
-new_dirname = 'data/ner/ebmnlp/'
+new_dirname = 'data/pico/ebmnlp/'
 for split in ['train', 'dev', 'test']:
     with open(os.path.join(new_dirname, f'{split}.txt'), 'w') as f_new:
         filenames = os.listdir(os.path.join(old_dirname, split))
@@ -35,8 +31,8 @@ for split in ['train', 'dev', 'test']:
                 prev_label = 'O'
                 for line in f_old:
                     token, label = line.strip().split(' ')
-                    if prev_label == 'O' and label.startswith('I'):
-                        label = 'B-' + label[2:]
+                    # if prev_label == 'O' and label.startswith('I'):
+                    #     label = 'B-' + label[2:]
                     f_new.write(' '.join([token, 'NN', 'O', label]))
                     f_new.write('\n')
                     # add extra whitespace to split sentences (hacky sort of)
