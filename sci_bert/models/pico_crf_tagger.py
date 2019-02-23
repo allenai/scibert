@@ -25,14 +25,12 @@ class PicoCrfTagger(Model):
                  feedforward: Optional[FeedForward] = None,
                  include_start_end_transitions: bool = True,
                  dropout: Optional[float] = None,
-                 verbose_metrics: bool = False,
                  initializer: InitializerApplicator = InitializerApplicator(),
                  regularizer: Optional[RegularizerApplicator] = None) -> None:
         super().__init__(vocab, regularizer)
 
         self.label_namespace = 'labels'
         self.num_tags = self.vocab.get_vocab_size(self.label_namespace)
-        self._verbose_metrics = verbose_metrics
 
         # encode text
         self.text_field_embedder = text_field_embedder
