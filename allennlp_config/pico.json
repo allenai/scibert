@@ -6,14 +6,16 @@
   "pytorch_seed": std.extVar("PYTORCH_SEED"),
   "numpy_seed": std.extVar("NUMPY_SEED"),
   "dataset_reader": {
-    "type": "ebm_nlp",
+    "type": "ebmnlp",
     "token_indexers": {
       "bert": {
-          "type": "bert-pretrained",
-          "pretrained_model": std.extVar("BERT_VOCAB"),
-          "do_lowercase": std.extVar("is_lowercase"),
-          "use_starting_offsets": true
-      },
+        "type": "bert-pretrained",
+        "pretrained_model": std.extVar("BERT_VOCAB"),
+        "do_lowercase": std.extVar("is_lowercase"),
+        "use_starting_offsets": true
+      }
+    }
+  },
   "train_data_path": std.extVar("TRAIN_PATH"),
   "validation_data_path": std.extVar("DEV_PATH"),
   "test_data_path": std.extVar("TEST_PATH"),

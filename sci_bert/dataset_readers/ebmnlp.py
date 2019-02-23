@@ -29,7 +29,7 @@ def _is_divider(line: str) -> bool:
         else:
             return False
 
-@DatasetReader.register("ebm_nlp")
+@DatasetReader.register("ebmnlp")
 class EBMNLPDatasetReader(DatasetReader):
     def __init__(self, token_indexers: Dict[str, TokenIndexer] = None) -> None:
         super().__init__()
