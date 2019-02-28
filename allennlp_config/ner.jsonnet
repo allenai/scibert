@@ -15,6 +15,12 @@
           "do_lowercase": std.extVar("is_lowercase"),
           "use_starting_offsets": true
       },
+      "bert2": {
+          "type": "bert-pretrained",
+          "pretrained_model": std.extVar("BERT_VOCAB2"),
+          "do_lowercase": std.extVar("is_lowercase2"),
+          "use_starting_offsets": true
+      },
       "token_characters": {
         "type": "characters",
         "min_padding_length": 3
@@ -36,12 +42,18 @@
         "allow_unmatched_keys": true,
         "embedder_to_indexer_map": {
             "bert": ["bert", "bert-offsets"],
+            "bert2": ["bert2", "bert2-offsets"],
             "token_characters": ["token_characters"],
         },
         "token_embedders": {
             "bert": {
                 "type": "bert-pretrained",
                 "pretrained_model": std.extVar("BERT_WEIGHTS")
+            },
+            "bert2": {
+                "type": "bert-pretrained",
+                "pretrained_model": std.extVar("BERT_WEIGHTS2"),
+                "requires_grad": false
             },
             "token_characters": {
                 "type": "character_encoding",
@@ -60,7 +72,7 @@
     },
     "encoder": {
         "type": "lstm",
-        "input_size": 768 + 128,
+        "input_size": 768 + 768 + 128,
         "hidden_size": 200,
         "num_layers": 2,
         "dropout": 0.5,
