@@ -39,6 +39,11 @@ def main(inpath, outpath, with_entity_markers):
                             print('Missing entities')
                             continue
                         rel_type = relation['relType']
+                        if rel_type not in ['AGONIST-ACTIVATOR', 'DOWNREGULATOR', 'SUBSTRATE_PRODUCT-OF',
+                                            'AGONIST', 'INHIBITOR', 'PRODUCT-OF', 'ANTAGONIST', 'ACTIVATOR',
+                                            'INDIRECT-UPREGULATOR', 'SUBSTRATE', 'INDIRECT-DOWNREGULATOR',
+                                            'AGONIST-INHIBITOR', 'UPREGULATOR', ]:
+                            continue
                         if e1['from'] < e2['from']:
                             text_with_markers = "".join([
                                     text[:e1['from']],
