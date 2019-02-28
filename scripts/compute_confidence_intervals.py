@@ -41,6 +41,7 @@ def diff_ci(baseline_scores, new_scores):
     return np.percentile(z, q=[2.5, 97.5]) * 100
 
 def paired_ci(baseline_scores, new_scores):
+    assert len(baseline_scores) == len(new_scores)
     np.random.seed(100)
     diffs = np.array(new_scores) - np.array(baseline_scores)
     new_diffs = np.array([np.mean(np.random.choice(diffs, size=5, replace=True)) for _ in range(10000)])
@@ -49,9 +50,9 @@ def paired_ci(baseline_scores, new_scores):
 
 def compute_table_1(is_paired_ci: bool = False):
     if is_paired_ci:
-        get_ci = diff_ci
-    else:
         get_ci = paired_ci
+    else:
+        get_ci = diff_ci
 
     for dataset, model_to_results in DATASET_TO_RESULTS.items():
 
