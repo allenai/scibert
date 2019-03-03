@@ -1,8 +1,8 @@
 # Run allennlp training locally
 
-dataset='chemprot'
-task='text_classification'
-config_file=allennlp_config/"$task".jsonnet
+dataset='genia'
+task='parsing'
+config_file=allennlp_config/"$task".json
 
 SEED=13270
 PYTORCH_SEED=`expr $SEED / 10`

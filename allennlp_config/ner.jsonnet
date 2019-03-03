@@ -68,8 +68,9 @@
     },
   },
   "iterator": {
-    "type": "basic",
-    "batch_size": 64
+    "type": "bucket",
+    "sorting_keys": [["text", "num_tokens"]],
+    "batch_size": 16
   },
   "trainer": {
     "optimizer": {
