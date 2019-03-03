@@ -31,23 +31,24 @@ for dataset in [
                     # 16410,
                     # 18210,
                     # 18310,
-                    # 18410,
-                    # 18510,
+                    18410,
+                    18510,
                     18610,
                 ]:
 
-            pytorch_seed = seed // 10
-            numpy_seed = pytorch_seed // 10
+        pytorch_seed = seed // 10
+        numpy_seed = pytorch_seed // 10
 
-            for model in ['bertbase_basevocab_cased',
-                          'biobert_pmc_basevocab_cased',
-                          'biobert_pubmed_pmc_basevocab_cased',
-                          's2bert_basevocab_uncased_512',
-                          's2bert_s2vocab_uncased_512',
-                          'bertbase_basevocab_uncased',
-                          'biobert_pubmed_basevocab_cased',
-                          's2bert_basevocab_cased_512',
-                          's2bert_s2vocab_cased_512']:
+        for model in ['bertbase_basevocab_cased',
+                      'bertbase_basevocab_uncased',
+                      'biobert_pmc_basevocab_cased',
+                      'biobert_pubmed_pmc_basevocab_cased',
+                      'biobert_pubmed_basevocab_cased',
+                      's2bert_basevocab_cased_512',
+                      's2bert_basevocab_uncased_512',
+                      's2bert_s2vocab_cased_512',
+                      's2bert_s2vocab_uncased_512',
+                     ]:
 
             if dataset in ['NCBI-disease', 'bc5cdr', 'JNLPBA', 'sciie']:
                 task = 'ner'
@@ -60,23 +61,31 @@ for dataset in [
             else:
                 assert False
 
-                # determine vocab file based on model
-                if 'basevocab' in model:
-                    vocab_file = 'basevocab_' + vocab_file
-                else:
-                    vocab_file = 's2vocab_' + vocab_file
+            # determine casing based on model
+            if 'uncased' in model:
+                is_lowercase = 'true'
+                vocab_file = 'uncased'
+            else:
+                is_lowercase = 'false'
+                vocab_file = 'cased'
 
-                # config file
-                config_file = f'allennlp_config/{task}.json'
+            # determine vocab file based on model
+            if 'basevocab' in model:
+                vocab_file = 'basevocab_' + vocab_file
+            else:
+                vocab_file = 's2vocab_' + vocab_file
 
-                # bert files
-                bert_vocab = f'/bert_vocab/{vocab_file}.vocab'
-                bert_weights = f'/bert_weights/{model}.tar.gz'
+            # config file
+            config_file = f'allennlp_config/{task}.json'
 
-                # data files
-                train_path = f'data/{task}/{dataset}/train.txt'
-                dev_path = f'data/{task}/{dataset}/dev.txt'
-                test_path = f'data/{task}/{dataset}/test.txt'
+            # bert files
+            bert_vocab = f'/bert_vocab/{vocab_file}.vocab'
+            bert_weights = f'/bert_weights/{model}.tar.gz'
+
+            # data files
+            train_path = f'data/{task}/{dataset}/train.txt'
+            dev_path = f'data/{task}/{dataset}/dev.txt'
+            test_path = f'data/{task}/{dataset}/test.txt'
 
             # data files
             train_path = f'data/{task}/{dataset}/train.txt'
