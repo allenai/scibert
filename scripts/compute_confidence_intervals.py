@@ -61,19 +61,22 @@ def compute_table_1(is_paired_ci: bool = False):
         for model, results in model_to_results.items():
             is_cased = True if 'uncased' not in model else False
             # cased models for Seq tagging
-            if ('ner' in dataset or 'pico' in dataset) and is_cased is False:
+            if ('ner' in dataset or 'pico' in dataset or 'parsing' in dataset) and is_cased is False:
                 continue
             # uncased models for Text class
             if 'text_classification' in dataset and is_cased is True:
                 continue
             MODEL_TO_RESULTS[model] = results
 
-        print(f'*** Dataset: {dataset} ***')
+        # print(f'*** Dataset: {dataset} ***')
+        row = []
         # get bert base results
         for model, results in MODEL_TO_RESULTS.items():
             if 'bertbase' in model:
                 bertbase_results = results
+                # print(f'BERT-Base: {np.round(np.mean(bertbase_results)} * 100, 2)}')
                 # print(f'BERT-Base: {ci(bertbase_results)}')
+                row.append(f'{np.round(np.mean(bertbase_results) * 100, 2)}')
                 break
         assert bertbase_results
 
@@ -81,23 +84,29 @@ def compute_table_1(is_paired_ci: bool = False):
         for model, results in MODEL_TO_RESULTS.items():
             if 's2bert_basevocab' in model:
                 scibert_basevocab_results = results
+                # print(f'SciBERT-BaseVocab: {np.round(np.mean(scibert_basevocab_results) * 100, 2)}')
                 # print(f'SciBERT-BaseVocab: {ci(scibert_basevocab_results)}')
+                row.append(f'{np.round(np.mean(scibert_basevocab_results) * 100, 2)}')
                 break
         assert scibert_basevocab_results
 
         for model, results in MODEL_TO_RESULTS.items():
             if 's2bert_s2vocab' in model:
                 scivocab_results = results
+                # print(f'SciBERT-SciVocab: {np.round(np.mean(scivocab_results) * 100, 2)}')
                 # print(f'SciBERT-SciVocab: {ci(scivocab_results)}')
+                row.append(f'{np.round(np.mean(scivocab_results) * 100, 2)}')
                 break
         assert scivocab_results
 
-        # compute diff CIs
-        print(f'SciBERT (BaseVocab) - BERT-Base: {get_ci(bertbase_results, scibert_basevocab_results)}')
-        print(f'SciBERT (SciVocab) - BERT-Base: {get_ci(bertbase_results, scivocab_results)}')
-        print(f'SciBERT:  SciVocab - BaseVocab: {get_ci(scibert_basevocab_results, scivocab_results)}')
+        print(' & '.join([dataset] + row))
 
-        print('--------')
+        # compute diff CIs
+        # print(f'SciBERT (BaseVocab) - BERT-Base: {get_ci(bertbase_results, scibert_basevocab_results)}')
+        # print(f'SciBERT (SciVocab) - BERT-Base: {get_ci(bertbase_results, scivocab_results)}')
+        # print(f'SciBERT:  SciVocab - BaseVocab: {get_ci(scibert_basevocab_results, scivocab_results)}')
+
+        # print('--------')
 
 
 def compute_full_table():
