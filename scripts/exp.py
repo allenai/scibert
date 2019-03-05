@@ -39,16 +39,17 @@ for dataset in [
         pytorch_seed = seed // 10
         numpy_seed = pytorch_seed // 10
 
-        for model in ['bertbase_basevocab_cased',
-                      'bertbase_basevocab_uncased',
-                      'biobert_pmc_basevocab_cased',
-                      'biobert_pubmed_pmc_basevocab_cased',
-                      'biobert_pubmed_basevocab_cased',
-                      's2bert_basevocab_cased_512',
-                      's2bert_basevocab_uncased_512',
+        for model in [
+                      # 'bertbase_basevocab_uncased',
+                      # 'bertbase_basevocab_cased',
+                      # 'biobert_pmc_basevocab_cased',
+                      # 'biobert_pubmed_pmc_basevocab_cased',
+                      # 'biobert_pubmed_basevocab_cased',
+                      # 's2bert_basevocab_uncased_512',
+                      # 's2bert_basevocab_cased_512',
+                      # 's2bert_s2vocab_uncased_512',
                       's2bert_s2vocab_cased_512',
-                      's2bert_s2vocab_uncased_512',
-                     ]:
+                    ]:
 
             if dataset in ['NCBI-disease', 'bc5cdr', 'JNLPBA', 'sciie']:
                 task = 'ner'
@@ -87,10 +88,6 @@ for dataset in [
             dev_path = f'data/{task}/{dataset}/dev.txt'
             test_path = f'data/{task}/{dataset}/test.txt'
 
-            # data files
-            train_path = f'data/{task}/{dataset}/train.txt'
-            dev_path = f'data/{task}/{dataset}/dev.txt'
-            test_path = f'data/{task}/{dataset}/test.txt'
             print(task, dataset, seed, bert_weights, bert_vocab, train_path)
             cmd = ' '.join(['python', 'scripts/run_with_beaker.py',
                    f'{config_file}',
