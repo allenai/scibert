@@ -1,9 +1,9 @@
-# <p align=center>SciBERT</p>
-SciBERT is a BERT model trained on scientific text. It results into state-of-the-art performance on a wide range of scientific domain nlp tasks. 
+# <p align=center>`SciBERT`</p>
+`SciBERT` is a `BERT` model trained on scientific text. It results into state-of-the-art performance on a wide range of scientific domain nlp tasks. 
 
-* SciBERT is trained on papers from the corpus of [semanticscholar.org](semanticscholar.org). Corpus size is 1.14M papers, 3.1B tokens. We use the full text of the papers in training, not just abstracts.
+* `SciBERT` is trained on papers from the corpus of [semanticscholar.org](semanticscholar.org). Corpus size is 1.14M papers, 3.1B tokens. We use the full text of the papers in training, not just abstracts.
 
-* SciBERT has its own vocabulary (`scivocab`) that's built to best match the training corpus. We trained a cased and an uncased version. We also include models trained on the original BERT vocabulary (`basevocab`) for comparison.
+* `SciBERT` has its own vocabulary (`scivocab`) that's built to best match the training corpus. We trained a cased and an uncased version. We also include models trained on the original BERT vocabulary (`basevocab`) for comparison.
 
 * It results into state-of-the-art performance on a wide range of scientific domain nlp tasks. Evaluation code and data are included in this repo. 
 
@@ -25,7 +25,7 @@ We release the tensorflow and the pytorch version of the trained models. The pyt
 
 ### Citing
 
-If you use ScispaCy in your research, please cite the arxiv paper that we don't have yet.
+If you use `SciBERT` in your research, please cite the arxiv paper that we don't have yet.
 
 SciBERT is an open-source project developed by [the Allen Institute for Artificial Intelligence (AI2)](http://www.allenai.org).
 AI2 is a non-profit institute with the mission to contribute to humanity through high-impact AI research and engineering.
