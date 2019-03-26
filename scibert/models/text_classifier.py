@@ -1,11 +1,10 @@
 from typing import Dict, Optional, List, Any
 
-import numpy as np
 import torch
 import torch.nn.functional as F
 from allennlp.data import Vocabulary
 from allennlp.models.model import Model
-from allennlp.modules import FeedForward, Seq2VecEncoder, TextFieldEmbedder, Seq2SeqEncoder
+from allennlp.modules import FeedForward, TextFieldEmbedder, Seq2SeqEncoder
 from allennlp.nn import InitializerApplicator, RegularizerApplicator
 from allennlp.nn import util
 from allennlp.training.metrics import CategoricalAccuracy, F1Measure
@@ -15,8 +14,13 @@ from overrides import overrides
 @Model.register("text_classifier")
 class TextClassifier(Model):
     """
-    This ``Model`` implements a text classifier that uses seq2vec encoders.
-    Refer to allennlp.modules.seq2vec_encoder for available encoders.
+    Implements a basic text classifier:
+    1) Embed tokens using `text_field_embedder`
+    2) Seq2SeqEncoder, e.g. BiLSTM
+    3) Append the first and last encoder states
+    4) Final feedforward layer
+
+    Optimized with CrossEntropyLoss.  Evaluated with CategoricalAccuracy & F1.
     """
     def __init__(self, vocab: Vocabulary,
                  text_field_embedder: TextFieldEmbedder,
@@ -39,8 +43,7 @@ class TextClassifier(Model):
         self.verbose_metrics = verbose_metrics
 
         for i in range(self.num_classes):
-            self.label_f1_metrics[vocab.get_token_from_index(index=i, namespace="labels")] =\
-                F1Measure(positive_label=i)
+            self.label_f1_metrics[vocab.get_token_from_index(index=i, namespace="labels")] = F1Measure(positive_label=i)
         self.loss = torch.nn.CrossEntropyLoss()
 
         self.pool = lambda text, mask: util.get_final_encoder_states(text, mask, bidirectional=True)
@@ -66,11 +69,9 @@ class TextClassifier(Model):
         -------
         An output dictionary consisting of:
         label_logits : torch.FloatTensor
-            A tensor of shape ``(batch_size, num_labels)`` representing unnormalised log
-            probabilities of the label.
+            A tensor of shape ``(batch_size, num_labels)`` representing unnormalised log probabilities of the label.
         label_probs : torch.FloatTensor
-            A tensor of shape ``(batch_size, num_labels)`` representing probabilities of the
-            label.
+            A tensor of shape ``(batch_size, num_labels)`` representing probabilities of the label.
         loss : torch.FloatTensor, optional
             A scalar loss to be optimised.
         """
