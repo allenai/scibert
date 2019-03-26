@@ -1,0 +1,139 @@
+{
+    "random_seed":  std.parseInt(std.extVar("SEED")),
+    "pytorch_seed": std.parseInt(std.extVar("PYTORCH_SEED")),
+    "numpy_seed": std.parseInt(std.extVar("NUMPY_SEED")),
+    "dataset_reader": {
+        "type": "universal_dependencies",
+        "use_language_specific_pos": true,
+        "token_indexers": {
+          "bert": {
+              "type": "bert-pretrained",
+              "pretrained_model": std.extVar("BERT_VOCAB"),
+              "do_lowercase": std.extVar("IS_LOWERCASE"),
+              "use_starting_offsets": true
+          },
+          "token_characters": {
+            "type": "characters",
+            "min_padding_length": 3
+          }
+        }
+    },
+    "train_data_path": std.extVar("TRAIN_PATH"),
+    "validation_data_path": std.extVar("DEV_PATH"),
+    "test_data_path": std.extVar("TEST_PATH"),
+    "evaluate_on_test": true,
+    "model": {
+        "type": "biaffine_parser",
+        "arc_representation_dim": 500,
+        "dropout": 0.3,
+        "input_dropout": 0.3,
+        "pos_tag_embedding": {
+            "embedding_dim": 100,
+            "sparse": true,
+            "vocab_namespace": "pos"
+        },
+        "tag_representation_dim": 100,
+        "text_field_embedder": {
+            "allow_unmatched_keys": true,
+            "embedder_to_indexer_map": {
+                "bert": ["bert", "bert-offsets"],
+                "token_characters": ["token_characters"],
+            },
+            "token_embedders": {
+                "bert": {
+                    "type": "bert-pretrained",
+                    "pretrained_model": std.extVar("BERT_WEIGHTS")
+                },
+                "token_characters": {
+                    "type": "character_encoding",
+                    "embedding": {
+                        "embedding_dim": 16
+                    },
+                    "encoder": {
+                        "type": "cnn",
+                        "embedding_dim": 16,
+                        "num_filters": 128,
+                        "ngram_filter_sizes": [3],
+                        "conv_layer_activation": "relu"
+                    }
+                }
+            }
+        },
+        "use_mst_decoding_for_validation": true,
+        "encoder": {
+            "type": "stacked_bidirectional_lstm",
+            "hidden_size": 400,
+            "input_size": 996,
+            "num_layers": 3,
+            "recurrent_dropout_probability": 0.3,
+            "use_highway": true
+        },
+        "initializer": [
+            [
+                ".*feedforward.*weight",
+                {
+                    "type": "xavier_uniform"
+                }
+            ],
+            [
+                ".*feedforward.*bias",
+                {
+                    "type": "zero"
+                }
+            ],
+            [
+                ".*tag_bilinear.*weight",
+                {
+                    "type": "xavier_uniform"
+                }
+            ],
+            [
+                ".*tag_bilinear.*bias",
+                {
+                    "type": "zero"
+                }
+            ],
+            [
+                ".*weight_ih.*",
+                {
+                    "type": "xavier_uniform"
+                }
+            ],
+            [
+                ".*weight_hh.*",
+                {
+                    "type": "orthogonal"
+                }
+            ],
+            [
+                ".*bias_ih.*",
+                {
+                    "type": "zero"
+                }
+            ],
+            [
+                ".*bias_hh.*",
+                {
+                    "type": "lstm_hidden_bias"
+                }
+            ]
+        ],
+    },
+    "iterator": {
+      "type": "bucket",
+      "sorting_keys": [["words", "num_tokens"]],
+      "batch_size": 32
+    },
+    "trainer": {
+      "optimizer": {
+            "type": "dense_sparse_adam",
+            "betas": [0.9, 0.9]
+      },
+      "validation_metric": "+LAS",
+      "num_serialized_models_to_keep": 3,
+      "num_epochs": 75,
+      "grad_norm": 5.0,
+      "patience": 15,
+      "cuda_device": 0
+    }
+}

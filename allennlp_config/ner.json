@@ -12,7 +12,7 @@
       "bert": {
           "type": "bert-pretrained",
           "pretrained_model": std.extVar("BERT_VOCAB"),
-          "do_lowercase": std.extVar("is_lowercase"),
+          "do_lowercase": std.extVar("IS_LOWERCASE"),
           "use_starting_offsets": true
       },
       "token_characters": {
@@ -68,7 +68,8 @@
     },
   },
   "iterator": {
-    "type": "basic",
+    "type": "bucket",
+    "sorting_keys": [["text", "num_tokens"]],
     "batch_size": 64
   },
   "trainer": {
