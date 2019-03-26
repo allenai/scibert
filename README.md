@@ -1,36 +1,33 @@
-# <center>SciBERT
-<center>A BERT model trained on scientific text. It results into state-of-the-art performance on a wide range of scientific domain nlp tasks.</center>
+# <p align=center>SciBERT</p>
+SciBERT is a BERT model trained on scientific text. It results into state-of-the-art performance on a wide range of scientific domain nlp tasks. 
+
+* SciBERT is trained on papers from the corpus of [semanticscholar.org]. Corpus size is 1.14M papers, 3.1B tokens. We use the full text of the papers in training, not just abstracts.
+
+* SciBERT has its own vocabulary (`scivocab`) that's built to best match the training corpus. We trained a cased and an uncased version. We also include models trained on the original BERT vocabulary (`basevocab`) for comparison.
+
+* It results into state-of-the-art performance on a wide range of scientific domain nlp tasks. Evaluation code and data are included in this repo. 
+
+**[`BERT-Base, Multilingual Cased`](https://storage.googleapis.com/bert_models/2018_11_23/multi_cased_L-12_H-768_A-12.zip)**:
+
+### Downloading Trained Models
+We release the tensorflow and the pytorch version of the trained models. The pytorch version is created using the [Hugging Face](https://github.com/huggingface/pytorch-pretrained-BERT) library.  All combinations of `scivocab` and `basevocab`, `cased` and `uncased` models are available below. Our evaluation shows that `scivocab-uncased` usually gives the best results.
+
+#### Tensorflow Models
+* __[`scibert-scivocab-uncased`](https://s3-us-west-2.amazonaws.com/ai2-s2-research/scibert/tensorflow_models/scibert_scivocab_uncased.tar.gz) <<-- Recommended__
+* [`scibert-scivocab-cased`](https://s3-us-west-2.amazonaws.com/ai2-s2-research/scibert/tensorflow_models/scibert_scivocab_cased.tar.gz)
+* [`scibert-basevocab-uncased`](https://s3-us-west-2.amazonaws.com/ai2-s2-research/scibert/tensorflow_models/scibert_basevocab_uncased.tar.gz)
+* [`scibert-basevocab-cased`](https://s3-us-west-2.amazonaws.com/ai2-s2-research/scibert/tensorflow_models/scibert_basevocab_cased.tar.gz)
+
+#### Pytorch Models
+* __[`scibert-scivocab-uncased`](https://s3-us-west-2.amazonaws.com/ai2-s2-research/scibert/pytorch_models/scibert_scivocab_uncased.tar.gz) <<-- Recommended__
+* [`scibert-scivocab-cased`](https://s3-us-west-2.amazonaws.com/ai2-s2-research/scibert/pytorch_models/scibert_scivocab_cased.tar.gz)
+* [`scibert-basevocab-uncased`](https://s3-us-west-2.amazonaws.com/ai2-s2-research/scibert/pytorch_models/scibert_basevocab_uncased.tar.gz)
+* [`scibert-basevocab-cased`](https://s3-us-west-2.amazonaws.com/ai2-s2-research/scibert/pytorch_models/scibert_basevocab_cased.tar.gz)
 
 
-## Training Corpus
-SciBERT is trained on papers from the corpus of [semanticscholar.org]. Corpus size is 1.14M papers, 3.1B tokens. We use the full text of the papers in training, not just abstracts.
+### Citing
 
-## Vocabulary
-SciBERT has its own vocabulary that's built to best match the training corpus. We trained a cased and an uncased version. We also include models trained on the original BERT vocabulary for comparison.
-
-## Evaluation
-AllenNLP models. Data is in the repo. 
-
-## Downloading Trained Models
-We release the tensorflow and the pytorch version of the trained models. The pytorch version is created using the [Hugging Face](https://github.com/huggingface/pytorch-pretrained-BERT) library. 
-
-All other variants (base-vocab or sci-vocab, cased or uncased) are available here:
-### Tensorflow Models
-* [scibert-scivocab-uncased](https://s3-us-west-2.amazonaws.com/ai2-s2-research/scibert/tensorflow_models/scibert_scivocab_uncased.tar.gz) <<-- Recommended 
-* [scibert-scivocab-cased](https://s3-us-west-2.amazonaws.com/ai2-s2-research/scibert/tensorflow_models/scibert_scivocab_cased.tar.gz)
-* [scibert-basevocab-uncased](https://s3-us-west-2.amazonaws.com/ai2-s2-research/scibert/tensorflow_models/scibert_basevocab_uncased.tar.gz)
-* [scibert-basevocab-cased](https://s3-us-west-2.amazonaws.com/ai2-s2-research/scibert/tensorflow_models/scibert_basevocab_cased.tar.gz)
-
-### Pytorch Models
-* [scibert-scivocab-uncased](https://s3-us-west-2.amazonaws.com/ai2-s2-research/scibert/pytorch_models/scibert_scivocab_uncased.tar.gz) <<-- Recommended 
-* [scibert-scivocab-cased](https://s3-us-west-2.amazonaws.com/ai2-s2-research/scibert/pytorch_models/scibert_scivocab_cased.tar.gz)
-* [scibert-basevocab-uncased](https://s3-us-west-2.amazonaws.com/ai2-s2-research/scibert/pytorch_models/scibert_basevocab_uncased.tar.gz)
-* [scibert-basevocab-cased](https://s3-us-west-2.amazonaws.com/ai2-s2-research/scibert/pytorch_models/scibert_basevocab_cased.tar.gz)
-
-
-## Citing
-
-If you use ScispaCy in your research, please cite .... 
+If you use ScispaCy in your research, please cite the arxiv paper that we don't have yet.
 
 SciBERT is an open-source project developed by [the Allen Institute for Artificial Intelligence (AI2)](http://www.allenai.org).
 AI2 is a non-profit institute with the mission to contribute to humanity through high-impact AI research and engineering.
