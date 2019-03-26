@@ -7,8 +7,6 @@ SciBERT is a BERT model trained on scientific text. It results into state-of-the
 
 * It results into state-of-the-art performance on a wide range of scientific domain nlp tasks. Evaluation code and data are included in this repo. 
 
-**[`BERT-Base, Multilingual Cased`](https://storage.googleapis.com/bert_models/2018_11_23/multi_cased_L-12_H-768_A-12.zip)**:
-
 ### Downloading Trained Models
 We release the tensorflow and the pytorch version of the trained models. The pytorch version is created using the [Hugging Face](https://github.com/huggingface/pytorch-pretrained-BERT) library.  All combinations of `scivocab` and `basevocab`, `cased` and `uncased` models are available below. Our evaluation shows that `scivocab-uncased` usually gives the best results.
 
