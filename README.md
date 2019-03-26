@@ -1,7 +1,7 @@
 # <p align=center>`SciBERT`</p>
 `SciBERT` is a `BERT` model trained on scientific text.
 
-* `SciBERT` is trained on papers from the corpus of [semanticscholar.org](semanticscholar.org). Corpus size is 1.14M papers, 3.1B tokens. We use the full text of the papers in training, not just abstracts.
+* `SciBERT` is trained on papers from the corpus of [semanticscholar.org](https://semanticscholar.org). Corpus size is 1.14M papers, 3.1B tokens. We use the full text of the papers in training, not just abstracts.
 
 * `SciBERT` has its own vocabulary (`scivocab`) that's built to best match the training corpus. We trained cased and uncased versions. We also include models trained on the original BERT vocabulary (`basevocab`) for comparison.
 
