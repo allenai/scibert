@@ -5,3 +5,4 @@ pytorch_models
 raw_text_files
 tfRecords
 unused_pytorch_models
+bert_vocab
