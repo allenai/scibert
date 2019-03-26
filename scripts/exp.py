@@ -34,10 +34,10 @@ for dataset in [
                       # 'biobert_pmc_basevocab_cased',
                       # 'biobert_pubmed_pmc_basevocab_cased',
                       # 'biobert_pubmed_basevocab_cased',
-                      # 's2bert_basevocab_uncased_512',
-                      # 's2bert_basevocab_cased_512',
-                      # 's2bert_s2vocab_uncased_512',
-                      's2bert_s2vocab_cased_512',
+                      # 'scibert_basevocab_uncased_512',
+                      # 'scibert_basevocab_cased_512',
+                      # 'scibert_scivocab_uncased_512',
+                      'scibert_scivocab_cased_512',
                     ]:
 
             if dataset in ['NCBI-disease', 'bc5cdr', 'JNLPBA', 'sciie']:
@@ -61,7 +61,7 @@ for dataset in [
             if 'basevocab' in model:
                 vocab_file = 'basevocab_' + vocab_file
             else:
-                vocab_file = 's2vocab_' + vocab_file
+                vocab_file = 'scivocab_' + vocab_file
 
             # config file
             config_file = f'allennlp_config/{task}.json'
