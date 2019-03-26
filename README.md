@@ -1,3 +1,4 @@
-# sci-bert
+# <p align="center">SciBERT</p>
 
-Pytorch models: s3://ai2-s2-research/sci-bert/v0.1/pytorch_models/
+A BERT model trained on scientific text with state-of-the-art performance on a wide range of nlp tasks from the scientific domain.
+
