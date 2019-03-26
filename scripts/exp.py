@@ -84,7 +84,7 @@ for dataset in [
                    f'--env TRAIN_PATH={train_path}',
                    f'--env DEV_PATH={dev_path}',
                    f'--env TEST_PATH={test_path}',
-                   f'--env is_lowercase={is_lowercase}',
+                   f'--env IS_LOWERCASE={is_lowercase}',
                    f'--env SEED={seed}',
                    f'--env PYTORCH_SEED={pytorch_seed}',
                    f'--env NUMPY_SEED={numpy_seed}'])
