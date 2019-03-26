@@ -7,22 +7,33 @@ Alternative to `exp.sh` script because it doesn't seem to run properly on UNIX m
 import subprocess
 
 for dataset in [
-                'NCBI-disease',
-                'bc5cdr',
-                'JNLPBA',
-                'sciie',
-                'chemprot',
-                'citation_intent',
-                'mag',
-                'rct-20k',
-                'sciie-relation-extraction',
-                'sci-cite',
-                'ebmnlp',
+                # 'NCBI-disease',
+                # 'bc5cdr',
+                # 'JNLPBA',
+                # 'sciie',
+                # 'chemprot',
+                # 'citation_intent',
+                # 'mag',
+                # 'rct-20k',
+                # 'sciie-relation-extraction',
+                # 'sci-cite',
+                # 'ebmnlp',
+                'genia',
                ]:
     for seed in [
-                    13370,
-                    13570,
-                    14680,
+                # 15370,
+                # 15570,
+                # 15680,
+                # 15780,
+                # 15210,
+                # 16210,
+                # 16310,
+                # 16410,
+                # 18210,
+                # 18310,
+                18410,
+                18510,
+                18610
                 ]:
 
         pytorch_seed = seed // 10
@@ -46,6 +57,8 @@ for dataset in [
                 task = 'text_classification'
             elif dataset in ['ebmnlp']:
                 task = 'pico'
+            elif dataset in ['genia']:
+                task = 'parsing'
             else:
                 assert False
 
@@ -74,6 +87,7 @@ for dataset in [
             train_path = f'data/{task}/{dataset}/train.txt'
             dev_path = f'data/{task}/{dataset}/dev.txt'
             test_path = f'data/{task}/{dataset}/test.txt'
+
             print(task, dataset, seed, bert_weights, bert_vocab, train_path)
             cmd = ' '.join(['python', 'scripts/run_with_beaker.py',
                    f'{config_file}',
