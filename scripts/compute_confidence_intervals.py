@@ -1,12 +1,13 @@
 """
 
+Computes bootstrap confidence intervals
 
 """
 
 from collections import defaultdict
 
 DATASET_TO_RESULTS = defaultdict(lambda: defaultdict(list))
-with open('data/results.tsv', 'r') as f_in:
+with open('misc/results.tsv', 'r') as f_in:
     for line in f_in:
         try:
             score, model, dataset = line.strip().split('\t')
