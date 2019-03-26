@@ -1,12 +1,10 @@
 from typing import Dict, Optional, List, Any
 import logging
-import warnings
 
 from overrides import overrides
 import torch
 from torch.nn.modules.linear import Linear
 
-from allennlp.common.checks import check_dimensions_match, ConfigurationError
 from allennlp.data import Vocabulary
 from allennlp.models.model import Model
 from allennlp.modules import Seq2SeqEncoder, TimeDistributed, TextFieldEmbedder
@@ -19,6 +17,17 @@ logger = logging.getLogger(__name__)
 
 @Model.register("pico_crf_tagger")
 class PicoCrfTagger(Model):
+    """
+    Exactly like the CrfTagger in AllenNLP:
+    https://github.com/allenai/allennlp/blob/master/allennlp/models/crf_tagger.py
+
+    But differences include:
+    - No option for `constrain_crf_decoding` because only supports IO-encoding
+      (because that's how EBMNLP dataset is annotated)
+    - No option for `calculate_span_f1` because PICO is evaluated at token-level
+    - No option for `verbose_metrics`.  Defaults to printing all because in PICO,
+      we want to see F1 scores for each class.
+    """
     def __init__(self, vocab: Vocabulary,
                  text_field_embedder: TextFieldEmbedder,
                  encoder: Seq2SeqEncoder,
@@ -106,13 +115,15 @@ class PicoCrfTagger(Model):
     def decode(self, output_dict: Dict[str, torch.Tensor]) -> Dict[str, torch.Tensor]:
         """
         Converts the tag ids to the actual tags.
-        ``output_dict["labels"]`` is a list of lists of tag_ids,
+        ``output_dict["tags"]`` is a list of lists of tag_ids,
         so we use an ugly nested list comprehension.
         """
         output_dict["labels"] = [
-                [self.vocab.get_token_from_index(tag, namespace=self.label_namespace)
-                 for tag in instance_tags]
-                for instance_tags in output_dict["labels"]
+            [
+                self.vocab.get_token_from_index(tag, namespace=self.label_namespace)
+                for tag in instance_tags
+            ]
+            for instance_tags in output_dict["labels"]
         ]
 
         return output_dict

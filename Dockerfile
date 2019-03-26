@@ -49,7 +49,7 @@ RUN pip install -r /work/requirements.txt && \
 # Application Setup
 ENV PYTHONPATH /work
 
-COPY sci_bert /work/sci_bert/
+COPY scibert /work/scibert/
 COPY data/ /work/data/
 
 
