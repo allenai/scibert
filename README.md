@@ -25,7 +25,15 @@ We release the tensorflow and the pytorch version of the trained models. The ten
 
 ### Citing
 
-If you use `SciBERT` in your research, please cite the arxiv paper that we don't have yet.
+If you use `SciBERT` in your research, please cite [SciBERT: Pretrained Contextualized Embeddings for Scientific Text](https://arxiv.org/abs/1903.10676).
+```
+@inproceedings{Beltagy2019SciBERT,
+  title={SciBERT: Pretrained Contextualized Embeddings for Scientific Text},
+  author={Iz Beltagy and Arman Cohan and Kyle Lo},
+  year={2019},
+  Eprint={arXiv:1903.10676}
+}
+```
 
 `SciBERT` is an open-source project developed by [the Allen Institute for Artificial Intelligence (AI2)](http://www.allenai.org).
 AI2 is a non-profit institute with the mission to contribute to humanity through high-impact AI research and engineering.
