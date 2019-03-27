@@ -16,7 +16,7 @@ We release the tensorflow and the pytorch version of the trained models. The ten
 * [`scibert-basevocab-uncased`](https://s3-us-west-2.amazonaws.com/ai2-s2-research/scibert/tensorflow_models/scibert_basevocab_uncased.tar.gz)
 * [`scibert-basevocab-cased`](https://s3-us-west-2.amazonaws.com/ai2-s2-research/scibert/tensorflow_models/scibert_basevocab_cased.tar.gz)
 
-#### Pytorch Models
+#### PyTorch Models
 * __[`scibert-scivocab-uncased`](https://s3-us-west-2.amazonaws.com/ai2-s2-research/scibert/pytorch_models/scibert_scivocab_uncased.tar) (Recommended)__
 * [`scibert-scivocab-cased`](https://s3-us-west-2.amazonaws.com/ai2-s2-research/scibert/pytorch_models/scibert_scivocab_cased.tar)
 * [`scibert-basevocab-uncased`](https://s3-us-west-2.amazonaws.com/ai2-s2-research/scibert/pytorch_models/scibert_basevocab_uncased.tar)
@@ -27,7 +27,7 @@ We release the tensorflow and the pytorch version of the trained models. The ten
 SciBERT models include all necessary files to be plugged in your own model and are in same format as BERT.
 If you are using Tensorflow, refer to Google's [BERT repo](https://github.com/google-research/bert) and if you use PyTorch, refer to [Hugging Face's repo](https://github.com/huggingface/pytorch-pretrained-BERT) where detailed instructions on using BERT models are provided. 
 
-### Running experiments
+### Running Experiments using AllenNLP
 
 To run experiments on different tasks and reproduce our results in the [paper](https://arxiv.org/abs/1903.10676), you need to first setup the Python 3.6 environment:
 
