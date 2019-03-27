@@ -5,7 +5,8 @@
 # edit these variables before running script
 DATASET='chemprot'
 TASK='text_classification'
-
+export BERT_VOCAB=scibert_scivocab_uncased/vocab.txt
+export BERT_WEIGHTS=scibert_scivocab_uncased/weights.tar.gz
 
 #
 #
@@ -18,8 +19,6 @@ export SEED=$SEED
 export PYTORCH_SEED=$PYTORCH_SEED
 export NUMPY_SEED=$NUMPY_SEED
 
-export BERT_VOCAB=bert_vocab/scibert_scivocab_uncased.vocab
-export BERT_WEIGHTS=bert_weights/scibert_scivocab_uncased.tar.gz
 export IS_LOWERCASE=true
 export TRAIN_PATH=data/$TASK/$DATASET/train.txt
 export DEV_PATH=data/$TASK/$DATASET/dev.txt
