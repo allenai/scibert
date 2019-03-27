@@ -22,6 +22,65 @@ We release the tensorflow and the pytorch version of the trained models. The ten
 * [`scibert-basevocab-uncased`](https://s3-us-west-2.amazonaws.com/ai2-s2-research/scibert/pytorch_models/scibert_basevocab_uncased.tar)
 * [`scibert-basevocab-cased`](https://s3-us-west-2.amazonaws.com/ai2-s2-research/scibert/pytorch_models/scibert_basevocab_cased.tar)
 
+### Using SciBERT in your own model
+
+SciBERT models include all necessary files to be plugged in your own model and are in same format as BERT.
+If you are using Tensorflow, refer to Google's [BERT repo](https://github.com/google-research/bert) and if you use PyTorch, refer to [Hugging Face's repo](https://github.com/huggingface/pytorch-pretrained-BERT) where detailed instructions on using BERT models are provided. 
+
+### Running experiments
+
+To run experiments on different tasks and reproduce our results in the [paper](https://arxiv.org/abs/1903.10676), you need to first setup the Python 3.6 environment:
+
+```pip install -r requirements.txt```
+
+which will install dependencies like [AllenNLP](https://github.com/allenai/allennlp/).
+
+Use the `scibert/train_allennlp_local.sh` script as an example of how to run an experiment (you'll need to modify paths and variable names like `TASK` and `DATASET`).
+
+We include a broad set of scientific nlp datasets under the `data/` directory across the following tasks. Each task has a sub-directory of available datasets.
+```
+├── ner
+│   ├── JNLPBA
+│   ├── NCBI-disease
+│   ├── bc5cdr
+│   └── sciie
+├── parsing
+│   └── genia
+├── pico
+│   └── ebmnlp
+└── text_classification
+    ├── chemprot
+    ├── citation_intent
+    ├── mag
+    ├── rct-20k
+    ├── sci-cite
+    └── sciie-relation-extraction
+```
+
+For example to run the model on the Named Entity Recognition (`NER`) task and on the `BC5CDR` dataset (BioCreative V CDR), modify the `scibert/train_allennlp_local.sh` script according to:
+```
+DATASET='bc5cdr'
+TASK='ner'
+...
+```
+
+Decompress the PyTorch model that you downloaded using  
+`tar -xvf scibert_scivocab_uncased.tar`  
+The results will be in the `scibert_scivocab_uncased` directory containing two files:
+A vocabulary file (`vocab.txt`) and a weights file (`weights.tar.gz`).
+Copy the files to your desired location and then set correct paths for `BERT_WEIGHTS` and `BERT_VOCAB` in the script:
+```
+export BERT_VOCAB=path-to/scibert_scivocab_uncased.vocab
+export BERT_WEIGHTS=path-to/scibert_scivocab_uncased.tar.gz
+```
+
+Finally run the script:
+
+```
+./scibert/train_allennlp_local.sh [serialization-directory]
+```
+
+Where `[serialization-directory]` is the path to an output directory where the model files will be stored. 
 
 ### Citing
 
