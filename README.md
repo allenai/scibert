@@ -13,6 +13,7 @@
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/scibert-pretrained-contextualized-embeddings/dependency-parsing-genia-uas)](https://paperswithcode.com/sota/dependency-parsing-genia-uas?p=scibert-pretrained-contextualized-embeddings)
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/scibert-pretrained-contextualized-embeddings/named-entity-recognition-jnlpba)](https://paperswithcode.com/sota/named-entity-recognition-jnlpba?p=scibert-pretrained-contextualized-embeddings)
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/scibert-pretrained-contextualized-embeddings/sentence-classification-pubmed-20k-rct)](https://paperswithcode.com/sota/sentence-classification-pubmed-20k-rct?p=scibert-pretrained-contextualized-embeddings)
+
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/scibert-pretrained-contextualized-embeddings/sentence-classification-scicite)](https://paperswithcode.com/sota/sentence-classification-scicite?p=scibert-pretrained-contextualized-embeddings)
 
 
