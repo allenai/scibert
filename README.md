@@ -53,7 +53,7 @@ To run experiments on different tasks and reproduce our results in the [paper](h
 
 which will install dependencies like [AllenNLP](https://github.com/allenai/allennlp/).
 
-Use the `scibert/train_allennlp_local.sh` script as an example of how to run an experiment (you'll need to modify paths and variable names like `TASK` and `DATASET`).
+Use the `scibert/scripts/train_allennlp_local.sh` script as an example of how to run an experiment (you'll need to modify paths and variable names like `TASK` and `DATASET`).
 
 We include a broad set of scientific nlp datasets under the `data/` directory across the following tasks. Each task has a sub-directory of available datasets.
 ```
@@ -95,7 +95,7 @@ export BERT_WEIGHTS=path-to/scibert_scivocab_uncased.tar.gz
 Finally run the script:
 
 ```
-./scibert/train_allennlp_local.sh [serialization-directory]
+./scibert/scripts/train_allennlp_local.sh [serialization-directory]
 ```
 
 Where `[serialization-directory]` is the path to an output directory where the model files will be stored. 
