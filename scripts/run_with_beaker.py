@@ -21,7 +21,7 @@ from allennlp.common.params import Params
 
 def main(param_file: str, args: argparse.Namespace):
     commit = subprocess.check_output(["git", "rev-parse", "HEAD"], universal_newlines=True).strip()
-    image = f"allennlp/allennlp:{commit}"
+    image = f"s2-research/scibert:{commit}"
     overrides = ""
 
     # Reads params and sets environment.
@@ -44,16 +44,16 @@ def main(param_file: str, args: argparse.Namespace):
         dirty_hash = "%x" % random_int
         image += "-" + dirty_hash
 
-    if args.blueprint:
-        blueprint = args.blueprint
-        print(f"Using the specified blueprint: {blueprint}")
+    if args.image:
+        image = args.image
+        print(f"Using the specified image: {image}")
     else:
         print(f"Building the Docker image ({image})...")
         subprocess.run(f'docker build -t {image} .', shell=True, check=True)
 
-        print(f"Create a Beaker blueprint...")
-        blueprint = subprocess.check_output(f'beaker blueprint create --quiet {image}', shell=True, universal_newlines=True).strip()
-        print(f"  Blueprint created: {blueprint}")
+        print(f"Create a Beaker image...")
+        image = subprocess.check_output(f'beaker image create --quiet {image}', shell=True, universal_newlines=True).strip()
+        print(f"  image created: {image}")
 
     config_dataset_id = subprocess.check_output(f'beaker dataset create --quiet {param_file}', shell=True, universal_newlines=True).strip()
 
@@ -66,9 +66,11 @@ def main(param_file: str, args: argparse.Namespace):
             "-s",
             "/output",
             "--file-friendly-logging",
-            "--include-package",
-            "sci_bert"
         ]
+
+    if args.include_package:
+        allennlp_command.append("--include-package")
+        allennlp_command.append(args.include_package)
 
     dataset_mounts = []
     for source in args.source + [f"{config_dataset_id}:/config.json"]:
@@ -91,7 +93,7 @@ def main(param_file: str, args: argparse.Namespace):
         requirements["gpuCount"] = int(args.gpu_count)
     config_spec = {
         "description": args.desc,
-        "blueprint": blueprint,
+        "image": image,
         "resultPath": "/output",
         "args": allennlp_command,
         "datasetMounts": dataset_mounts,
@@ -130,13 +132,14 @@ if __name__ == "__main__":
     parser.add_argument('--name', type=str, help='A name for the experiment.')
     parser.add_argument('--spec_output_path', type=str, help='The destination to write the experiment spec.')
     parser.add_argument('--dry-run', action='store_true', help='If specified, an experiment will not be created.')
-    parser.add_argument('--blueprint', type=str, help='The Blueprint to use (if unspecified one will be built)')
+    parser.add_argument('--image', type=str, help='The image to use (if unspecified one will be built)')
     parser.add_argument('--desc', type=str, help='A description for the experiment.')
     parser.add_argument('--env', action='append', default=[], help='Set environment variables (e.g. NAME=value or NAME)')
     parser.add_argument('--source', action='append', default=[], help='Bind a remote data source (e.g. source-id:/target/path)')
     parser.add_argument('--cpu', help='CPUs to reserve for this experiment (e.g., 0.5)')
     parser.add_argument('--gpu-count', default=1, help='GPUs to use for this experiment (e.g., 1 (default))')
     parser.add_argument('--memory', help='Memory to reserve for this experiment (e.g., 1GB)')
+    parser.add_argument('--include-package', help='Package to include with Allennlp')
     args = parser.parse_args()
 
     main(args.param_file, args)

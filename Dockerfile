@@ -1,4 +1,4 @@
-FROM python:3.6.8-jessie
+FROM python:3.6.8-stretch
 
 ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
@@ -14,8 +14,6 @@ ENV NVIDIA_VISIBLE_DEVICES all
 ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
 LABEL com.nvidia.volumes.needed="nvidia_driver"
 
-WORKDIR /stage/allennlp
-
 # Install base packages.
 RUN apt-get update --fix-missing && apt-get install -y \
     bzip2 \
@@ -30,27 +28,20 @@ RUN apt-get update --fix-missing && apt-get install -y \
     libxrender1 \
     wget \
     libevent-dev \
-    build-essential && \
+    build-essential \
+    openjdk-8-jdk && \
     rm -rf /var/lib/apt/lists/*
 
-# Install Java.
-RUN echo "deb http://http.debian.net/debian jessie-backports main" >>/etc/apt/sources.list
-RUN apt-get update
-RUN apt-get install -y -t jessie-backports openjdk-8-jdk
-
 WORKDIR /work
-COPY requirements.txt /work/requirements.txt
 
-RUN pip install -r /work/requirements.txt && \
-    pip install pytest && \
-    python3.6 -m spacy download en && \
-    python3.6 -m spacy download en_core_web_md
+COPY requirements.txt .
+RUN pip install -r requirements.txt
 
-# Application Setup
-ENV PYTHONPATH /work
+RUN python -m spacy download en_core_web_sm
 
-COPY scibert /work/scibert/
-COPY data/ /work/data/
-
+COPY data/ data/
+COPY scibert scibert/
+COPY scripts/ scripts/
+COPY allennlp_config allennlp_config
 
 CMD ["/bin/bash"]
