@@ -38,13 +38,13 @@
   "iterator": {
     "type": "bucket",
     "sorting_keys": [["text", "num_tokens"]],
-    "batch_size": 32, // std.extVar("BATCH_SIZE"),
+    "batch_size": 16, // std.extVar("BATCH_SIZE"),
     "cache_instances": true,
   },
 
   "trainer": {
     "num_epochs": 15,
-    // "gradient_accumulation_batch_size": 32,
+    "gradient_accumulation_batch_size": 32,
     "grad_clipping": 1.0,
     "patience": 3,
     "validation_metric": "+average_F1",

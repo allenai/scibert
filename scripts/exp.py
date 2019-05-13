@@ -55,8 +55,8 @@ def main(desc: str, not_dry_run: bool = False):
                     # 16410,
                     # 18210,
                     # 18310,
-                    # 18410,
-                    # 18510,
+                    18410,
+                    18510,
                     18610
                     ]:
 
@@ -64,15 +64,15 @@ def main(desc: str, not_dry_run: bool = False):
             numpy_seed = pytorch_seed // 10
 
             for model in [
-                        # 'bertbase_basevocab_uncased',
-                        # 'bertbase_basevocab_cased',
-                        # 'biobert_pmc_basevocab_cased',
-                        # 'biobert_pubmed_pmc_basevocab_cased',
-                        # 'biobert_pubmed_basevocab_cased',
-                        # 'scibert_basevocab_uncased_512',
-                        # 'scibert_basevocab_cased_512',
-                        'scibert_scivocab_uncased_512',
-                        # 'scibert_scivocab_cased_512',
+                        'bertbase_basevocab_uncased',
+                        'bertbase_basevocab_cased',
+                        'biobert_pmc_basevocab_cased',
+                        'biobert_pubmed_pmc_basevocab_cased',
+                        'biobert_pubmed_basevocab_cased',
+                        'scibert_basevocab_uncased',
+                        'scibert_basevocab_cased',
+                        'scibert_scivocab_uncased',
+                        'scibert_scivocab_cased',
                         ]:
 
                 for with_finetuning in ['_finetune', ]: # , '']:
@@ -89,27 +89,18 @@ def main(desc: str, not_dry_run: bool = False):
                         assert False
 
                     dataset_size = dataset_sizes[dataset]
-
-                    # determine casing based on model
+                    # determine casing from model name
                     if 'uncased' in model:
                         is_lowercase = 'true'
-                        vocab_file = 'uncased'
                     else:
                         is_lowercase = 'false'
-                        vocab_file = 'cased'
-
-                    # determine vocab file based on model
-                    if 'basevocab' in model:
-                        vocab_file = 'basevocab_' + vocab_file
-                    else:
-                        vocab_file = 'scivocab_' + vocab_file
 
                     # config file
                     config_file = f'allennlp_config/{task}{with_finetuning}.json'
 
                     # bert files
-                    bert_vocab = f'/bert_vocab/{vocab_file}.vocab'
-                    bert_weights = f'/bert_weights/{model}.tar.gz'
+                    bert_vocab = f'/scibert/{model}/vocab.txt'
+                    bert_weights = f'/scibert/{model}/weights.tar.gz'
 
                     # data files
                     train_path = f'data/{task}/{dataset}/train.txt'
@@ -119,8 +110,7 @@ def main(desc: str, not_dry_run: bool = False):
                     print(task, dataset, seed, bert_weights, bert_vocab, train_path)
                     cmd = ' '.join(['python', 'scripts/run_with_beaker.py',
                         f'{config_file}',
-                        '--source ds_dpsaxi4ltpw9:/bert_vocab/',
-                        '--source ds_jda1d19zqy6z:/bert_weights/',
+                        '--source ds_7jfhvq3h6sad:/scibert/',
                         '--include-package scibert',
                         '--env CUDA_DEVICE=0',
                         f'--env DATASET_SIZE={dataset_size}',
