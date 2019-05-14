@@ -49,7 +49,7 @@ class BertSeqTagger(Model):
         self.tag_projection_layer = TimeDistributed(Linear(self.text_field_embedder.get_output_dim(), self.num_classes))
         if use_crf:
             constraints = allowed_transitions(label_encoding, labels)
-            self.crf = ConditionalRandomField(self.num_tags, constraints=constraints, include_start_end_transitions=True)
+            self.crf = ConditionalRandomField(self.num_classes, constraints=constraints, include_start_end_transitions=True)
         else:
             self.crf = None
 
