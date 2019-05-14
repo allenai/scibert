@@ -12,7 +12,7 @@ from allennlp.modules.conditional_random_field import allowed_transitions
 from allennlp.models.model import Model
 from allennlp.nn import InitializerApplicator, RegularizerApplicator
 import allennlp.nn.util as util
-from allennlp.training.metrics import CategoricalAccuracy, SpanBasedF1Measure
+from allennlp.training.metrics import CategoricalAccuracy, SpanBasedF1Measure, F1Measure
 
 
 @Model.register("bert_crf_tagger")
@@ -112,6 +112,8 @@ class BertCrfTagger(Model):
                 "accuracy": CategoricalAccuracy(),
                 "accuracy3": CategoricalAccuracy(top_k=3)
         }
+        for index, label in self.vocab.get_index_to_token_vocabulary(label_namespace).items():
+            self.metrics['F1_' + label] = F1Measure(positive_label=index)
         self.calculate_span_f1 = calculate_span_f1
         if calculate_span_f1:
             if not label_encoding:
@@ -209,7 +211,19 @@ class BertCrfTagger(Model):
 
     @overrides
     def get_metrics(self, reset: bool = False) -> Dict[str, float]:
-        metrics_to_return = {metric_name: metric.get_metric(reset) for metric_name, metric in self.metrics.items()}
+        metrics_to_return = {}
+
+        total_f1, total_classes = 0
+        for metric_name, metric_obj in self.metrics.items():
+            if metric_name.startswith('accuracy'):
+                metrics_to_return[metric_name] = metric_obj.get_metric(reset)
+            elif metric_name.startswith('F1_'):
+                p, r, f1 = metric_obj.get_metric(reset)
+                metrics_to_return[metric_name] = f1
+                total_f1 += f1
+                total_classes += 1
+        metrics_to_return['avg_f1'] = total_f1 / total_classes
+
         if self.calculate_span_f1:
             f1_dict = self._f1_metric.get_metric(reset=reset)
             if self._verbose_metrics:
