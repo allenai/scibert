@@ -7,7 +7,7 @@
   "dataset_reader": {
     "type": "conll2003",
     "tag_label": "ner",
-    "coding_scheme": "BIO",
+    "coding_scheme": "BIOUL",
     "token_indexers": {
       "bert": {
           "type": "bert-pretrained",
@@ -27,7 +27,7 @@
   "evaluate_on_test": true,
   "model": {
     "type": "bert_seq_tagger",
-    "label_encoding": "BIOUL",
+    "label_encoding": "BIO",
     "calculate_span_f1": true,
     "dropout": 0.2,
     "text_field_embedder": {
