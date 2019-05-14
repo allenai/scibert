@@ -49,6 +49,9 @@ class BertSeqTagger(Model):
                                      "no label_encoding was specified.")
 
         self.accuracy = CategoricalAccuracy()
+        self.metrics = {
+            'accuracy': self.accuracy
+        }
 
         if calculate_span_f1 or label_encoding:
             self._f1_metric = SpanBasedF1Measure(vocab,
