@@ -46,13 +46,13 @@
   "iterator": {
     "type": "bucket",
     "sorting_keys": [["tokens", "num_tokens"]],
-    "batch_size": 16,
+    "batch_size": 32,
     "cache_instances": true
    },
   "trainer": {
     "optimizer": {
         "type": "bert_adam",
-        "lr": 1e-5,
+        "lr": 2e-5,
         "t_total": -1,
         "max_grad_norm": 1.0,
         "weight_decay": 0.01,
@@ -66,9 +66,9 @@
     "should_log_learning_rate": true,
     "learning_rate_scheduler": {
       "type": "slanted_triangular",
-      "num_epochs": 15,
+      "num_epochs": 3,
       "num_steps_per_epoch": std.parseInt(std.extVar("DATASET_SIZE")) / 32,
-      "cut_frac": 0.3
+      "cut_frac": 0.1
     },
     "gradient_accumulation_batch_size": 32,
     "grad_clipping": 1.0,
