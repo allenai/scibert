@@ -26,7 +26,7 @@
     "label_encoding": "BIOUL",
     "constrain_crf_decoding": true,
     "calculate_span_f1": true,
-    "dropout": 0.2,
+    "dropout": 0.1,
     "include_start_end_transitions": false,
     "text_field_embedder": {
         "allow_unmatched_keys": true,
@@ -68,6 +68,7 @@
       "type": "slanted_triangular",
       "num_epochs": 15,
       "num_steps_per_epoch": std.parseInt(std.extVar("DATASET_SIZE")) / 32,
+      "cut_frac": 0.3
     },
     "gradient_accumulation_batch_size": 32,
     "grad_clipping": 1.0,

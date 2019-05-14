@@ -69,7 +69,7 @@ class BertCrfTagger(Model):
                  include_start_end_transitions: bool = True,
                  constrain_crf_decoding: bool = None,
                  calculate_span_f1: bool = None,
-                 dropout: float = 0.2,
+                 dropout: float = 0.1,
                  verbose_metrics: bool = False,
                  initializer: InitializerApplicator = InitializerApplicator(),
                  regularizer: Optional[RegularizerApplicator] = None) -> None:
