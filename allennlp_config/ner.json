@@ -82,6 +82,6 @@
     "num_epochs": 75,
     "grad_norm": 5.0,
     "patience": 15,
-    "cuda_device": 0
+    "cuda_device": std.parseInt(std.extVar("CUDA_DEVICE"))
   }
 }

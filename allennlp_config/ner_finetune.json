@@ -22,11 +22,12 @@
   "test_data_path": std.extVar("TEST_PATH"),
   "evaluate_on_test": true,
   "model": {
-    "type": "bert_seq_tagger",
-    "label_encoding": "BIO",
+    "type": "bert_crf_tagger",
+    "label_encoding": "BIOUL",
+    "constrain_crf_decoding": true,
     "calculate_span_f1": true,
     "dropout": 0.2,
-    "use_crf": true,
+    "include_start_end_transitions": false,
     "text_field_embedder": {
         "allow_unmatched_keys": true,
         "embedder_to_indexer_map": {
@@ -56,10 +57,10 @@
         "max_grad_norm": 1.0,
         "weight_decay": 0.01,
         "parameter_groups": [
-          [["bias", "LayerNorm.bias", "LayerNorm.weight", "layer_norm.weight"], {"weight_decay": 0.0}],
+          [["bias", "LayerNorm.bias", "LayerNorm.weight", "layer_norm.weight"], {"weight_decay": 0.0}]
         ]
     },
-    "validation_metric": "+accuracy",
+    "validation_metric": "+f1-measure-overall",
     "num_serialized_models_to_keep": 3,
     "num_epochs": 15,
     "should_log_learning_rate": true,
