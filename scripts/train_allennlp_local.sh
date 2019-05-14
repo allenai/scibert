@@ -2,17 +2,13 @@
 
 #
 # edit these variables before running script
-DATASET='sciie-relation-extraction'
-TASK='text_classification'
+DATASET='bc5cdr'
+TASK='ner'
 with_finetuning='_finetune'  # or '' for not fine tuning
-dataset_size=3219
+dataset_size=4942
 
-export BERT_VOCAB=/net/nfs.corp/s2-research/scibert/scivocab_uncased.vocab
-export BERT_WEIGHTS=/net/nfs.corp/s2-research/scibert/scibert_scivocab_uncased.tar.gz
-
-# export REQUIRES_GRAD='all'
-# export TOP_LAYER_ONLY='true'
-# export BATCH_SIZE=8
+export BERT_VOCAB=/net/nfs.corp/s2-research/scibert/scivocab_cased.vocab
+export BERT_WEIGHTS=/net/nfs.corp/s2-research/scibert/scibert_scivocab_cased.tar.gz
 
 export DATASET_SIZE=dataset_size
 
@@ -25,7 +21,7 @@ export SEED=$SEED
 export PYTORCH_SEED=$PYTORCH_SEED
 export NUMPY_SEED=$NUMPY_SEED
 
-export IS_LOWERCASE=true
+export IS_LOWERCASE=false
 export TRAIN_PATH=data/$TASK/$DATASET/train.txt
 export DEV_PATH=data/$TASK/$DATASET/dev.txt
 export TEST_PATH=data/$TASK/$DATASET/test.txt
