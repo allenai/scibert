@@ -10,7 +10,7 @@ dataset_size=4942
 export BERT_VOCAB=/net/nfs.corp/s2-research/scibert/scivocab_cased.vocab
 export BERT_WEIGHTS=/net/nfs.corp/s2-research/scibert/scibert_scivocab_cased.tar.gz
 
-export DATASET_SIZE=dataset_size
+export DATASET_SIZE=$dataset_size
 
 CONFIG_FILE=allennlp_config/"$TASK""$with_finetuning".json
 
