@@ -23,9 +23,10 @@
   "evaluate_on_test": true,
   "model": {
     "type": "bert_seq_tagger",
-//    "label_encoding": "BIOUL",
-//    "calculate_span_f1": true,
+    "label_encoding": "BIO",
+    "calculate_span_f1": true,
     "dropout": 0.2,
+    "use_crf": true,
     "text_field_embedder": {
         "allow_unmatched_keys": true,
         "embedder_to_indexer_map": {
