@@ -7,7 +7,7 @@
   "dataset_reader": {
     "type": "conll2003",
     "tag_label": "ner",
-    "coding_scheme": "BIOUL",
+    "coding_scheme": "BIO",
     "token_indexers": {
       "bert": {
           "type": "bert-pretrained",
