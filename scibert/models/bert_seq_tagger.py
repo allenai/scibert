@@ -12,7 +12,7 @@ from allennlp.modules import Seq2SeqEncoder, TimeDistributed, TextFieldEmbedder
 from allennlp.models.model import Model
 from allennlp.nn import InitializerApplicator, RegularizerApplicator
 from allennlp.nn.util import get_text_field_mask, sequence_cross_entropy_with_logits
-from allennlp.training.metrics import CategoricalAccuracy, SpanBasedF1Measure
+from allennlp.training.metrics import CategoricalAccuracy, SpanBasedF1Measure, F1Measure
 from allennlp.data.dataset_readers.dataset_utils.span_utils import InvalidTagSequence
 
 
@@ -53,6 +53,9 @@ class BertSeqTagger(Model):
         self.metrics = {
             'accuracy': self.accuracy
         }
+        # Add F1 score for individual labels to metrics
+        for index, label in self.vocab.get_index_to_token_vocabulary(self.label_namespace).items():
+            self.metrics[label] = F1Measure(positive_label=index)
 
         if calculate_span_f1 or label_encoding:
             self._f1_metric = SpanBasedF1Measure(vocab,
@@ -116,10 +119,7 @@ class BertSeqTagger(Model):
             for metric in self.metrics.values():
                 metric(logits, tags, mask.float())
             if self._f1_metric is not None:
-                try:
-                    self._f1_metric(logits, tags, mask.float())
-                except InvalidTagSequence as e:
-                    import pdb; pdb.set_trace()
+                self._f1_metric(logits, tags, mask.float())
             output_dict["loss"] = loss
 
         if metadata is not None:
