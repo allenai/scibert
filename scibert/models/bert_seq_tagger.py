@@ -39,7 +39,7 @@ class BertSeqTagger(Model):
         self.text_field_embedder = text_field_embedder
         self.num_classes = self.vocab.get_vocab_size(label_namespace)
         self._verbose_metrics = verbose_metrics
-        self.tag_projection_layer = TimeDistributed(Linear(self.encoder.get_output_dim(), self.num_classes))
+        self.tag_projection_layer = TimeDistributed(Linear(self.text_field_embedder.get_output_dim(), self.num_classes))
 
         # We keep calculate_span_f1 as a constructor argument for API consistency with
         # the CrfTagger, even it is redundant in this class
