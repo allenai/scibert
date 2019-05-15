@@ -5,9 +5,7 @@
   "pytorch_seed": std.parseInt(std.extVar("PYTORCH_SEED")),
   "numpy_seed": std.parseInt(std.extVar("NUMPY_SEED")),
   "dataset_reader": {
-    "type": "conll2003",
-    "tag_label": "ner",
-    "coding_scheme": "BIOUL",
+    "type": "ebmnlp",
     "token_indexers": {
       "bert": {
           "type": "bert-pretrained",
@@ -23,9 +21,8 @@
   "evaluate_on_test": true,
   "model": {
     "type": "bert_crf_tagger",
-    "label_encoding": "BIOUL",
-    "constrain_crf_decoding": true,
-    "calculate_span_f1": true,
+    "constrain_crf_decoding": false,
+    "calculate_span_f1": false,
     "dropout": 0.1,
     "include_start_end_transitions": false,
     "text_field_embedder": {
