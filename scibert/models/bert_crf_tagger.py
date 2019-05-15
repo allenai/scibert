@@ -213,7 +213,7 @@ class BertCrfTagger(Model):
     def get_metrics(self, reset: bool = False) -> Dict[str, float]:
         metrics_to_return = {}
 
-        total_f1, total_classes = 0
+        total_f1, total_classes = 0, 0
         for metric_name, metric_obj in self.metrics.items():
             if metric_name.startswith('accuracy'):
                 metrics_to_return[metric_name] = metric_obj.get_metric(reset)
