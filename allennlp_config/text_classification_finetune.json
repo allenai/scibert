@@ -56,8 +56,7 @@
     "learning_rate_scheduler": {
       "type": "slanted_triangular",
       "num_epochs": std.parseInt(std.extVar("NUM_EPOCHS")),
-      "num_steps_per_epoch": std.parseInt(std.extVar("DATASET_SIZE")) / std.parseInt(std.extVar("GRAD_ACCUM_BATCH_SIZE")),
-      "cut_frac": 0.1
+      "num_steps_per_epoch": std.parseInt(std.extVar("DATASET_SIZE")) / std.parseInt(std.extVar("GRAD_ACCUM_BATCH_SIZE"))
     },
     "gradient_accumulation_batch_size": std.parseInt(std.extVar("GRAD_ACCUM_BATCH_SIZE"))
     "cuda_device": std.parseInt(std.extVar("CUDA_DEVICE"))
