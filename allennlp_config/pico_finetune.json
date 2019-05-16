@@ -62,8 +62,7 @@
       "num_steps_per_epoch": std.parseInt(std.extVar("DATASET_SIZE")) / std.parseInt(std.extVar("GRAD_ACCUM_BATCH_SIZE")),
       "cut_frac": 0.1
     },
-    "gradient_accumulation_batch_size": std.parseInt(std.extVar("GRAD_ACCUM_BATCH_SIZE")),
-    "patience": 3,
+    "gradient_accumulation_batch_size": std.parseInt(std.extVar("GRAD_ACCUM_BATCH_SIZE"))
     "cuda_device": std.parseInt(std.extVar("CUDA_DEVICE"))
   }
 }
