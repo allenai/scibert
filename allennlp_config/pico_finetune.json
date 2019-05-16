@@ -63,7 +63,6 @@
       "cut_frac": 0.1
     },
     "gradient_accumulation_batch_size": 32,
-    "grad_clipping": 1.0,
     "patience": 3,
     "cuda_device": std.parseInt(std.extVar("CUDA_DEVICE"))
   }
