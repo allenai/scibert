@@ -51,9 +51,6 @@
     "optimizer": {
         "type": "bert_adam",
         "lr": 2e-5,
-        "t_total": -1,
-        "max_grad_norm": 1.0,
-        "weight_decay": 0.01,
         "parameter_groups": [
           [["bias", "LayerNorm.bias", "LayerNorm.weight", "layer_norm.weight"], {"weight_decay": 0.0}]
         ]
