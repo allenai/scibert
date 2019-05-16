@@ -10,7 +10,7 @@
           "pretrained_model": std.extVar("BERT_VOCAB"),
           "do_lowercase": std.extVar("IS_LOWERCASE"),
           "use_starting_offsets": true
-      },
+      }
     }
   },
   "train_data_path": std.extVar("TRAIN_PATH"),
@@ -23,47 +23,48 @@
     "text_field_embedder": {
         "allow_unmatched_keys": true,
         "embedder_to_indexer_map": {
-            "bert": ["bert", "bert-offsets"],
+            "bert": ["bert", "bert-offsets"]
         },
         "token_embedders": {
             "bert": {
                 "type": "bert-pretrained",
                 "pretrained_model": std.extVar("BERT_WEIGHTS"),
-                "requires_grad": 'all', // std.extVar("REQUIRES_GRAD"),
-                "top_layer_only": true, // std.extVar("TOP_LAYER_ONLY"),
-            },
+                "requires_grad": 'all',
+                "top_layer_only": true
+            }
         }
-    },
+    }
   },
   "iterator": {
     "type": "bucket",
     "sorting_keys": [["text", "num_tokens"]],
-    "batch_size": 16, // std.extVar("BATCH_SIZE"),
-    "cache_instances": true,
+    "batch_size": 16,
+    "cache_instances": true
   },
-
   "trainer": {
-    "num_epochs": 15,
-    "gradient_accumulation_batch_size": 32,
-    "grad_clipping": 1.0,
-    "patience": 3,
-    "validation_metric": "+average_F1",
-    "cuda_device": std.parseInt(std.extVar("CUDA_DEVICE")),
     "optimizer": {
         "type": "bert_adam",
-        "lr": 1e-5,
+        "lr": 2e-5,
         "t_total": -1,
         "max_grad_norm": 1.0,
         "weight_decay": 0.01,
         "parameter_groups": [
-          [["bias", "LayerNorm.bias", "LayerNorm.weight", "layer_norm.weight"], {"weight_decay": 0.0}],
-        ],
+          [["bias", "LayerNorm.bias", "LayerNorm.weight", "layer_norm.weight"], {"weight_decay": 0.0}]
+        ]
     },
+    "validation_metric": "+average_F1",
+    "num_serialized_models_to_keep": 3,
+    "num_epochs": 15,
     "should_log_learning_rate": true,
     "learning_rate_scheduler": {
       "type": "slanted_triangular",
-      "num_epochs": 15,
+      "num_epochs": 3,
       "num_steps_per_epoch": std.parseInt(std.extVar("DATASET_SIZE")) / 32,
+      "cut_frac": 0.1
     },
+    "gradient_accumulation_batch_size": 32,
+    "grad_clipping": 1.0,
+    "patience": 3,
+    "cuda_device": std.parseInt(std.extVar("CUDA_DEVICE"))
   }
 }

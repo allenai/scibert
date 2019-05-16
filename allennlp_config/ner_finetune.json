@@ -1,7 +1,5 @@
-// Configuration for a named entity recognization model based on:
-//   Peters, Matthew E. et al. “Deep contextualized word representations.” NAACL-HLT (2018).
 {
-  "random_seed":  std.parseInt(std.extVar("SEED")),
+  "random_seed": std.parseInt(std.extVar("SEED")),
   "pytorch_seed": std.parseInt(std.extVar("PYTORCH_SEED")),
   "numpy_seed": std.parseInt(std.extVar("NUMPY_SEED")),
   "dataset_reader": {
@@ -46,7 +44,7 @@
   "iterator": {
     "type": "bucket",
     "sorting_keys": [["tokens", "num_tokens"]],
-    "batch_size": 32,
+    "batch_size": 16,
     "cache_instances": true
    },
   "trainer": {
