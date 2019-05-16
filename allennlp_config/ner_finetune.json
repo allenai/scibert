@@ -44,7 +44,7 @@
   "iterator": {
     "type": "bucket",
     "sorting_keys": [["tokens", "num_tokens"]],
-    "batch_size": 16,
+    "batch_size": std.parseInt(std.extVar("GRAD_ACCUM_BATCH_SIZE")) / 2,
     "cache_instances": true
    },
   "trainer": {
@@ -62,10 +62,10 @@
     "learning_rate_scheduler": {
       "type": "slanted_triangular",
       "num_epochs": 3,
-      "num_steps_per_epoch": std.parseInt(std.extVar("DATASET_SIZE")) / 32,
+      "num_steps_per_epoch": std.parseInt(std.extVar("DATASET_SIZE")) / std.parseInt(std.extVar("GRAD_ACCUM_BATCH_SIZE")),
       "cut_frac": 0.1
     },
-    "gradient_accumulation_batch_size": 32,
+    "gradient_accumulation_batch_size": std.parseInt(std.extVar("GRAD_ACCUM_BATCH_SIZE")),
     "patience": 3,
     "cuda_device": std.parseInt(std.extVar("CUDA_DEVICE"))
   }
