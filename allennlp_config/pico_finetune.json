@@ -47,7 +47,7 @@
   "trainer": {
     "optimizer": {
         "type": "bert_adam",
-        "lr": 2e-5,
+        "lr": std.extVar("LEARNING_RATE"),
         "parameter_groups": [
           [["bias", "LayerNorm.bias", "LayerNorm.weight", "layer_norm.weight"], {"weight_decay": 0.0}]
         ]
