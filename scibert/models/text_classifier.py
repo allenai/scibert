@@ -36,6 +36,7 @@ class TextClassifier(Model):
         self.num_classes = self.vocab.get_vocab_size("labels")
         self.text_encoder = text_encoder
         self.classifier_feedforward = classifier_feedforward
+        self.prediction_layer = torch.nn.Linear(self.classifier_feedforward.get_output_dim()  , self.num_classes)
 
         self.label_accuracy = CategoricalAccuracy()
         self.label_f1_metrics = {}
@@ -80,8 +81,8 @@ class TextClassifier(Model):
         mask = util.get_text_field_mask(text)
         encoded_text = self.text_encoder(embedded_text, mask)
         pooled = self.pool(encoded_text, mask)
-
-        logits = self.classifier_feedforward(pooled)
+        ff_hidden = self.classifier_feedforward(pooled)
+        logits = self.prediction_layer(ff_hidden)
         class_probs = F.softmax(logits, dim=1)
 
         output_dict = {"logits": logits}
