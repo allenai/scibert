@@ -1,7 +1,7 @@
 import os
 import csv
 import numpy as np
-from collections import defaultdict
+from collections import defaultdict, Counter
 
 
 
@@ -123,11 +123,15 @@ for (dataset, model), hyperparam_metrics in DATASET_MODEL_TO_HYPERPARAM_METRICS.
     DATASET_MODEL_TO_BEST_HYPERPARAM[(dataset, model)] = best_hyperparam
 
 # lookup (dataset, model) test performance under best hyperparam
+BEST_HYPERPARAM_COUNTS = Counter()
 for (dataset, model), best_hyperparam in DATASET_MODEL_TO_BEST_HYPERPARAM.items():
     avg_metric = np.mean(DATASET_TO_MODEL_TO_HYPERPARAM_TO_TEST_METRICS[dataset][model][best_hyperparam]) * 100
     std_metric = np.std(DATASET_TO_MODEL_TO_HYPERPARAM_TO_TEST_METRICS[dataset][model][best_hyperparam]) * 100
     dataset = dataset.replace('data/', '').replace('/train.txt', '')
     model = model.replace('/scibert/', '').replace('/weights.tar.gz', '')
     print('\t'.join([dataset, model, str(best_hyperparam), f'{avg_metric:.2f}', f'{std_metric:.2f}']))
+    BEST_HYPERPARAM_COUNTS[best_hyperparam] += 1
+for tup in BEST_HYPERPARAM_COUNTS.most_common():
+    print(tup)
 
 
