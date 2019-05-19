@@ -50,7 +50,7 @@
   },
   "iterator": {
     "type": "bucket",
-    "sorting_keys": [["tokens", "num_tokens"]],
+    "sorting_keys": [["text", "num_tokens"]],
     "batch_size": std.parseInt(std.extVar("GRAD_ACCUM_BATCH_SIZE")) / 2,
     "cache_instances": true
   },
