@@ -8,7 +8,7 @@ from torch.nn.modules.linear import Linear
 from allennlp.data import Vocabulary
 from allennlp.models.model import Model
 from allennlp.modules import Seq2SeqEncoder, TimeDistributed, TextFieldEmbedder
-from allennlp.modules import ConditionalRandomField, FeedForward
+from allennlp.modules import ConditionalRandomField
 from allennlp.nn import InitializerApplicator, RegularizerApplicator
 import allennlp.nn.util as util
 from allennlp.training.metrics import F1Measure
@@ -31,7 +31,6 @@ class PicoCrfTagger(Model):
     def __init__(self, vocab: Vocabulary,
                  text_field_embedder: TextFieldEmbedder,
                  encoder: Seq2SeqEncoder,
-                 feedforward: Optional[FeedForward] = None,
                  include_start_end_transitions: bool = True,
                  dropout: Optional[float] = None,
                  initializer: InitializerApplicator = InitializerApplicator(),
@@ -45,10 +44,9 @@ class PicoCrfTagger(Model):
         self.text_field_embedder = text_field_embedder
         self.encoder = encoder
         self.dropout = torch.nn.Dropout(dropout) if dropout else None
-        self.feedforward = feedforward
 
         # crf
-        output_dim = self.encoder.get_output_dim() if feedforward is None else feedforward.get_output_dim()
+        output_dim = self.encoder.get_output_dim()
         self.tag_projection_layer = TimeDistributed(Linear(output_dim, self.num_tags))
         self.crf = ConditionalRandomField(self.num_tags, constraints=None, include_start_end_transitions=include_start_end_transitions)
 
@@ -63,7 +61,7 @@ class PicoCrfTagger(Model):
     @overrides
     def forward(self,
                 tokens: Dict[str, torch.LongTensor],
-                labels: torch.LongTensor = None,
+                tags: torch.LongTensor = None,
                 metadata: List[Dict[str, Any]] = None,
                 **kwargs) -> Dict[str, torch.Tensor]:
 
@@ -78,22 +76,17 @@ class PicoCrfTagger(Model):
         if self.dropout:
             encoded_text = self.dropout(encoded_text)
 
-        # (batch, tokens, dim)
-        if self.feedforward is not None:
-            encoded_text = self.feedforward(encoded_text)
-
-        # do crf
         logits = self.tag_projection_layer(encoded_text)
-
-        # decoding:  just get the tags and ignore the score.
         best_paths = self.crf.viterbi_tags(logits, mask)
+
+        # Just get the tags and ignore the score.
         predicted_tags = [x for x, y in best_paths]
 
-        output = {"logits": logits, "mask": mask, "labels": predicted_tags}
+        output = {"logits": logits, "mask": mask, "tags": predicted_tags}
 
-        if labels is not None:
+        if tags is not None:
             # Add negative log-likelihood as loss
-            log_likelihood = self.crf(logits, labels, mask)
+            log_likelihood = self.crf(logits, tags, mask)
             output["loss"] = -log_likelihood
 
             # Represent viterbi tags as "class probabilities" that we can
@@ -104,11 +97,11 @@ class PicoCrfTagger(Model):
                     class_probabilities[i, j, tag_id] = 1
 
             for metric in self.metrics.values():
-                metric(class_probabilities, labels, mask.float())
-
+                metric(class_probabilities, tags, mask.float())
+            if self.calculate_span_f1:
+                self._f1_metric(class_probabilities, tags, mask.float())
         if metadata is not None:
             output["words"] = [x["words"] for x in metadata]
-
         return output
 
     @overrides
@@ -118,12 +111,12 @@ class PicoCrfTagger(Model):
         ``output_dict["tags"]`` is a list of lists of tag_ids,
         so we use an ugly nested list comprehension.
         """
-        output_dict["labels"] = [
+        output_dict["tags"] = [
             [
                 self.vocab.get_token_from_index(tag, namespace=self.label_namespace)
                 for tag in instance_tags
             ]
-            for instance_tags in output_dict["labels"]
+            for instance_tags in output_dict["tags"]
         ]
 
         return output_dict
@@ -132,24 +125,15 @@ class PicoCrfTagger(Model):
     def get_metrics(self, reset: bool = False) -> Dict[str, float]:
         metrics_to_return = {}
 
-        sum_f1 = 0.
-        num_labels = 0.
-
-        # for each PICO label
-        for index, label in self.vocab.get_index_to_token_vocabulary(self.label_namespace).items():
-            p, r, f1 = self.metrics[label].get_metric(reset)
-            p_name = "{0}-p".format(label)
-            r_name = "{0}-r".format(label)
-            f1_name = "{0}-f1".format(label)
-
-            # compute metrics & save & accumulate
-            num_labels += 1
-            for score, metric in zip([p, r, f1], [p_name, r_name, f1_name]):
-                metrics_to_return[metric] = score 
-                if metric.endswith('f1'):
-                    sum_f1 += score
-
-        # Average across labels 
-        metrics_to_return["avg_f1"] = sum_f1 / num_labels
+        total_f1, total_classes = 0, 0
+        for metric_name, metric_obj in self.metrics.items():
+            if metric_name.startswith('accuracy'):
+                metrics_to_return[metric_name] = metric_obj.get_metric(reset)
+            elif metric_name.startswith('F1_'):
+                p, r, f1 = metric_obj.get_metric(reset)
+                metrics_to_return[metric_name] = f1
+                total_f1 += f1
+                total_classes += 1
+        metrics_to_return['avg_f1'] = total_f1 / total_classes
 
         return metrics_to_return

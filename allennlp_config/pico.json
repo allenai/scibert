@@ -18,10 +18,8 @@
   "test_data_path": std.extVar("TEST_PATH"),
   "evaluate_on_test": true,
   "model": {
-    "type": "bert_crf_tagger",
-    "constrain_crf_decoding": false,
-    "calculate_span_f1": false,
-    "dropout": 0.1,
+    "type": "pico_crf_tagger",
+    "dropout": 0.5,
     "include_start_end_transitions": false,
     "text_field_embedder": {
         "allow_unmatched_keys": true,
@@ -34,6 +32,14 @@
                 "pretrained_model": std.extVar("BERT_WEIGHTS")
             }
         }
+    },
+    "encoder": {
+        "type": "lstm",
+        "input_size": 768,
+        "hidden_size": 200,
+        "num_layers": 2,
+        "dropout": 0.5,
+        "bidirectional": true
     }
   },
   "iterator": {
