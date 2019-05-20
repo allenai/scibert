@@ -2,13 +2,13 @@
 
 #
 # edit these variables before running script
-DATASET='bc5cdr'
-TASK='ner'
-with_finetuning='_finetune'  # or '' for not fine tuning
-dataset_size=4942
+DATASET='ebmnlp'
+TASK='pico'
+with_finetuning='' #'_finetune'  # or '' for not fine tuning
+dataset_size=38124
 
-export BERT_VOCAB=/net/nfs.corp/s2-research/scibert/scibert_scivocab_cased/vocab.txt
-export BERT_WEIGHTS=/net/nfs.corp/s2-research/scibert/scibert_scivocab_cased/weights.tar.gz
+export BERT_VOCAB=/net/nfs.corp/s2-research/scibert/scibert_scivocab_uncased/vocab.txt
+export BERT_WEIGHTS=/net/nfs.corp/s2-research/scibert/scibert_scivocab_uncased/weights.tar.gz
 
 export DATASET_SIZE=$dataset_size
 
