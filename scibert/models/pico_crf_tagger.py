@@ -98,8 +98,7 @@ class PicoCrfTagger(Model):
 
             for metric in self.metrics.values():
                 metric(class_probabilities, tags, mask.float())
-            if self.calculate_span_f1:
-                self._f1_metric(class_probabilities, tags, mask.float())
+
         if metadata is not None:
             output["words"] = [x["words"] for x in metadata]
         return output
