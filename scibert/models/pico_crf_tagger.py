@@ -11,7 +11,7 @@ from allennlp.modules import Seq2SeqEncoder, TimeDistributed, TextFieldEmbedder
 from allennlp.modules import ConditionalRandomField
 from allennlp.nn import InitializerApplicator, RegularizerApplicator
 import allennlp.nn.util as util
-from allennlp.training.metrics import F1Measure
+from allennlp.training.metrics import CategoricalAccuracy, F1Measure
 
 logger = logging.getLogger(__name__)
 
@@ -50,13 +50,14 @@ class PicoCrfTagger(Model):
         self.tag_projection_layer = TimeDistributed(Linear(output_dim, self.num_tags))
         self.crf = ConditionalRandomField(self.num_tags, constraints=None, include_start_end_transitions=include_start_end_transitions)
 
-        initializer(self)
-
-        self.metrics = {}
-
-        # Add F1 score for individual labels to metrics 
+        self.metrics = {
+            "accuracy": CategoricalAccuracy(),
+            "accuracy3": CategoricalAccuracy(top_k=3)
+        }
         for index, label in self.vocab.get_index_to_token_vocabulary(self.label_namespace).items():
-            self.metrics[label] = F1Measure(positive_label=index)
+            self.metrics['F1_' + label] = F1Measure(positive_label=index)
+
+        initializer(self)
 
     @overrides
     def forward(self,
