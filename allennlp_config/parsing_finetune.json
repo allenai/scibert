@@ -45,12 +45,8 @@
         },
         "use_mst_decoding_for_validation": false,
         "encoder": {
-            "type": "stacked_bidirectional_lstm",
-            "hidden_size": 400,
-            "input_size": 788,
-            "num_layers": 3,
-            "recurrent_dropout_probability": 0.3,
-            "use_highway": true
+            "type": "dummy",
+            "input_dim": 788,
         },
         "initializer": [
             [
