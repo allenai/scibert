@@ -20,15 +20,15 @@
     "evaluate_on_test": true,
     "model": {
         "type": "biaffine_parser",
-        "arc_representation_dim": 500,
-        "dropout": 0.3,
-        "input_dropout": 0.3,
+        "arc_representation_dim": 20,
+        "dropout": 0.0,
+        "input_dropout": 0.0,
         "pos_tag_embedding": {
-            "embedding_dim": 100,
-            "sparse": true,
+            "embedding_dim": 20,
+            "sparse": false,  // changed to dense because BertAdam doesn't support sparse gradients
             "vocab_namespace": "pos"
         },
-        "tag_representation_dim": 100,
+        "tag_representation_dim": 20,
         "text_field_embedder": {
             "allow_unmatched_keys": true,
             "embedder_to_indexer_map": {
@@ -37,7 +37,9 @@
             "token_embedders": {
                 "bert": {
                     "type": "bert-pretrained",
-                    "pretrained_model": std.extVar("BERT_WEIGHTS")
+                    "pretrained_model": std.extVar("BERT_WEIGHTS"),
+                    "requires_grad": 'all',
+                    "top_layer_only": true,
                 },
             }
         },
@@ -45,7 +47,7 @@
         "encoder": {
             "type": "stacked_bidirectional_lstm",
             "hidden_size": 400,
-            "input_size": 868,
+            "input_size": 788,
             "num_layers": 3,
             "recurrent_dropout_probability": 0.3,
             "use_highway": true
@@ -104,18 +106,26 @@
     "iterator": {
       "type": "bucket",
       "sorting_keys": [["words", "num_tokens"]],
-      "batch_size": 32
+      "batch_size": std.parseInt(std.extVar("GRAD_ACCUM_BATCH_SIZE")) / 2,
     },
     "trainer": {
       "optimizer": {
-            "type": "dense_sparse_adam",
-            "betas": [0.9, 0.9]
+        "type": "bert_adam",
+        "lr": std.extVar("LEARNING_RATE"),
+        "parameter_groups": [
+            [["bias", "LayerNorm.bias", "LayerNorm.weight", "layer_norm.weight"], {"weight_decay": 0.0}]
+        ]
       },
+      "num_epochs": std.parseInt(std.extVar("NUM_EPOCHS")),
       "validation_metric": "+LAS",
       "num_serialized_models_to_keep": 3,
-      "num_epochs": 75,
-      "grad_norm": 5.0,
-      "patience": 15,
+      "should_log_learning_rate": true,
+      "learning_rate_scheduler": {
+        "type": "slanted_triangular",
+        "num_epochs": std.parseInt(std.extVar("NUM_EPOCHS")),
+        "num_steps_per_epoch": std.parseInt(std.extVar("DATASET_SIZE")) / std.parseInt(std.extVar("GRAD_ACCUM_BATCH_SIZE"))
+        },
+      "gradient_accumulation_batch_size": std.parseInt(std.extVar("GRAD_ACCUM_BATCH_SIZE")),
       "cuda_device": std.parseInt(std.extVar("CUDA_DEVICE")),
     }
 }
