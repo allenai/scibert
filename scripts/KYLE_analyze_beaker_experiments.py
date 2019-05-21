@@ -54,17 +54,21 @@ RESULTS_DIR = 'results/'
 for results_file in ['ner_lr2e5_epochs245.csv',
                      'ner_lr2e5_epochs3.csv',
                      'ner_lr5e61e55e5_epochs2345.csv',
+                     'vocab_important_for_ner.csv',
                      'pico_all_lr_epochs2345_uncased.csv',
+                     'vocab_important_for_pico.csv',
                      'cls_lr2e5_epochs3.csv',
                      'cls_lr2e5_epochs3_mag_only.csv',
                      'cls_lr2e5_epochs245.csv',
-                     'cls_lr5e61e55e5_epochs2345.csv']:
+                     'cls_lr5e61e55e5_epochs2345.csv',
+                     'vocab_important_cls.csv',
+                     'finetune_citation_intent_scibert_extra_runs_both_vocab.csv']:
     with open(os.path.join(RESULTS_DIR, results_file)) as f_in:
         reader = csv.DictReader(f_in)
         for row in reader:
             # skip model we dont care abt
             model = row['env_BERT_WEIGHTS']
-            if 'scibert_basevocab' in model:
+            if 'biobert' in model:
                 continue
 
             # get dataset & corresp metrics
@@ -98,6 +102,13 @@ for results_file in ['ner_lr2e5_epochs245.csv',
 
             DATASET_TO_MODEL_TO_HYPERPARAM_TO_DEV_METRICS[dataset][model][hyperparam].append(dev_metric)
             DATASET_TO_MODEL_TO_HYPERPARAM_TO_TEST_METRICS[dataset][model][hyperparam].append(test_metric)
+
+# how many seed runs per (dataset, model)?  averaged over hyperparam settings
+for dataset, model_to_hyperparam_to_metrics in DATASET_TO_MODEL_TO_HYPERPARAM_TO_DEV_METRICS.items():
+    print(f'{dataset}')
+    for model, hyperparam_to_metrics in model_to_hyperparam_to_metrics.items():
+        print(f'   {model}: {np.mean([len(metrics) for metrics in hyperparam_to_metrics.values()])}')
+
 
 # compute averages across seeds
 DATASET_MODEL_TO_HYPERPARAM_METRICS = defaultdict(list)
@@ -133,5 +144,10 @@ for (dataset, model), best_hyperparam in DATASET_MODEL_TO_BEST_HYPERPARAM.items(
     BEST_HYPERPARAM_COUNTS[best_hyperparam] += 1
 for tup in BEST_HYPERPARAM_COUNTS.most_common():
     print(tup)
+
+
+
+
+
 
 
