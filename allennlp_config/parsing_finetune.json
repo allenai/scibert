@@ -4,14 +4,13 @@
     "numpy_seed": std.parseInt(std.extVar("NUMPY_SEED")),
     "dataset_reader": {
         "type": "universal_dependencies",
-        "use_language_specific_pos": true,
         "token_indexers": {
           "bert": {
               "type": "bert-pretrained",
               "pretrained_model": std.extVar("BERT_VOCAB"),
               "do_lowercase": std.extVar("IS_LOWERCASE"),
               "use_starting_offsets": true
-          },
+          }
         }
     },
     "train_data_path": std.extVar("TRAIN_PATH"),
@@ -20,89 +19,35 @@
     "evaluate_on_test": true,
     "model": {
         "type": "biaffine_parser",
-        "arc_representation_dim": 20,
-        "dropout": 0.0,
-        "input_dropout": 0.0,
-        "pos_tag_embedding": {
-            "embedding_dim": 20,
-            "sparse": false,  // changed to dense because BertAdam doesn't support sparse gradients
-            "vocab_namespace": "pos"
-        },
-        "tag_representation_dim": 20,
+        "arc_representation_dim": 100,
+        "dropout": 0.1,
+        "input_dropout": 0.1,
+        "tag_representation_dim": 100,
         "text_field_embedder": {
             "allow_unmatched_keys": true,
             "embedder_to_indexer_map": {
-                "bert": ["bert", "bert-offsets"],
+                "bert": ["bert", "bert-offsets"]
             },
             "token_embedders": {
                 "bert": {
                     "type": "bert-pretrained",
                     "pretrained_model": std.extVar("BERT_WEIGHTS"),
                     "requires_grad": 'all',
-                    "top_layer_only": true,
-                },
+                    "top_layer_only": true
+                }
             }
         },
         "use_mst_decoding_for_validation": false,
         "encoder": {
             "type": "dummy",
-            "input_dim": 788,
-        },
-        "initializer": [
-            [
-                ".*feedforward.*weight",
-                {
-                    "type": "xavier_uniform"
-                }
-            ],
-            [
-                ".*feedforward.*bias",
-                {
-                    "type": "zero"
-                }
-            ],
-            [
-                ".*tag_bilinear.*weight",
-                {
-                    "type": "xavier_uniform"
-                }
-            ],
-            [
-                ".*tag_bilinear.*bias",
-                {
-                    "type": "zero"
-                }
-            ],
-            [
-                ".*weight_ih.*",
-                {
-                    "type": "xavier_uniform"
-                }
-            ],
-            [
-                ".*weight_hh.*",
-                {
-                    "type": "orthogonal"
-                }
-            ],
-            [
-                ".*bias_ih.*",
-                {
-                    "type": "zero"
-                }
-            ],
-            [
-                ".*bias_hh.*",
-                {
-                    "type": "lstm_hidden_bias"
-                }
-            ]
-        ],
+            "input_dim": 768
+        }
     },
     "iterator": {
       "type": "bucket",
       "sorting_keys": [["words", "num_tokens"]],
       "batch_size": std.parseInt(std.extVar("GRAD_ACCUM_BATCH_SIZE")) / 2,
+      "cache_instances": true
     },
     "trainer": {
       "optimizer": {
@@ -112,9 +57,9 @@
             [["bias", "LayerNorm.bias", "LayerNorm.weight", "layer_norm.weight"], {"weight_decay": 0.0}]
         ]
       },
-      "num_epochs": std.parseInt(std.extVar("NUM_EPOCHS")),
       "validation_metric": "+LAS",
       "num_serialized_models_to_keep": 3,
+      "num_epochs": std.parseInt(std.extVar("NUM_EPOCHS")),
       "should_log_learning_rate": true,
       "learning_rate_scheduler": {
         "type": "slanted_triangular",
@@ -122,6 +67,6 @@
         "num_steps_per_epoch": std.parseInt(std.extVar("DATASET_SIZE")) / std.parseInt(std.extVar("GRAD_ACCUM_BATCH_SIZE"))
         },
       "gradient_accumulation_batch_size": std.parseInt(std.extVar("GRAD_ACCUM_BATCH_SIZE")),
-      "cuda_device": std.parseInt(std.extVar("CUDA_DEVICE")),
+      "cuda_device": std.parseInt(std.extVar("CUDA_DEVICE"))
     }
 }
