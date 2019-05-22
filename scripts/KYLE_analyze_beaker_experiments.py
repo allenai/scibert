@@ -62,7 +62,10 @@ for results_file in ['ner_lr2e5_epochs245.csv',
                      'cls_lr2e5_epochs245.csv',
                      'cls_lr5e61e55e5_epochs2345.csv',
                      'vocab_important_cls.csv',
-                     'finetune_citation_intent_scibert_extra_runs_both_vocab.csv']:
+                     'finetune_citation_intent_scibert_extra_runs_both_vocab.csv',
+                     'finetune_genia_all.csv',
+                     'frozen_genia_final.csv'
+                     ]:
     with open(os.path.join(RESULTS_DIR, results_file)) as f_in:
         reader = csv.DictReader(f_in)
         for row in reader:
@@ -94,6 +97,11 @@ for results_file in ['ner_lr2e5_epochs245.csv',
                              float(row['metric_test_F1_I-INT']) +
                              float(row['metric_test_F1_I-OUT'])
                          ) / 3
+            elif '/parsing/' in dataset:
+                # parsing picks based off LAS then report UAS
+                dev_metric = float(row['metric_best_validation_LAS'])
+                test_metric = float(row['metric_test_LAS'])
+                # test_metric = float(row['metric_test_UAS'])
 
             # get hyperparams
             num_epochs = row['env_NUM_EPOCHS']
