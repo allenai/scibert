@@ -64,6 +64,7 @@
       "type": "slanted_triangular",
       "num_epochs": 15,
       "num_steps_per_epoch": std.parseInt(std.extVar("DATASET_SIZE")) / 32,
+      "cut_frac": 0.3
     },
   }
 }
