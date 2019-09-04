@@ -46,16 +46,22 @@ for in_filename in sorted(glob.glob(f'{in_dir}/*.out')):
                     continue
 
                 if not found:
-                    r = es.search(index='paper', doc_type='paper', body={"query": {"match": { "paperAbstract": {"query": line, "operator" : "and"}}}}, _source_include='_id')
-                    hits_count = r['hits']['total']
-                    paper_id = 'no paper found'
-                    if hits_count > 0:
-                        paper_id = r['hits']['hits'][0]['_id']
-                        found = True
+                    try:
+                        r = es.search(index='paper', doc_type='paper', body={"query": {"match": { "paperAbstract": {"query": line, "operator" : "and"}}}}, _source_include='_id')
+                        hits_count = r['hits']['total']
+                        paper_id = 'no paper found'
+                        if hits_count > 0:
+                            paper_id = r['hits']['hits'][0]['_id']
+                            found = True
+                    except Exception as e:
+                        print(e)
 
                 if not found:
-                    r = es.search(index='paper', doc_type='paper', body={"query": {"match": { "bodyText": {"query": line, "operator" : "and"}}}}, _source_include='_id')
-                    hits_count = r['hits']['total']
-                    if hits_count > 0:
-                        paper_id = r['hits']['hits'][0]['_id']
-                        found = True
+                    try:
+                        r = es.search(index='paper', doc_type='paper', body={"query": {"match": { "bodyText": {"query": line, "operator" : "and"}}}}, _source_include='_id')
+                        hits_count = r['hits']['total']
+                        if hits_count > 0:
+                            paper_id = r['hits']['hits'][0]['_id']
+                            found = True
+                    except Exception as e:
+                        print(e)
