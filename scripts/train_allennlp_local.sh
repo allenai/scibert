@@ -14,7 +14,7 @@ export BERT_WEIGHTS=/net/nfs.corp/s2-research/scibert/scibert_scivocab_uncased.t
 # export TOP_LAYER_ONLY='true'
 # export BATCH_SIZE=8
 
-export DATASET_SIZE=dataset_size
+export DATASET_SIZE=$dataset_size
 
 CONFIG_FILE=allennlp_config/"$TASK""$with_finetuning".json
 
