@@ -31,9 +31,12 @@ def _is_divider(line: str) -> bool:
 
 @DatasetReader.register("ebmnlp")
 class EBMNLPDatasetReader(DatasetReader):
-    def __init__(self, token_indexers: Dict[str, TokenIndexer] = None) -> None:
+    def __init__(self,
+                 token_indexers: Dict[str, TokenIndexer] = None,
+                 label_namespace: str = "labels") -> None:
         super().__init__()
         self._token_indexers = token_indexers or {"tokens": SingleIdTokenIndexer()}
+        self.label_namespace = label_namespace
 
     @overrides
     def _read(self, file_path: str) -> Iterable[Instance]:
@@ -60,13 +63,13 @@ class EBMNLPDatasetReader(DatasetReader):
     @overrides
     def text_to_instance(self,
                          tokens: List[Token],
-                         labels: List[str] = None):
+                         pico_tags: List[str] = None):
         sequence = TextField(tokens, self._token_indexers)
         instance_fields: Dict[str, Field] = {'tokens': sequence}
         instance_fields["metadata"] = MetadataField({"words": [x.text for x in tokens]})
         
         # Set the field 'labels' according to the specified PIO element
-        if labels is not None:
-            instance_fields['labels'] = SequenceLabelField(labels, sequence, 'labels')
+        if pico_tags is not None:
+            instance_fields['tags'] = SequenceLabelField(pico_tags, sequence, self.label_namespace)
 
         return Instance(instance_fields)

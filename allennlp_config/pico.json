@@ -1,22 +1,15 @@
-// Configuration adapted from https://gist.github.com/joelgrus/7cdb8fb2d81483a8d9ca121d9c617514
-// for BERT embeddings CRF tagger
-// Changed settings to use those specified in EBM-NLP paper
 {
-  "random_seed": std.extVar("SEED"),
-  "pytorch_seed": std.extVar("PYTORCH_SEED"),
-  "numpy_seed": std.extVar("NUMPY_SEED"),
+  "random_seed": std.parseInt(std.extVar("SEED")),
+  "pytorch_seed": std.parseInt(std.extVar("PYTORCH_SEED")),
+  "numpy_seed": std.parseInt(std.extVar("NUMPY_SEED")),
   "dataset_reader": {
     "type": "ebmnlp",
     "token_indexers": {
       "bert": {
-        "type": "bert-pretrained",
-        "pretrained_model": std.extVar("BERT_VOCAB"),
-        "do_lowercase": std.extVar("IS_LOWERCASE"),
-        "use_starting_offsets": true
-      },
-      "token_characters": {
-        "type": "characters",
-        "min_padding_length": 3
+          "type": "bert-pretrained",
+          "pretrained_model": std.extVar("BERT_VOCAB"),
+          "do_lowercase": std.extVar("IS_LOWERCASE"),
+          "use_starting_offsets": true
       }
     }
   },
@@ -26,37 +19,23 @@
   "evaluate_on_test": true,
   "model": {
     "type": "pico_crf_tagger",
-    "include_start_end_transitions": false,
     "dropout": 0.5,
+    "include_start_end_transitions": false,
     "text_field_embedder": {
         "allow_unmatched_keys": true,
         "embedder_to_indexer_map": {
-            "bert": ["bert", "bert-offsets"],
-            "token_characters": ["token_characters"]
+            "bert": ["bert", "bert-offsets"]
         },
         "token_embedders": {
             "bert": {
                 "type": "bert-pretrained",
                 "pretrained_model": std.extVar("BERT_WEIGHTS")
-            },
-            "token_characters": {
-                  "type": "character_encoding",
-                  "embedding": {
-                      "embedding_dim": 16
-                  },
-                  "encoder": {
-                      "type": "cnn",
-                      "embedding_dim": 16,
-                      "num_filters": 128,
-                      "ngram_filter_sizes": [3],
-                      "conv_layer_activation": "relu"
-                  }
             }
         }
     },
     "encoder": {
         "type": "lstm",
-        "input_size": 768 + 128,
+        "input_size": 768,
         "hidden_size": 200,
         "num_layers": 2,
         "dropout": 0.5,
@@ -65,19 +44,26 @@
   },
   "iterator": {
     "type": "bucket",
-    "sorting_keys": [["text", "num_tokens"]],
-    "batch_size": 64
-  },
+    "sorting_keys": [["tokens", "num_tokens"]],
+    "batch_size": std.parseInt(std.extVar("GRAD_ACCUM_BATCH_SIZE")) / 2,
+    "cache_instances": true
+   },
   "trainer": {
     "optimizer": {
-        "type": "adam",
-        "lr": 0.001
+        "type": "bert_adam",
+        "lr": std.extVar("LEARNING_RATE")
     },
     "validation_metric": "+avg_f1",
     "num_serialized_models_to_keep": 3,
-    "num_epochs": 15,
-    "grad_norm": 5.0,
-    "patience": 15,
-    "cuda_device": 0
+    "num_epochs": std.parseInt(std.extVar("NUM_EPOCHS")),
+    "should_log_learning_rate": true,
+//    "learning_rate_scheduler": {
+//      "type": "slanted_triangular",
+//      "num_epochs": std.parseInt(std.extVar("NUM_EPOCHS")),
+//      "num_steps_per_epoch": std.parseInt(std.extVar("DATASET_SIZE")) / std.parseInt(std.extVar("GRAD_ACCUM_BATCH_SIZE"))
+//    },
+    "gradient_accumulation_batch_size": std.parseInt(std.extVar("GRAD_ACCUM_BATCH_SIZE")),
+    "patience": 10,
+    "cuda_device": std.parseInt(std.extVar("CUDA_DEVICE"))
   }
 }

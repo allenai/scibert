@@ -3,8 +3,8 @@
   "pytorch_seed": std.parseInt(std.extVar("PYTORCH_SEED")),
   "numpy_seed": std.parseInt(std.extVar("NUMPY_SEED")),
   "dataset_reader": {
-    "type": "classification_dataset_reader",
-     "token_indexers": {
+    "type": "ebmnlp",
+    "token_indexers": {
       "bert": {
           "type": "bert-pretrained",
           "pretrained_model": std.extVar("BERT_VOCAB"),
@@ -18,8 +18,11 @@
   "test_data_path": std.extVar("TEST_PATH"),
   "evaluate_on_test": true,
   "model": {
-    "type": "text_classifier",
-    "verbose_metrics": true,
+    "type": "bert_crf_tagger",
+    "constrain_crf_decoding": false,
+    "calculate_span_f1": false,
+    "dropout": 0.1,
+    "include_start_end_transitions": false,
     "text_field_embedder": {
         "allow_unmatched_keys": true,
         "embedder_to_indexer_map": {
@@ -28,49 +31,37 @@
         "token_embedders": {
             "bert": {
                 "type": "bert-pretrained",
-                "pretrained_model": std.extVar("BERT_WEIGHTS")
+                "pretrained_model": std.extVar("BERT_WEIGHTS"),
+                "requires_grad": 'all',
+                "top_layer_only": true
             }
         }
-    },
-      "text_encoder": {
-      "type": "lstm",
-      "input_size": 768,
-      "hidden_size": 200,
-      "num_layers": 2,
-      "dropout": 0.5,
-      "bidirectional": true
-    },
-    "classifier_feedforward": {
-      "input_dim": 400,
-      "num_layers": 1,
-      "hidden_dims": [200],
-      "activations": ["relu"],
-      "dropout": [0.5]
     }
   },
   "iterator": {
     "type": "bucket",
-    "sorting_keys": [["text", "num_tokens"]],
+    "sorting_keys": [["tokens", "num_tokens"]],
     "batch_size": std.parseInt(std.extVar("GRAD_ACCUM_BATCH_SIZE")) / 2,
     "cache_instances": true
-  },
+   },
   "trainer": {
     "optimizer": {
         "type": "bert_adam",
-        "lr": std.extVar("LEARNING_RATE")
+        "lr": std.extVar("LEARNING_RATE"),
+        "parameter_groups": [
+          [["bias", "LayerNorm.bias", "LayerNorm.weight", "layer_norm.weight"], {"weight_decay": 0.0}]
+        ]
     },
-    "validation_metric": "+average_F1",
+    "validation_metric": "+avg_f1",
     "num_serialized_models_to_keep": 3,
     "num_epochs": std.parseInt(std.extVar("NUM_EPOCHS")),
     "should_log_learning_rate": true,
-//    NOTE:  According to AllenNLP docs, slanted_triangular doesnt make much sense w/ high num epochs & early stopping
-//    "learning_rate_scheduler": {
-//      "type": "slanted_triangular",
-//      "num_epochs": std.parseInt(std.extVar("NUM_EPOCHS")),
-//      "num_steps_per_epoch": std.parseInt(std.extVar("DATASET_SIZE")) / std.parseInt(std.extVar("GRAD_ACCUM_BATCH_SIZE"))
-//    },
+    "learning_rate_scheduler": {
+      "type": "slanted_triangular",
+      "num_epochs": std.parseInt(std.extVar("NUM_EPOCHS")),
+      "num_steps_per_epoch": std.parseInt(std.extVar("DATASET_SIZE")) / std.parseInt(std.extVar("GRAD_ACCUM_BATCH_SIZE"))
+    },
     "gradient_accumulation_batch_size": std.parseInt(std.extVar("GRAD_ACCUM_BATCH_SIZE")),
-    "patience": 10,
     "cuda_device": std.parseInt(std.extVar("CUDA_DEVICE"))
   }
 }
