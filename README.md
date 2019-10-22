@@ -102,7 +102,7 @@ Where `[serialization-directory]` is the path to an output directory where the m
 
 ### Citing
 
-If you use `SciBERT` in your research, please cite [SciBERT: Pretrained Contextualized Embeddings for Scientific Text](https://arxiv.org/abs/1903.10676).
+If you use `SciBERT` in your research, please cite [SciBERT: Pretrained Language Model for Scientific Text](https://arxiv.org/abs/1903.10676).
 ```
 @inproceedings{Beltagy2019SciBERT,
   title={SciBERT: Pretrained Language Model for Scientific Text},
