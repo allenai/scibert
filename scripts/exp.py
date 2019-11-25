@@ -16,27 +16,27 @@ import subprocess
 def main(desc: str, not_dry_run: bool = False):
 
     dataset_sizes = {
-                    'NCBI-disease': 5424,
+                    # 'NCBI-disease': 5424,
                     'bc5cdr': 4942,
-                    'JNLPBA': 18607,
-                    'sciie': 2211,
-                    'chemprot': 4169,
-                    'citation_intent': 1688,
-                    'mag': 84000,
-                    'rct-20k': 180040,
-                    'sciie-relation-extraction': 3219,
-                    'sci-cite': 7320,
-                    'ebmnlp': 38124,
-                    'genia': 14326,
+                    # 'JNLPBA': 18607,
+                    # 'sciie': 2211,
+                    # 'chemprot': 4169,
+                    # 'citation_intent': 1688,
+                    # 'mag': 84000,
+                    # 'rct-20k': 180040,
+                    # 'sciie-relation-extraction': 3219,
+                    # 'sci-cite': 7320,
+                    # 'ebmnlp': 38124,
+                    # 'genia': 14326,
                     }
 
     for dataset in [
                     # 'NCBI-disease',
-                    # 'bc5cdr',
+                    'bc5cdr',
                     # 'JNLPBA',
                     # 'sciie',
                     # 'chemprot',
-                    'citation_intent',
+                    # 'citation_intent',
                     # 'mag',
                     # #'rct-20k',
                     # 'sciie-relation-extraction',
@@ -46,15 +46,15 @@ def main(desc: str, not_dry_run: bool = False):
                 ]:
         for seed in [
                     15370,
-                    15570,
-                    15680,
-                    15780,
-                    15210,
-                    16210,
-                    16310,
-                    16410,
-                    18210,
-                    18310,
+                    # 15570,
+                    # 15680,
+                    # 15780,
+                    # 15210,
+                    # 16210,
+                    # 16310,
+                    # 16410,
+                    # 18210,
+                    # 18310,
                     # 18410,
                     # 18510,
                     # 18610
@@ -69,9 +69,9 @@ def main(desc: str, not_dry_run: bool = False):
                         # 'biobert_pmc_basevocab_cased',
                         # 'biobert_pubmed_pmc_basevocab_cased',
                         # 'biobert_pubmed_basevocab_cased',
-                        'scibert_basevocab_uncased',
+                        # 'scibert_basevocab_uncased',
                         # 'scibert_basevocab_cased',
-                        'scibert_scivocab_uncased',
+                        # 'scibert_scivocab_uncased',
                         # 'scibert_scivocab_cased',
                         ]:
 
@@ -87,17 +87,17 @@ def main(desc: str, not_dry_run: bool = False):
                         for num_epochs in [
                                             # 75      # no-finetuning
                                             2,
-                                            3,
-                                            4,
-                                            5
+                                            # 3,
+                                            # 4,
+                                            # 5
                                             ]:
 
                             for learning_rate in [
                                                     # 0.001,  # no-finetuning
-                                                    5e-6,
-                                                    1e-5,
+                                                    # 5e-6,
+                                                    # 1e-5,
                                                     2e-5,
-                                                    5e-5
+                                                    # 5e-5
                                                 ]:
 
                                 if dataset in ['NCBI-disease', 'bc5cdr', 'JNLPBA', 'sciie']:
@@ -113,17 +113,18 @@ def main(desc: str, not_dry_run: bool = False):
 
                                 dataset_size = dataset_sizes[dataset]
                                 # determine casing from model name
-                                if 'uncased' in model:
-                                    is_lowercase = 'true'
-                                else:
-                                    is_lowercase = 'false'
+                                # if 'uncased' in model:
+                                #     is_lowercase = 'true'
+                                # else:
+                                #     is_lowercase = 'false'
+                                is_lowercase = 'false'
 
                                 # config file
                                 config_file = f'allennlp_config/{task}{with_finetuning}.json'
 
                                 # bert files
-                                bert_vocab = f'/scibert/{model}/vocab.txt'
-                                bert_weights = f'/scibert/{model}/weights.tar.gz'
+                                bert_vocab = f'/bigscibert/vocab/0/vocab.txt'
+                                bert_weights = f'/bigscibert/models/2.tar.gz'
 
                                 # data files
                                 train_path = f'data/{task}/{dataset}/train.txt'
@@ -132,7 +133,7 @@ def main(desc: str, not_dry_run: bool = False):
 
                                 cmd = ' '.join(['python', 'scripts/run_with_beaker.py',
                                     f'{config_file}',
-                                    '--source ds_7jfhvq3h6sad:/scibert/',
+                                    '--source ds_mgc3m64vagl3:/bigscibert/',
                                     '--include-package scibert',
                                     f'--desc {desc}',
                                     '--env CUDA_DEVICE=0',
