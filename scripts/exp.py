@@ -10,18 +10,18 @@ import subprocess
 if __name__ == '__main__':
 
     dataset_sizes = {
-                    # 'NCBI-disease': 5424,
+                    'NCBI-disease': 5424,
                     'bc5cdr': 4942,
-                    # 'JNLPBA': 18607,
-                    # 'sciie': 2211,
-                    # 'chemprot': 4169,
-                    # 'citation_intent': 1688,
-                    # 'mag': 84000,
-                    # 'rct-20k': 180040,
-                    # 'sciie-relation-extraction': 3219,
-                    # 'sci-cite': 7320,
-                    # 'ebmnlp': 38124,
-                    # 'genia': 14326,
+                    'JNLPBA': 18607,
+                    'sciie': 2211,
+                    'chemprot': 4169,
+                    'citation_intent': 1688,
+                    'mag': 84000,
+                    'rct-20k': 180040,
+                    'sciie-relation-extraction': 3219,
+                    'sci-cite': 7320,
+                    'ebmnlp': 38124,
+                    'genia': 14326,
                     }
 
     for dataset in [
@@ -40,8 +40,8 @@ if __name__ == '__main__':
                 ]:
         for seed in [
                     15370,
-                    # 15570,
-                    # 15680,
+                    15570,
+                    15680,
                     # 15780,
                     # 15210,
                     # 16210,
@@ -58,6 +58,7 @@ if __name__ == '__main__':
             numpy_seed = pytorch_seed // 10
 
             for model in [
+                        None
                         # 'bertbase_basevocab_uncased',
                         # 'bertbase_basevocab_cased',
                         # 'biobert_pmc_basevocab_cased',
@@ -80,10 +81,10 @@ if __name__ == '__main__':
 
                         for num_epochs in [
                                             # 75      # no-finetuning
-                                            2,
-                                            # 3,
-                                            # 4,
-                                            # 5
+                                            # 2,
+                                            3,
+                                            4,
+                                            5
                                             ]:
 
                             for learning_rate in [
@@ -91,7 +92,8 @@ if __name__ == '__main__':
                                                     # 5e-6,
                                                     # 1e-5,
                                                     2e-5,
-                                                    # 5e-5
+                                                    3e-5,
+                                                    5e-5
                                                 ]:
 
                                 if dataset in ['NCBI-disease', 'bc5cdr', 'JNLPBA', 'sciie']:
@@ -127,6 +129,7 @@ if __name__ == '__main__':
 
                                 cmd = ' '.join(['python', 'scripts/run_with_beaker.py',
                                     f'{config_file}',
+                                    f'--name {dataset}_{seed}_{num_epochs}_{learning_rate}',
                                     '--source ds_mgc3m64vagl3:/bigscibert/',
                                     '--include-package scibert',
                                     '--env CUDA_DEVICE=0',
