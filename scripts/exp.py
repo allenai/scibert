@@ -25,16 +25,16 @@ if __name__ == '__main__':
                     }
 
     for dataset in [
-                    # 'NCBI-disease',
-                    'bc5cdr',
-                    # 'JNLPBA',
-                    # 'sciie',
-                    # 'chemprot',
-                    # 'citation_intent',
+                    'NCBI-disease',
+                    # 'bc5cdr',
+                    'JNLPBA',
+                    'sciie',
+                    'chemprot',
+                    'citation_intent',
                     # 'mag',
-                    # #'rct-20k',
-                    # 'sciie-relation-extraction',
-                    # 'sci-cite',
+                    # 'rct-20k',
+                    'sciie-relation-extraction',
+                    'sci-cite',
                     # 'ebmnlp',
                     # 'genia',
                 ]:
@@ -82,8 +82,8 @@ if __name__ == '__main__':
                         for num_epochs in [
                                             # 75      # no-finetuning
                                             # 2,
-                                            3,
-                                            4,
+                                            # 3,
+                                            # 4,
                                             5
                                             ]:
 
