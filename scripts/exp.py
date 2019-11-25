@@ -5,15 +5,9 @@ Alternative to `exp.sh` script because it doesn't seem to run properly on UNIX m
 """
 
 import subprocess
-import plac
-import sys
-import subprocess
 
-@plac.annotations(
-        desc=("description", "positional", None, str),
-        not_dry_run=("actually run it ?", "flag", "not_dry_run", bool),
-)
-def main(desc: str, not_dry_run: bool = False):
+
+if __name__ == '__main__':
 
     dataset_sizes = {
                     # 'NCBI-disease': 5424,
@@ -135,7 +129,6 @@ def main(desc: str, not_dry_run: bool = False):
                                     f'{config_file}',
                                     '--source ds_mgc3m64vagl3:/bigscibert/',
                                     '--include-package scibert',
-                                    f'--desc {desc}',
                                     '--env CUDA_DEVICE=0',
                                     f'--env DATASET_SIZE={dataset_size}',
                                     f'--env BERT_VOCAB={bert_vocab}',
@@ -154,8 +147,5 @@ def main(desc: str, not_dry_run: bool = False):
                                 print('\n')
                                 print(cmd)
 
-                                if not_dry_run:
-                                    completed = subprocess.run(cmd, shell=True)
-                                    print(f'returncode: {completed.returncode}')
-
-plac.call(main, sys.argv[1:])
+                                completed = subprocess.run(cmd, shell=True)
+                                print(f'returncode: {completed.returncode}')
