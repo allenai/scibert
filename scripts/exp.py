@@ -120,8 +120,9 @@ if __name__ == '__main__':
                                 config_file = f'allennlp_config/{task}{with_finetuning}.json'
 
                                 # bert files
+                                model_id = '7'
                                 bert_vocab = f'/bigscibert/vocab.txt'
-                                bert_weights = f'/bigscibert/7.tar.gz'
+                                bert_weights = f'/bigscibert/{model_id}.tar.gz'
 
                                 # data files
                                 train_path = f'data/{task}/{dataset}/train.txt'
@@ -130,7 +131,7 @@ if __name__ == '__main__':
 
                                 cmd = ' '.join(['python', 'scripts/run_with_beaker.py',
                                     f'{config_file}',
-                                    f'--name {dataset}_{seed}_{num_epochs}_{learning_rate}',
+                                    f'--name {model_id}_{dataset}_{seed}_{num_epochs}_{learning_rate}',
                                     '--source ds_ennmwk8zygn8:/bigscibert/',
                                     '--include-package scibert',
                                     '--env CUDA_DEVICE=0',
