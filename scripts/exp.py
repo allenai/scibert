@@ -26,7 +26,7 @@ if __name__ == '__main__':
 
     for dataset in [
                     'NCBI-disease',
-                    # 'bc5cdr',
+                    'bc5cdr',
                     'JNLPBA',
                     'sciie',
                     'chemprot',
@@ -81,10 +81,11 @@ if __name__ == '__main__':
 
                         for num_epochs in [
                                             # 75      # no-finetuning
-                                            # 2,
-                                            # 3,
+                                            1,
+                                            2,
+                                            3,
                                             # 4,
-                                            5
+                                            # 5
                                             ]:
 
                             for learning_rate in [
@@ -119,8 +120,8 @@ if __name__ == '__main__':
                                 config_file = f'allennlp_config/{task}{with_finetuning}.json'
 
                                 # bert files
-                                bert_vocab = f'/bigscibert/vocab/0/vocab.txt'
-                                bert_weights = f'/bigscibert/models/2.tar.gz'
+                                bert_vocab = f'/bigscibert/vocab.txt'
+                                bert_weights = f'/bigscibert/7.tar.gz'
 
                                 # data files
                                 train_path = f'data/{task}/{dataset}/train.txt'
@@ -130,7 +131,7 @@ if __name__ == '__main__':
                                 cmd = ' '.join(['python', 'scripts/run_with_beaker.py',
                                     f'{config_file}',
                                     f'--name {dataset}_{seed}_{num_epochs}_{learning_rate}',
-                                    '--source ds_mgc3m64vagl3:/bigscibert/',
+                                    '--source ds_ennmwk8zygn8:/bigscibert/',
                                     '--include-package scibert',
                                     '--env CUDA_DEVICE=0',
                                     f'--env DATASET_SIZE={dataset_size}',
