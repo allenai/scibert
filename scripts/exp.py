@@ -27,7 +27,7 @@ if __name__ == '__main__':
     for dataset in [
                     'NCBI-disease',
                     'bc5cdr',
-                    'JNLPBA',
+                    # 'JNLPBA',
                     'sciie',
                     'chemprot',
                     'citation_intent',
@@ -81,10 +81,10 @@ if __name__ == '__main__':
 
                         for num_epochs in [
                                             # 75      # no-finetuning
-                                            1,
+                                            # 1,
                                             2,
                                             3,
-                                            # 4,
+                                            4,
                                             # 5
                                             ]:
 
@@ -120,7 +120,7 @@ if __name__ == '__main__':
                                 config_file = f'allennlp_config/{task}{with_finetuning}.json'
 
                                 # bert files
-                                model_id = '7'
+                                model_id = '8-580K'
                                 bert_vocab = f'/bigscibert/vocab.txt'
                                 bert_weights = f'/bigscibert/{model_id}.tar.gz'
 
@@ -132,7 +132,7 @@ if __name__ == '__main__':
                                 cmd = ' '.join(['python', 'scripts/run_with_beaker.py',
                                     f'{config_file}',
                                     f'--name {model_id}_{dataset}_{seed}_{num_epochs}_{learning_rate}',
-                                    '--source ds_ennmwk8zygn8:/bigscibert/',
+                                    '--source ds_i6en5fc9e6jn:/bigscibert/',
                                     '--include-package scibert',
                                     '--env CUDA_DEVICE=0',
                                     f'--env DATASET_SIZE={dataset_size}',
