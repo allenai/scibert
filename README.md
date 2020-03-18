@@ -26,6 +26,19 @@
 * It results in state-of-the-art performance on a wide range of scientific domain nlp tasks. The details of the evaluation are in the [paper](https://arxiv.org/abs/1903.10676). Evaluation code and data are included in this repo. 
 
 ### Downloading Trained Models
+Update! SciBERT models now installable directly within Huggingface's framework under the `allenai` org:
+```
+from transformers import *
+
+tokenizer = AutoTokenizer.from_pretrained('allenai/scibert_scivocab_uncased')
+model = AutoModel.from_pretrained('allenai/scibert_scivocab_uncased')
+
+tokenizer = AutoTokenizer.from_pretrained('allenai/scibert_scivocab_cased')
+model = AutoModel.from_pretrained('allenai/scibert_scivocab_cased')
+```
+
+------
+
 We release the tensorflow and the pytorch version of the trained models. The tensorflow version is compatible with code that works with the model from [Google Research](https://github.com/google-research/bert). The pytorch version is created using the [Hugging Face](https://github.com/huggingface/pytorch-pretrained-BERT) library, and this repo shows how to use it in AllenNLP.  All combinations of `scivocab` and `basevocab`, `cased` and `uncased` models are available below. Our evaluation shows that `scivocab-uncased` usually gives the best results.
 
 #### Tensorflow Models
