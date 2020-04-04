@@ -2,8 +2,8 @@
 
 #
 # edit these variables before running script
-DATASET='ebmnlp'
-TASK='pico'
+DATASET='sciie-relation-extraction'
+TASK='text_classification'
 with_finetuning='' #'_finetune'  # or '' for not fine tuning
 dataset_size=38124
 
