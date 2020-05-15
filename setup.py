@@ -4,7 +4,7 @@ setup(
     name='scibert',
     version='0.1.0',
     url='https://github.com/allenai/scibert.git',
-    author='Iz Beltagy',
+    author='AllenAI',
     description='A BERT model for scientific text.',
     packages=find_packages(),
     install_requires=[
