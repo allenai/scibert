@@ -24,7 +24,7 @@ class BertTextClassifier(TextClassifier):
     """
     def __init__(self, vocab: Vocabulary,
                  text_field_embedder: TextFieldEmbedder,
-                 verbose_metrics: False,
+                 verbose_metrics: bool = False,
                  dropout: float = 0.2,
                  initializer: InitializerApplicator = InitializerApplicator(),
                  regularizer: Optional[RegularizerApplicator] = None,
