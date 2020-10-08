@@ -94,7 +94,7 @@ We include a broad set of scientific nlp datasets under the `data/` directory ac
     └── sciie-relation-extraction
 ```
 
-For example to run the model on the Named Entity Recognition (`NER`) task and on the `BC5CDR` dataset (BioCreative V CDR), modify the `scibert/train_allennlp_local.sh` script according to:
+For example to run the model on the Named Entity Recognition (`NER`) task and on the `BC5CDR` dataset (BioCreative V CDR), modify the `scibert/scripts/train_allennlp_local.sh` script according to:
 ```
 DATASET='bc5cdr'
 TASK='ner'
