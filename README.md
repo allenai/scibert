@@ -31,10 +31,10 @@ Update! SciBERT models now installable directly within Huggingface's framework u
 from transformers import *
 
 tokenizer = AutoTokenizer.from_pretrained('allenai/scibert_scivocab_uncased')
-model = AutoModel.from_pretrained('allenai/scibert_scivocab_uncased')
+model = AutoModelWithLMHead.from_pretrained('allenai/scibert_scivocab_uncased')
 
 tokenizer = AutoTokenizer.from_pretrained('allenai/scibert_scivocab_cased')
-model = AutoModel.from_pretrained('allenai/scibert_scivocab_cased')
+model = AutoModelWithLMHead.from_pretrained('allenai/scibert_scivocab_cased')
 ```
 
 ------
